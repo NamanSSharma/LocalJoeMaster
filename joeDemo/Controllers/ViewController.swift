@@ -303,7 +303,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UIImagePicker
     
     
     
-    func loadImages(){
+    func loadImages () {
         //Load Name
         ref = Database.database().reference()
         let userID : String = (Auth.auth().currentUser?.uid)!
@@ -369,7 +369,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UIImagePicker
                 print(error?.localizedDescription ?? "")
             }
         }
-        image8Stored.getData(maxSize: 1*1000*1000){ (data,error) in
+        image8Stored.getData (maxSize: 1*1000*1000){ (data,error) in
             if error == nil{
                 self.image8.image = UIImage(data:data!)
             }else{
