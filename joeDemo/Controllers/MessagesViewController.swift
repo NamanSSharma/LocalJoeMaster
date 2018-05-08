@@ -133,23 +133,3 @@ extension MessagesViewController {
         return messages [indexPath.row]
     }
 }
-
-extension MessagesViewController {
-    
-    func getMessages () -> [JSQMessage] {
-        // chatId
-        
-        var messages = [JSQMessage]()
-        
-        messages.append (
-            JSQMessage (senderId: "2", displayName: "Naman Sharma", text: "Yudhvir you're so cool")
-        )
-        
-        messages.append (
-            JSQMessage (senderId: "1", displayName: "Yudhvir Raj", text: "Damm it feels good to be a gangsta")
-        )
-        
-        return messages
-    }
-    
-}
