@@ -14,10 +14,10 @@ import FirebaseStorage
 
 class CategoriesViewController : UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     
-    @IBOutlet weak var table: UITableView!
-    @IBOutlet var searchBar: UISearchBar!
+    @IBOutlet weak var table : UITableView!
+    @IBOutlet var searchBar  : UISearchBar!
     
-    let reuseCellIdentifier:String = "JobTypeCell"
+    let reuseCellIdentifier : String = "JobTypeCell"
     
     var ref: DatabaseReference!
     

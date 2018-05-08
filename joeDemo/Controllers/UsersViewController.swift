@@ -14,8 +14,8 @@ import FirebaseStorage
 
 class UsersViewController : UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     
-    @IBOutlet weak var table: UITableView!
-    @IBOutlet var searchBar: UISearchBar!
+    @IBOutlet weak var table : UITableView!
+    @IBOutlet var searchBar  : UISearchBar!
     
     let reuseCellIdentifier:String = "UserCell"
     

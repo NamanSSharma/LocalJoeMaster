@@ -22,6 +22,9 @@ class MapMarkerInfoWindow: UIView {
         //upload a new chat thread to database (userId + SecondUserId)
         
         ref = Database.database().reference()
+        
+        /*
+        
         let userID : String = (Auth.auth().currentUser?.uid)!
         let chatsRef = self.ref.child("chats");
         let usersRef = self.ref.child("users").child(userID);
@@ -37,8 +40,6 @@ class MapMarkerInfoWindow: UIView {
                 let joeName = value?["name"] as? String ?? ""
                 let joeProfession = value?["joeType"] as? String ?? ""
                 let chatChild = joeID;
-                
-                
                 
                 /*let storyBoard = UIStoryboard.init(name: "Main", bundle: nil)
                  let vc = storyBoard.instantiateViewController(withIdentifier: "ChatViewController") as! ChatViewController
@@ -69,9 +70,6 @@ class MapMarkerInfoWindow: UIView {
                     }
                 })
                 
-                
-                
-                
             }) { (error) in
                 print(error.localizedDescription)
             }
@@ -86,9 +84,8 @@ class MapMarkerInfoWindow: UIView {
             
             let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "navMessages") as! UINavigationController
             UIApplication.topViewController()?.present(vc, animated: true, completion: nil)
-            
-            
-        })
+         
+        }) */
     }
     
     @IBOutlet weak var profile: UIButton!
