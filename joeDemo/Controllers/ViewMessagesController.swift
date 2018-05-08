@@ -25,12 +25,11 @@ class ViewMessagesController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "< Back", style: .plain, target: self, action: #selector(backAction))
-
+        navigationItem.leftBarButtonItem = UIBarButtonItem (title: "< Back", style: .plain, target: self, action: #selector(backAction))
         
         messageList.delegate = self
         messageList.dataSource = self
-        ref = Database.database().reference()
+        ref = Database.database ().reference ()
        
         handle = ref.child("users").child(userID).child("chats").observe(.childAdded, with: {(snapshot) in
             if let value = snapshot.value as? NSDictionary {
