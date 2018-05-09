@@ -23,69 +23,93 @@ class MapMarkerInfoWindow: UIView {
         
         ref = Database.database().reference()
         
-        /*
-        
         let userID : String = (Auth.auth().currentUser?.uid)!
         let chatsRef = self.ref.child("chats");
-        let usersRef = self.ref.child("users").child(userID);
-        usersRef.observeSingleEvent(of: .value, with: { (snapshot) in
-            let value = snapshot.value as? NSDictionary
-            // Get user's name
-            let joeID = value?["checkedOut"] as? String ?? ""
-            let joeRef = self.ref.child("users").child(joeID);
-            let myName = value?["name"] as? String ?? ""
-            joeRef.observeSingleEvent(of: .value, with: { (snapshot) in
+        let usersRef = self.ref.child("users").child (userID);
+        
+        usersRef.observeSingleEvent (of: .value, with:
+            {
+                (snapshot) in
                 let value = snapshot.value as? NSDictionary
+                
                 // Get user's name
-                let joeName = value?["name"] as? String ?? ""
-                let joeProfession = value?["joeType"] as? String ?? ""
-                let chatChild = joeID;
+                let joeID  = value?["checkedOut"] as? String ?? ""
+                let joeRef = self.ref.child ("users").child (joeID);
+                let myName = value?["name"] as? String ?? ""
+                let myId   = value?["senderId"] as? String ?? ""
                 
-                /*let storyBoard = UIStoryboard.init(name: "Main", bundle: nil)
-                 let vc = storyBoard.instantiateViewController(withIdentifier: "ChatViewController") as! ChatViewController
-                 vc.idPassed = "\(userID)with\(joeID)"
-                 let nav = UINavigationController(rootViewController: vc)
-                 nav.isNavigationBarHidden = true
-                 self.window?.rootViewController=nav
-                 self.window?.makeKeyAndVisible() */
+                joeRef.observeSingleEvent(of: .value, with:
+                    {
+                        (snapshot) in
+                            let value = snapshot.value as? NSDictionary
+                            // Get user's name
+                            let joeName       = value?["name"]     as? String ?? ""
+                            let joeProfession = value?["joeType"]  as? String ?? ""
+                            let joeId         = value?["senderId"] as? String ?? ""
+                            let chatId        = UUID().uuidString;
+                        
+                            let userChatValues = [
+                                "userid"   : joeId,
+                                "username" : joeName
+                            ]
+                        
+                            let joeChatValues = [
+                                "userid"   : myId,
+                                "username" : myName
+                            ]
+                        
+                            let chatValues = [
+                                "chatid" : chatId,
+                                "userid" : myId,
+                                "joeid"  : joeId,
+                            ]
+                        
+                            /*
+     
+                             "joe": "\(joeName) the \(joeProfession)",
+                             "messageID": "\(userID)with\(joeID)",
+                             "joeID": "\(joeID)",
+                             "client": "\(myName)"*/
+                        
+                            usersRef.child ("chats").child (chatId).updateChildValues (userChatValues, withCompletionBlock: {
+                                (err,ref) in
+                                    if err != nil {
+                                        print(err as Any)
+                                        return
+                                    }
+                                }
+                            )
+                        
+                            joeRef.child ("chats").child (userID).updateChildValues (joeChatValues, withCompletionBlock: {
+                                (err,ref) in
+                                    if err != nil {
+                                        print (err as Any)
+                                        return
+                                    }
+                                }
+                            )
+                        
+                            chatsRef.child (chatId).updateChildValues (chatValues, withCompletionBlock: {
+                                (err,ref) in
+                                    if err != nil {
+                                        print(err as Any)
+                                        return
+                                    }
+                                }
+                            )
                 
-                let values = ["joe": "\(joeName) the \(joeProfession)", "messageID": "\(userID)with\(joeID)", "joeID": "\(joeID)", "client": "\(myName)"]
-                usersRef.child("chats").child(chatChild).updateChildValues(values, withCompletionBlock: {(err,ref) in
-                    if err != nil{
-                        print(err as Any)
-                        return
                     }
-                })
-                joeRef.child("chats").child(userID).updateChildValues(values, withCompletionBlock: {(err,ref) in
-                    if err != nil{
-                        print(err as Any)
-                        return
-                    }
-                })
-                let clientWithJoeId = userID + "with" + joeID;
-                chatsRef.child(clientWithJoeId).updateChildValues(values, withCompletionBlock: {(err,ref) in
-                    if err != nil{
-                        print(err as Any)
-                        return
-                    }
-                })
-                
-            }) { (error) in
-                print(error.localizedDescription)
-            }
+                ) {
+                    (error) in
+                        print(error.localizedDescription)
+                }
             
-            /* let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-             let homeC = storyboard.instantiateViewController(withIdentifier: "ChatViewController") as? ChatViewController
-             if homeC != nil {
-             homeC!.view.frame = (self.window!.frame)
-             self.window!.addSubview(homeC!.view)
-             self.window!.bringSubview(toFront: homeC!.view)
-             } */
-            
-            let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "navMessages") as! UINavigationController
-            UIApplication.topViewController()?.present(vc, animated: true, completion: nil)
+                let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "navMessages") as! UINavigationController
+                
+                UIApplication.topViewController()?.present(vc, animated: true, completion: nil)
          
-        }) */
+            }
+        )
     }
     
     @IBOutlet weak var profile: UIButton!

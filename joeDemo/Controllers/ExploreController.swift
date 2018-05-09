@@ -29,37 +29,50 @@ class ExploreController : UIViewController, GMSMapViewDelegate {
         
         //Loads All Users To Map
         let allUsers = self.ref.child("users")
-        allUsers.observeSingleEvent(of: .value, with: { (allUserSnap) in
+        allUsers.observeSingleEvent(of: .value, with: {
+            (allUserSnap) in
             
-            //setup MapView (set camera to your location)
-            let camera = GMSCameraPosition.camera(withLatitude: 49.18683, longitude: -122.84899, zoom: 10)
-            let mapView = GMSMapView.map(withFrame: .zero, camera: camera)
+                //setup MapView (set camera to your location)
+                let camera = GMSCameraPosition.camera(withLatitude: 49.18683, longitude: -122.84899, zoom: 10)
+                let mapView = GMSMapView.map(withFrame: .zero, camera: camera)
             
-            mapView.isMyLocationEnabled = true;
+                mapView.isMyLocationEnabled = true;
             
-            for singleUser in allUserSnap.children.allObjects as! [DataSnapshot]{
-                let value = singleUser.value as? NSDictionary
-                let isOnline = value!["online"] as? String ?? ""
-                if(isOnline == "online"){
-                    let name = value?["name"] as? String ?? ""
-                    let joeType = value?["joeType"] as? String ?? ""
-                    let lat = value?["lat"] as? String ?? ""
-                    let long = value?["long"] as? String ?? ""
-                    let latNum:CLLocationDegrees? = CLLocationDegrees(lat)
-                    let longNum:CLLocationDegrees? = CLLocationDegrees(long)
+                for singleUser in allUserSnap.children.allObjects as! [DataSnapshot]
+                {
+                    let value = singleUser.value as? NSDictionary
+                    let isOnline = value!["online"] as? String ?? ""
+                    if (isOnline == "online") {
+                        
+                        let name    = value?["name"]    as? String ?? ""
+                        let joeType = value?["joeType"] as? String ?? ""
+                        let lat     = value?["lat"]     as? String ?? ""
+                        let long    = value?["long"]    as? String ?? ""
+                        
+                        guard let latNum:CLLocationDegrees  = CLLocationDegrees (lat) else {
+                            continue
+                        }
+                        
+                        guard let longNum:CLLocationDegrees = CLLocationDegrees (long) else {
+                            continue
+                        }
+                        
+                        let marker = GMSMarker()
+                        
+                        marker.position = CLLocationCoordinate2DMake (latNum, longNum)
+                        marker.title = name + " the \(joeType)";
+                        marker.snippet = "\(singleUser.key)"
+                        marker.map = mapView
+                        
+                    }
                     
-                    let marker = GMSMarker()
-                    marker.position = CLLocationCoordinate2DMake(latNum!, longNum!)
-                    marker.title = name + " the \(joeType)";
-                    marker.snippet = "\(singleUser.key)"
-                    marker.map = mapView
-                    
+                    mapView.delegate = self
+                    self.view = mapView;
                 }
-                mapView.delegate = self
-                self.view = mapView;
             }
-        }) { (error) in
-            print(error.localizedDescription)
+        ) {
+            (error) in
+                print(error.localizedDescription)
         }
         
     }
@@ -69,41 +82,58 @@ class ExploreController : UIViewController, GMSMapViewDelegate {
         super.viewDidLoad()
         
         
-        //Load Name
+        // Load Name
         ref = Database.database().reference()
         
-        //Loads All Users To Map
+        // Loads All Users To Map
         
         let allUsers = self.ref.child("users")
-        allUsers.observeSingleEvent(of: .value, with: { (allUserSnap) in
-            
-            //setup MapView (set camera to your location)
-            let camera = GMSCameraPosition.camera(withLatitude: 49.18683, longitude: -122.84899, zoom: 10)
-            let mapView = GMSMapView.map(withFrame: .zero, camera: camera)
-            mapView.isMyLocationEnabled = true;
-            
-            for singleUser in allUserSnap.children.allObjects as! [DataSnapshot]{
-                let value = singleUser.value as? NSDictionary
-                let isOnline = value!["online"] as? String ?? ""
-                if(isOnline == "online"){
-                    let userKey = singleUser.key;
-                    print(singleUser.key)
-                    let name = value?["name"] as? String ?? ""
-                    let joeType = value?["joeType"] as? String ?? ""
-                    let lat = value?["lat"] as? String ?? ""
-                    let long = value?["long"] as? String ?? ""
-                    let latNum:CLLocationDegrees? = CLLocationDegrees(lat)
-                    let longNum:CLLocationDegrees? = CLLocationDegrees(long)
-                    let marker = GMSMarker()
-                    marker.position = CLLocationCoordinate2DMake(latNum!, longNum!)
-                    marker.title = name + " the \(joeType)";
-                    marker.snippet = userKey
-                    marker.map = mapView;
+        allUsers.observeSingleEvent (of: .value, with:
+            {
+                (allUserSnap) in
+                
+                // setup MapView (set camera to your location)
+                let camera = GMSCameraPosition.camera(withLatitude: 49.18683, longitude: -122.84899, zoom: 10)
+                let mapView = GMSMapView.map(withFrame: .zero, camera: camera)
+                mapView.isMyLocationEnabled = true;
+                
+                for singleUser in allUserSnap.children.allObjects as! [DataSnapshot]
+                {
+                    let value = singleUser.value as? NSDictionary
+                    let isOnline = value!["online"] as? String ?? ""
                     
+                    if (isOnline == "online") {
+                        let userKey = singleUser.key;
+                        
+                        print (singleUser.key)
+                        
+                        let name    = value?["name"]    as? String ?? ""
+                        let joeType = value?["joeType"] as? String ?? ""
+                        let lat     = value?["lat"]     as? String ?? ""
+                        let long    = value?["long"]    as? String ?? ""
+                        
+                        guard let latNum:CLLocationDegrees  = CLLocationDegrees (lat) else {
+                            continue
+                        }
+                        
+                        guard let longNum:CLLocationDegrees = CLLocationDegrees (long) else {
+                            continue
+                        }
+                        
+                        let marker = GMSMarker ()
+                        
+                        marker.position = CLLocationCoordinate2DMake (latNum, longNum)
+                        marker.title = name + " the \(joeType)";
+                        marker.snippet = userKey
+                        marker.map = mapView;
+                        
+                    }
+                    
+                    self.view = mapView;
                 }
-                self.view = mapView;
-            }
-        }) { (error) in
+        }
+        ) {
+            (error) in
             print(error.localizedDescription)
         }
     }

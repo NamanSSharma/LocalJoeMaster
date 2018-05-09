@@ -62,7 +62,9 @@ class ChatGroupViewController : UIViewController, UITableViewDataSource, UITable
                          }
                     */
                 
-                    let chats = value["chats"] as! NSDictionary
+                    guard let chats:NSDictionary = value["chats"] as? NSDictionary else {
+                        return
+                    }
                 
                     for chat in chats {
                         let chatObj = chat.value as! NSDictionary

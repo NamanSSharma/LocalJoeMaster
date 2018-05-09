@@ -43,6 +43,7 @@ extension MessagesViewController {
     override func viewDidLoad() {
         super.viewDidLoad ()
         
+        self.edgesForExtendedLayout = []
         
         ref = Database.database().reference ()
         
@@ -74,17 +75,7 @@ extension MessagesViewController {
         
         /* messages.append (
             JSQMessage (senderId: "2", displayName: "Naman Sharma", text: "Yudhvir you're so cool")
-        )
-        
-        messages.append (
-            JSQMessage (senderId: "1", displayName: "Yudhvir Raj", text: "Damm it feels good to be a gangsta")
         ) */
-        
-        // tell JSQMessagesViewController
-        // who is the current user
-        
-        
-        // self.messages = getMessages ()
     }
 }
 
