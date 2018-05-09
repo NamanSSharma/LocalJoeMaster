@@ -17,6 +17,12 @@ struct UserObj {
     let name : String
 }
 
+struct FirebaseJSQMessage {
+    let id   : String
+    let date : String
+    let msg  : JSQMessage
+}
+
 class MessagesViewController : JSQMessagesViewController {
     
     // let user1 = UserObj (id: "1", name: "Yudhvir Raj")
@@ -30,11 +36,13 @@ class MessagesViewController : JSQMessagesViewController {
         return user1
     } */
     
-    var currentUser      : UserObj = UserObj (id : "1", name : "")
+    var currentUser      : UserObj = UserObj (id : "", name : "")
     var conversationUser : UserObj = UserObj (id : "", name : "")
     
+    var newChat : Bool = false
+    
     // All the messages of user1, user2
-    var messages = [JSQMessage]()
+    var messages = [FirebaseJSQMessage]()
     
 }
 
@@ -47,8 +55,6 @@ extension MessagesViewController {
         
         ref = Database.database().reference ()
         
-        chatId = "6KBziET3C3hzL3t4WI0VqCy6lQW2witho27gTVcU0WOecTMvTPCKBMi4xFe2"
-        
         self.senderId          = currentUser.id
         self.senderDisplayName = currentUser.name
         
@@ -56,22 +62,44 @@ extension MessagesViewController {
         
         print ("CHATS REF")
         
-        chatRef.observe (.childAdded) {
+        chatRef.observe (.value) {
             (snapshot) in
             
-            let key   = snapshot.key
-            let value = snapshot.value
+                self.messages = []
             
-            // let messages = value
+                let key   = snapshot.key
             
-            print (key)
-            print (value)
+                guard let value = snapshot.value as? NSDictionary else {
+                    return
+                }
+            
+                // Use external call to get date perhaps, such as server
+                for (key, msg) in value {
+                    // print ("\(key) --> \(msg)")
+                    
+                    guard let msgValues = msg as? [String:String] else {
+                        break
+                    }
+                    
+                    let message:JSQMessage = JSQMessage (senderId: msgValues["senderId"], displayName: msgValues["displayName"], text: msgValues["text"])
+                    
+                    self.messages.append (FirebaseJSQMessage (id: key as! String, date: msgValues["date"]!, msg: message))
+                }
+            
+                self.messages.sort (by:
+                    {
+                        (lhs, rhs) -> Bool in
+                            return lhs.date < rhs.date
+                    }
+                )
+            
+                self.collectionView.reloadData ()
+            
+                print (self.messages)
             
             // for child in
         
         }
-        
-        var messages = [JSQMessage]()
         
         /* messages.append (
             JSQMessage (senderId: "2", displayName: "Naman Sharma", text: "Yudhvir you're so cool")
@@ -80,16 +108,45 @@ extension MessagesViewController {
 }
 
 extension MessagesViewController {
+    // newChat button to go back
+    private func goBack () {
+        // Last view controller
+        _ = navigationController?.popViewController (animated: true)
+        
+        // Root view controller
+        // _ = navigationController?.popToRootViewController (animated: true)
+    }
+}
+
+extension MessagesViewController {
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
-        let message = JSQMessage (senderId: senderId, displayName: senderDisplayName, text: text)
-        self.messages.append (message!)
+        let messageId = UUID().uuidString
+        let message   = JSQMessage (senderId: senderId, displayName: senderDisplayName, text: text)
+        
+        let fbMessage = FirebaseJSQMessage (id: messageId, date: String (date.timeIntervalSince1970), msg: message!)
+        
+        self.messages.append (fbMessage)
+        
+        print ("ID \(currentUser.id)")
+        print ("SID \(senderId)")
+        
+        let chatRef = ref.child (FirebaseDatabaseRefs.chats).child (self.chatId).child ("messages")
+        let messageValues =
+            [
+                "senderId"    : senderId,
+                "displayName" : senderDisplayName,
+                "text"        : text,
+                "date"        : String (date.timeIntervalSince1970)
+            ]
+        
+        chatRef.child (messageId).updateChildValues (messageValues)
         
         finishSendingMessage ()
     }
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, attributedTextForMessageBubbleTopLabelAt indexPath: IndexPath!) -> NSAttributedString! {
         let message         = messages[indexPath.row]
-        let messageUsername =  message.senderDisplayName
+        let messageUsername =  message.msg.senderDisplayName
         
         return NSAttributedString (string: messageUsername!)
     }
@@ -107,9 +164,9 @@ extension MessagesViewController {
         
         let message       = messages[indexPath.row]
         
-        print (currentUser.id + " " + message.senderId)
+        print (currentUser.id + " " + message.msg.senderId)
         
-        if currentUser.id == message.senderId {
+        if currentUser.id == message.msg.senderId {
             return bubbleFactory?.outgoingMessagesBubbleImage (with: .green)
         }
         
@@ -121,6 +178,6 @@ extension MessagesViewController {
     }
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageDataForItemAt indexPath: IndexPath!) -> JSQMessageData! {
-        return messages [indexPath.row]
+        return messages [indexPath.row].msg
     }
 }

@@ -46,7 +46,12 @@ class MapMarkerInfoWindow: UIView {
                             let joeName       = value?["name"]     as? String ?? ""
                             let joeProfession = value?["joeType"]  as? String ?? ""
                             let joeId         = value?["senderId"] as? String ?? ""
-                            let chatId        = UUID().uuidString;
+                        
+                            let chatId        = myId > joeId ? "\(myId)_\(joeId)" : "\(joeId)_\(myId)" // UUID().uuidString;
+                        
+                            if myId == joeId {
+                                return
+                            }
                         
                             let userChatValues = [
                                 "userid"   : joeId,
@@ -80,7 +85,7 @@ class MapMarkerInfoWindow: UIView {
                                 }
                             )
                         
-                            joeRef.child ("chats").child (userID).updateChildValues (joeChatValues, withCompletionBlock: {
+                            joeRef.child ("chats").child (chatId).updateChildValues (joeChatValues, withCompletionBlock: {
                                 (err,ref) in
                                     if err != nil {
                                         print (err as Any)
@@ -97,16 +102,26 @@ class MapMarkerInfoWindow: UIView {
                                     }
                                 }
                             )
+                        
+                        // Add dismiss button to controller
+                        let storyboard : UIStoryboard = UIStoryboard.init (name: "Main", bundle: nil)
+                        
+                            var messagesVC : MessagesViewController = storyboard.instantiateViewController (withIdentifier: "ChatView") as! MessagesViewController
+                        
+                            messagesVC.chatId           = chatId
+                            messagesVC.currentUser      = UserObj (id : myId,  name : myName)
+                            messagesVC.conversationUser = UserObj (id : joeId, name : joeName)
+                            messagesVC.newChat          = true
+                        
+                            // let vc = UIStoryboard.init (name: "Main", bundle: nil).instantiateViewController (withIdentifier: "ChatView") as! UINavigationController
+                        
+                            UIApplication.topViewController()?.present (messagesVC, animated: true, completion: nil)
                 
                     }
                 ) {
                     (error) in
                         print(error.localizedDescription)
                 }
-            
-                let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "navMessages") as! UINavigationController
-                
-                UIApplication.topViewController()?.present(vc, animated: true, completion: nil)
          
             }
         )
