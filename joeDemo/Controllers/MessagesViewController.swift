@@ -60,7 +60,11 @@ extension MessagesViewController {
         
         let chatRef = ref.child (FirebaseDatabaseRefs.chats).child (chatId).child ("messages")
         
-        print ("CHATS REF")
+        let leftButton = UIButton ()
+        let sendImage = #imageLiteral(resourceName: "define_location")
+        leftButton.setImage (sendImage, for: [])
+
+        self.inputToolbar.contentView.leftBarButtonItem = leftButton
         
         chatRef.observe (.value) {
             (snapshot) in
@@ -94,16 +98,8 @@ extension MessagesViewController {
                 )
             
                 self.collectionView.reloadData ()
-            
-                print (self.messages)
-            
-            // for child in
         
         }
-        
-        /* messages.append (
-            JSQMessage (senderId: "2", displayName: "Naman Sharma", text: "Yudhvir you're so cool")
-        ) */
     }
 }
 

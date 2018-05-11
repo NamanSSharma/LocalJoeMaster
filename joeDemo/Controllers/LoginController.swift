@@ -61,15 +61,15 @@ class LoginController: UIViewController {
                     let alertController = UIAlertController(title: "Verification", message: "Please enter the verification code sent to your phone number:", preferredStyle: .alert)
                     
                     let confirmAction = UIAlertAction(title: "Confirm", style: .default) { (_) in
-                        if let verificationCode:String = alertController.textFields?[0].text {
+                        if let verificationCodeUser:String = alertController.textFields?[0].text {
                             //check verification
                             UserDefaults.standard.set(verificationID, forKey: "authVerificationID")
                             let verificationID = UserDefaults.standard.string(forKey: "authVerificationID")
                             let credential = PhoneAuthProvider.provider().credential(
                                 withVerificationID: verificationID!,
-                                verificationCode: verificationCode)
+                                verificationCode: verificationCodeUser)
                             
-                            Auth.auth().createUser(withEmail: self.user.text!, password: self.pass.text!, completion: { (newUser, error) in
+                            Auth.auth().createUser (withEmail: self.user.text!, password: self.pass.text!, completion: { (newUser, error) in
                                 if newUser != nil
                                 {   //Successful
                                     print("SUCCESS")
@@ -84,7 +84,7 @@ class LoginController: UIViewController {
                                         print("Saved user successfully into Firebase DB")
                                     })
                                     
-                                    Auth.auth().signIn(with: credential) { (user, error) in
+                                    /* Auth.auth().signIn (with: credential) { (user, error) in
                                         if let error = error {
                                             print(error)
                                             
@@ -96,7 +96,7 @@ class LoginController: UIViewController {
                                             self.performSegue(withIdentifier: "loginSegue", sender: self) //proceed to the homescreen
                                         }
                                         
-                                    }
+                                    } */
                                     
                                 }
                                 else //signing up failed
