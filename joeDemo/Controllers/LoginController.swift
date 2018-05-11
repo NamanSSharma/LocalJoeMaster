@@ -11,6 +11,7 @@ class LoginController: UIViewController {
     @IBOutlet weak var name: UITextField! //name for signup
     @IBOutlet weak var user: UITextField! //email
     @IBOutlet weak var pass: UITextField! //password
+    @IBOutlet weak var phone: UITextField!
     @IBOutlet weak var actionButton: UIButton! //submit email/pass
     @IBOutlet weak var forgotPass: UIButton! //forgot password button
     
@@ -18,13 +19,15 @@ class LoginController: UIViewController {
     @IBAction func segmentClick(_ sender: Any) { //choosing between login/signup
         if segmentControl.selectedSegmentIndex == 0 //Login Option
         {   name.isHidden = true; //don't need name for login
+            phone.isHidden = true; //don't need phone for login
         }else{
         name.isHidden = false; // need name for signup
+        phone.isHidden = false; //need phone for signup
         }
     }
     
     @IBAction func buttonAction(_ sender: Any) { //click enter
-        if user.text != "" && pass.text != "" //do the following if email/pass is entered
+        if user.text != "" && pass.text != ""//do the following if email/pass is entered
         {
             if segmentControl.selectedSegmentIndex == 0 //Login User
             {   Auth.auth().signIn(withEmail: user.text!, password: pass.text!, completion: { (user, error) in //backend verification
@@ -47,42 +50,96 @@ class LoginController: UIViewController {
                 })
             }
             else //User is choosing to create an account
-            { Auth.auth().createUser(withEmail: user.text!, password: pass.text!, completion: { (newUser, error) in
-                    if newUser != nil
-                    {   //Successful
-                        print("SUCCESS")
-                        let values = ["name": self.name.text!, "email": self.user.text!, "joeType": "none", "numPhotos": "0"] //set new user values
-                        let userID : String = (Auth.auth().currentUser?.uid)!
-                        let usersRef = self.ref.child("users").child(userID);
-                        usersRef.updateChildValues(values, withCompletionBlock: {(err,ref) in //put the values into database
-                            if err != nil{
-                                print(err as Any)
-                                return
-                            }
-                            print("Saved user successfully into Firebase DB")
-                        })
-
-                        self.performSegue(withIdentifier: "loginSegue", sender: self) //proceed to the homescreen
+            {
+                PhoneAuthProvider.provider().verifyPhoneNumber(phone.text!, uiDelegate: nil) { (verificationID, error) in
+                    if let error = error {
+                       //error
+                        print (error)
+                        return
                     }
-                    else //signing up failed
-                    {
-                        // create the alert
-                        let alert = UIAlertController(title: "Invalid Sign Up", message: "\(error!.localizedDescription)", preferredStyle: UIAlertControllerStyle.alert)
-                        // add the actions (buttons)
-                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-                        // show the alert
-                        self.present(alert, animated: true, completion: nil)
-
-                        if let myError = error?.localizedDescription
-                        {
-                            print(myError)
-                        }
-                        else
-                        {
-                            print("ERROR")
+                    
+                    let alertController = UIAlertController(title: "Verification", message: "Please enter the verification code sent to your phone number:", preferredStyle: .alert)
+                    
+                    let confirmAction = UIAlertAction(title: "Confirm", style: .default) { (_) in
+                        if let verificationCode:String = alertController.textFields?[0].text {
+                            //check verification
+                            UserDefaults.standard.set(verificationID, forKey: "authVerificationID")
+                            let verificationID = UserDefaults.standard.string(forKey: "authVerificationID")
+                            let credential = PhoneAuthProvider.provider().credential(
+                                withVerificationID: verificationID!,
+                                verificationCode: verificationCode)
+                            
+                            Auth.auth().createUser(withEmail: self.user.text!, password: self.pass.text!, completion: { (newUser, error) in
+                                if newUser != nil
+                                {   //Successful
+                                    print("SUCCESS")
+                                    let values = ["name": self.name.text!, "email": self.user.text!, "joeType": "none", "numPhotos": "0"] //set new user values
+                                    let userID : String = (Auth.auth().currentUser?.uid)!
+                                    let usersRef = self.ref.child("users").child(userID);
+                                    usersRef.updateChildValues(values, withCompletionBlock: {(err,ref) in //put the values into database
+                                        if err != nil{
+                                            print(err as Any)
+                                            return
+                                        }
+                                        print("Saved user successfully into Firebase DB")
+                                    })
+                                    
+                                    Auth.auth().signIn(with: credential) { (user, error) in
+                                        if let error = error {
+                                            print(error)
+                                            
+                                            let user = Auth.auth().currentUser;
+                                            user?.delete();
+                                            return
+                                        }else{
+                                            // User is signed in
+                                            self.performSegue(withIdentifier: "loginSegue", sender: self) //proceed to the homescreen
+                                        }
+                                        
+                                    }
+                                    
+                                }
+                                else //signing up failed
+                                {
+                                    // create the alert
+                                    let alert = UIAlertController(title: "Invalid Sign Up", message: "\(error!.localizedDescription)", preferredStyle: UIAlertControllerStyle.alert)
+                                    // add the actions (buttons)
+                                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                                    // show the alert
+                                    self.present(alert, animated: true, completion: nil)
+                                    
+                                    if let myError = error?.localizedDescription
+                                    {
+                                        print(myError)
+                                    }
+                                    else
+                                    {
+                                        print("ERROR")
+                                    }
+                                }
+                            })
+                            
+                           
+                            
+                        } else {
+                            // user did not fill field
                         }
                     }
-                })
+                    
+                    let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in }
+                    
+                    alertController.addTextField { (textField) in
+                        textField.placeholder = "Email"
+                    }
+                    
+                    alertController.addAction(confirmAction)
+                    alertController.addAction(cancelAction)
+                    self.present(alertController, animated: true, completion: nil)
+                    
+                   
+                }
+                
+                
             }
         }
     }
@@ -90,9 +147,37 @@ class LoginController: UIViewController {
     
     @IBAction func forgotAction(_ sender: Any) { //user has forgotten their password
         
-        Auth.auth().sendPasswordReset(withEmail: user.text!) { (error) in
-           
+       // Auth.auth().sendPasswordReset(withEmail: user.text!) { (error) in
+       //self.performSegue (withIdentifier: "forgotPassSegue", sender: self)
+        
+       
+        let alertController = UIAlertController(title: "Forgot Password", message: "Please input your email:", preferredStyle: .alert)
+        
+        let confirmAction = UIAlertAction(title: "Confirm", style: .default) { (_) in
+            if let field = alertController.textFields?[0] {
+                Auth.auth().sendPasswordReset(withEmail: field.text!) { (error) in}
+                
+                let alert = UIAlertController(title: "Thanks!", message: "Check your email to reset your password", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+                
+            } else {
+                // user did not fill field
+            }
         }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in }
+        
+        alertController.addTextField { (textField) in
+            textField.placeholder = "Email"
+        }
+        
+        alertController.addAction(confirmAction)
+        alertController.addAction(cancelAction)
+        
+        self.present(alertController, animated: true, completion: nil)
+        
+      
     }
     
     override func viewDidLoad() {
@@ -109,6 +194,7 @@ class LoginController: UIViewController {
         
         if segmentControl.selectedSegmentIndex == 0 //Login User
         {   name.isHidden = true;
+            phone.isHidden = true;
         }
        
         reachability.whenUnreachable = { _ in //alert for no internet connection

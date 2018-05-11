@@ -1,15 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jAG-5T-Ftw">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jAG-5T-Ftw">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue</string>
+        </array>
+        <array key="LaoSangamMN.ttf">
+            <string>LaoSangamMN</string>
+        </array>
+        <array key="OriyaSangamMN.ttc">
+            <string>OriyaSangamMN-Bold</string>
+        </array>
         <array key="localJoeFont.ttf">
             <string>Messages</string>
         </array>
@@ -479,16 +488,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Rt-W8-mKW">
-                                <rect key="frame" x="62" y="387" width="250" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                <state key="normal" title="Enter"/>
-                                <connections>
-                                    <action selector="buttonAction:" destination="jAG-5T-Ftw" eventType="touchUpInside" id="mcg-nv-Jb3"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eJ4-Aa-4uG">
                                 <rect key="frame" x="0.0" y="57" width="375" height="53"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -507,8 +506,18 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="147"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Rt-W8-mKW">
+                                <rect key="frame" x="63" y="440" width="250" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <state key="normal" title="Enter"/>
+                                <connections>
+                                    <action selector="buttonAction:" destination="jAG-5T-Ftw" eventType="touchUpInside" id="mcg-nv-Jb3"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s7q-6o-Nig">
-                                <rect key="frame" x="104" y="439" width="167" height="27"/>
+                                <rect key="frame" x="105" y="492" width="167" height="27"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -518,6 +527,13 @@
                                     <action selector="forgotAction:" destination="jAG-5T-Ftw" eventType="touchUpInside" id="6vt-M4-oCo"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone Number" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ad7-vf-EM6">
+                                <rect key="frame" x="63" y="375" width="250" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -533,6 +549,7 @@
                         <outlet property="forgotPass" destination="s7q-6o-Nig" id="FSx-LG-NDa"/>
                         <outlet property="name" destination="FlK-ki-jAz" id="HbW-0H-6zg"/>
                         <outlet property="pass" destination="YeD-ox-2Ha" id="zJo-SG-Aa8"/>
+                        <outlet property="phone" destination="ad7-vf-EM6" id="wbH-Nc-caJ"/>
                         <outlet property="segmentControl" destination="pNv-Z7-mKr" id="jHh-Pr-OvG"/>
                         <outlet property="user" destination="6L4-Zt-tmi" id="ptQ-rA-TM7"/>
                         <segue destination="7uD-M4-O5e" kind="show" identifier="loginSegue" id="lR9-Ph-X44"/>
