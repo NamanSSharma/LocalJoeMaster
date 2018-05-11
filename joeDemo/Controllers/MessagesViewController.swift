@@ -48,6 +48,29 @@ class MessagesViewController : JSQMessagesViewController {
 
 extension MessagesViewController {
     
+    func addNoNavControllerButtons () {
+        let navbar = UINavigationBar(frame: CGRect (x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 75))
+        
+        navbar.tintColor = UIColor.lightGray
+        self.view.addSubview (navbar)
+        
+        let navItem = UINavigationItem (title: self.conversationUser.name)
+        let navBarbutton = UIBarButtonItem (barButtonSystemItem: UIBarButtonSystemItem.bookmarks, target: goBack, action: nil)
+        navItem.leftBarButtonItem = navBarbutton
+        
+        navbar.items = [navItem]
+    }
+    
+    func addViewOnTop () {
+        self.navigationItem.title = self.conversationUser.name
+        /* let selectableView = UIView (frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 40))
+        selectableView.backgroundColor = .red
+        let randomViewLabel  = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 16))
+        randomViewLabel.text = self.conversationUser.name
+        selectableView.addSubview (randomViewLabel)
+        view.addSubview (selectableView) */
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad ()
         
@@ -58,13 +81,20 @@ extension MessagesViewController {
         self.senderId          = currentUser.id
         self.senderDisplayName = currentUser.name
         
+        self.addViewOnTop ()
+        
+        if self.newChat {
+            print ("HERE")
+            addNoNavControllerButtons ()
+        }
+        
         let chatRef = ref.child (FirebaseDatabaseRefs.chats).child (chatId).child ("messages")
         
         let leftButton = UIButton ()
         let sendImage = #imageLiteral(resourceName: "define_location")
         leftButton.setImage (sendImage, for: [])
 
-        self.inputToolbar.contentView.leftBarButtonItem = leftButton
+        self.inputToolbar.contentView.leftBarButtonItem = leftButton;
         
         chatRef.observe (.value) {
             (snapshot) in
@@ -101,11 +131,14 @@ extension MessagesViewController {
         
         }
     }
+    
 }
 
 extension MessagesViewController {
     // newChat button to go back
-    private func goBack () {
+    @objc private func goBack () {
+        print ("PRESSED")
+        
         // Last view controller
         _ = navigationController?.popViewController (animated: true)
         
@@ -138,6 +171,26 @@ extension MessagesViewController {
         chatRef.child (messageId).updateChildValues (messageValues)
         
         finishSendingMessage ()
+    }
+    
+    override func didPressAccessoryButton (_ sender: UIButton!) {
+        print ("Button pressed")
+         let alertController = UIAlertController(title: "Send Quote", message: "Please enter a quote for the client to see", preferredStyle: .alert)
+        
+        let confirmAction = UIAlertAction(title: "Confirm", style: .default) { (_) in
+           // somewhere
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in }
+        
+        alertController.addTextField { (textField) in
+            textField.placeholder = "Quote Price"
+        }
+        
+        alertController.addAction(confirmAction)
+        alertController.addAction(cancelAction)
+        self.present(alertController, animated: true, completion: nil)
+        
     }
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, attributedTextForMessageBubbleTopLabelAt indexPath: IndexPath!) -> NSAttributedString! {

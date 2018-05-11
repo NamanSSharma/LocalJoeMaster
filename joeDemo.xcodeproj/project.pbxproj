@@ -581,11 +581,11 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: Naman Sharma (TCG3M95S49)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = T68Z3DP73E;
+				DEVELOPMENT_TEAM = XMYPNHLNC5;
 				INFOPLIST_FILE = joeDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.namansharma.localJoeApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.underrateddev.localJoe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "joeDemo/joeDemo-Bridging-Header.h";
@@ -604,11 +604,11 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: Naman Sharma (TCG3M95S49)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = T68Z3DP73E;
+				DEVELOPMENT_TEAM = XMYPNHLNC5;
 				INFOPLIST_FILE = joeDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.namansharma.localJoeApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.underrateddev.localJoe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "joeDemo/joeDemo-Bridging-Header.h";

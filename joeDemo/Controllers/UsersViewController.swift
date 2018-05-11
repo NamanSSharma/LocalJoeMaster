@@ -46,11 +46,13 @@ class UsersViewController : UIViewController, UITableViewDataSource, UITableView
                     let key   = snap.key
                     let value = snap.value as? NSDictionary
                     
-                    if let joeType    = value?["joeType"] as? String,
+                    if let joeType    = value?["joeType"]    as? String,
                        let checkedOut = value?["checkedOut"] as? String,
-                       let email      = value?["email"] as? String,
-                       let name       = value?["name"] as? String,
-                       let numPhotos  = value?["numPhotos"] as? String {
+                       let email      = value?["email"]      as? String,
+                       let name       = value?["name"]       as? String,
+                       let numPhotos  = value?["numPhotos"]  as? String {
+                        
+                        print (joeType + " " + self.jobTypeId)
                         
                         // numPhotos should be changed to int in database
                         if (joeType == self.jobTypeId) {
