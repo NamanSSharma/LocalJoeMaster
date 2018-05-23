@@ -52,6 +52,8 @@ class ChatGroupViewController : UIViewController, UITableViewDataSource, UITable
                     let key   = snapshot.key
                     let value = snapshot.value as! NSDictionary
                 
+                    print(value);
+                
                     self.senderId    = value["senderId"] as! String
                     self.displayName = value["name"]     as! String
                 
