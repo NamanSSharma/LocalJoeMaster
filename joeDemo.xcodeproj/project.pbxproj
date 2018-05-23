@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		65F7376E707A935576AD664A /* Pods_joeDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F49789B3894D364973D9C75 /* Pods_joeDemo.framework */; };
 		B911802820A12D610076EA9D /* ChatLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = B911802720A12D610076EA9D /* ChatLink.swift */; };
+		B940606020B511AE00362C74 /* LocalJoeEstimatorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B940605F20B511AE00362C74 /* LocalJoeEstimatorController.swift */; };
 		B945F9BC208476ED00582B69 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B945F9BA208476ED00582B69 /* Main.storyboard */; };
 		B945F9BE208478BE00582B69 /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B945F9BD208478BE00582B69 /* CategoriesViewController.swift */; };
 		B945F9C620847D8700582B69 /* JobTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B945F9C520847D8700582B69 /* JobTypeCell.swift */; };
@@ -56,6 +57,7 @@
 		2F49789B3894D364973D9C75 /* Pods_joeDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_joeDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		503D11343C0D729BA2B209B0 /* Pods-joeDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-joeDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-joeDemo/Pods-joeDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		B911802720A12D610076EA9D /* ChatLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatLink.swift; sourceTree = "<group>"; };
+		B940605F20B511AE00362C74 /* LocalJoeEstimatorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalJoeEstimatorController.swift; sourceTree = "<group>"; };
 		B945F9BB208476ED00582B69 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B945F9BD208478BE00582B69 /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
 		B945F9C520847D8700582B69 /* JobTypeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JobTypeCell.swift; path = joeDemo/Layout/Cells/JobTypeCell.swift; sourceTree = SOURCE_ROOT; };
@@ -171,6 +173,7 @@
 				CECDAB851FAD955E009B0221 /* AppDelegate.swift */,
 				CEAA68771FB4290A00ECAB0C /* LoginController.swift */,
 				CECDAB871FAD955E009B0221 /* ViewController.swift */,
+				B940605F20B511AE00362C74 /* LocalJoeEstimatorController.swift */,
 				CE07A0541FBF657B00823CE6 /* BecomeJoeController.swift */,
 				B945F9BD208478BE00582B69 /* CategoriesViewController.swift */,
 				CE5A2773201440B3005741D4 /* ViewMessagesController.swift */,
@@ -424,6 +427,7 @@
 				B9EC108E208C276600FEC212 /* MessagesViewController.swift in Sources */,
 				B9D1F29F1FCBC751002C35C1 /* Constants.swift in Sources */,
 				B9EC1092208D511400FEC212 /* ChatCell.swift in Sources */,
+				B940606020B511AE00362C74 /* LocalJoeEstimatorController.swift in Sources */,
 				B9AFDFA41FCAACEA00C07B26 /* NibView.swift in Sources */,
 				B95C2C40208980C40028A99C /* UserCell.swift in Sources */,
 				B945F9C620847D8700582B69 /* JobTypeCell.swift in Sources */,
