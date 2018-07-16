@@ -34,12 +34,9 @@
 		CE07A0551FBF657B00823CE6 /* BecomeJoeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE07A0541FBF657B00823CE6 /* BecomeJoeController.swift */; };
 		CE07A0571FBF781400823CE6 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE07A0561FBF781400823CE6 /* Reachability.swift */; };
 		CE0FF581202272E700FD60D9 /* ViewPaymentsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0FF580202272E700FD60D9 /* ViewPaymentsController.swift */; };
-		CE1CCFC12043E0F20091F6A3 /* ViewMessagesControllerNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1CCFC02043E0F20091F6A3 /* ViewMessagesControllerNew.swift */; };
-		CE1CCFC32043E86D0091F6A3 /* ChatViewControllerNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1CCFC22043E86D0091F6A3 /* ChatViewControllerNew.swift */; };
 		CE213FC41FAFFA8200E544C7 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE213FC21FAFFA8200E544C7 /* SWRevealViewController.m */; };
 		CE213FC61FAFFCCA00E544C7 /* TouchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE213FC51FAFFCCA00E544C7 /* TouchViewController.swift */; };
 		CE213FC81FB0114B00E544C7 /* ExploreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE213FC71FB0114B00E544C7 /* ExploreController.swift */; };
-		CE5A2774201440B3005741D4 /* ViewMessagesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5A2773201440B3005741D4 /* ViewMessagesController.swift */; };
 		CE5ACB6020392AD30037F105 /* Local-Joe-Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = CE5ACB5F20392AD30037F105 /* Local-Joe-Logo.png */; };
 		CEA514F11FC261C5000DF26C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA514F01FC261BB000DF26C /* CoreLocation.framework */; };
 		CEA725F81FC9375E00B8C6CB /* localJoeFont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CEA725F71FC9375D00B8C6CB /* localJoeFont.ttf */; };
@@ -82,13 +79,10 @@
 		CE07A0541FBF657B00823CE6 /* BecomeJoeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BecomeJoeController.swift; sourceTree = "<group>"; };
 		CE07A0561FBF781400823CE6 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		CE0FF580202272E700FD60D9 /* ViewPaymentsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewPaymentsController.swift; sourceTree = "<group>"; };
-		CE1CCFC02043E0F20091F6A3 /* ViewMessagesControllerNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewMessagesControllerNew.swift; sourceTree = "<group>"; };
-		CE1CCFC22043E86D0091F6A3 /* ChatViewControllerNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewControllerNew.swift; sourceTree = "<group>"; };
 		CE213FC21FAFFA8200E544C7 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		CE213FC31FAFFA8200E544C7 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		CE213FC51FAFFCCA00E544C7 /* TouchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchViewController.swift; sourceTree = "<group>"; };
 		CE213FC71FB0114B00E544C7 /* ExploreController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreController.swift; sourceTree = "<group>"; };
-		CE5A2773201440B3005741D4 /* ViewMessagesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewMessagesController.swift; sourceTree = "<group>"; };
 		CE5ACB5F20392AD30037F105 /* Local-Joe-Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Local-Joe-Logo.png"; sourceTree = "<group>"; };
 		CEA514F01FC261BB000DF26C /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		CEA725F71FC9375D00B8C6CB /* localJoeFont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = localJoeFont.ttf; sourceTree = "<group>"; };
@@ -176,10 +170,7 @@
 				B940605F20B511AE00362C74 /* LocalJoeEstimatorController.swift */,
 				CE07A0541FBF657B00823CE6 /* BecomeJoeController.swift */,
 				B945F9BD208478BE00582B69 /* CategoriesViewController.swift */,
-				CE5A2773201440B3005741D4 /* ViewMessagesController.swift */,
 				B9D1F29C1FCBC4F0002C35C1 /* ChatViewController.swift */,
-				CE1CCFC02043E0F20091F6A3 /* ViewMessagesControllerNew.swift */,
-				CE1CCFC22043E86D0091F6A3 /* ChatViewControllerNew.swift */,
 				CE0FF580202272E700FD60D9 /* ViewPaymentsController.swift */,
 				E14A157C2034E60300B8EFBE /* StripePaymentVC.swift */,
 				CEB50D591FCE303A000D64A0 /* ViewJoeProfileController.swift */,
@@ -415,10 +406,8 @@
 				CECDAB881FAD955E009B0221 /* ViewController.swift in Sources */,
 				B95C2C3C20896C880028A99C /* FirebaseDatabaseRefs.swift in Sources */,
 				CE07A0551FBF657B00823CE6 /* BecomeJoeController.swift in Sources */,
-				CE1CCFC12043E0F20091F6A3 /* ViewMessagesControllerNew.swift in Sources */,
 				B945F9BE208478BE00582B69 /* CategoriesViewController.swift in Sources */,
 				CEAA68781FB4290A00ECAB0C /* LoginController.swift in Sources */,
-				CE5A2774201440B3005741D4 /* ViewMessagesController.swift in Sources */,
 				B9EC1094208D51E000FEC212 /* ChatGroupViewController.swift in Sources */,
 				CE213FC81FB0114B00E544C7 /* ExploreController.swift in Sources */,
 				CECDAB861FAD955E009B0221 /* AppDelegate.swift in Sources */,
@@ -434,7 +423,6 @@
 				B9EC1090208C282300FEC212 /* Message.swift in Sources */,
 				B95C2C3E20897FEA0028A99C /* UsersViewController.swift in Sources */,
 				CE07A0571FBF781400823CE6 /* Reachability.swift in Sources */,
-				CE1CCFC32043E86D0091F6A3 /* ChatViewControllerNew.swift in Sources */,
 				B911802820A12D610076EA9D /* ChatLink.swift in Sources */,
 				CE213FC61FAFFCCA00E544C7 /* TouchViewController.swift in Sources */,
 				B9D1F29D1FCBC4F0002C35C1 /* ChatViewController.swift in Sources */,

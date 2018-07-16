@@ -14,6 +14,8 @@ import GoogleMaps
 
 class LocalJoeEstimator : UIViewController, GMSMapViewDelegate {
     
+    @IBOutlet weak var mapView: GMSMapView!
+    
     private func calculateEta() {
         // Get current position
         
@@ -44,32 +46,55 @@ class LocalJoeEstimator : UIViewController, GMSMapViewDelegate {
     }
     
     override func loadView() {
-        let cameraPositionCoordinates = CLLocationCoordinate2D(latitude: 18.5203, longitude: 73.8567)
-        let cameraPosition = GMSCameraPosition.camera(withTarget: cameraPositionCoordinates, zoom: 12)
-        
-        let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: cameraPosition)
-        mapView.isMyLocationEnabled = true
-        
-        let marker = GMSMarker()
-        marker.position = CLLocationCoordinate2DMake(18.5203, 73.8567)
-        marker.groundAnchor = CGPoint (x : 0.5, y : 0.5)
-        marker.map = mapView
-        
-        let path = GMSMutablePath()
-        path.add(CLLocationCoordinate2DMake(18.520, 73.856))
-        path.add(CLLocationCoordinate2DMake(16.7, 73.8567))
-        
-        let rectangle = GMSPolyline(path: path)
-        rectangle.strokeWidth = 2.0
-        rectangle.map = mapView
-        
-        self.view = mapView
-        
-        calculateEta ()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let cameraPositionCoordinates = CLLocationCoordinate2D(latitude: 18.5203, longitude: 73.8567)
+        let cameraPosition = GMSCameraPosition.camera(withTarget: cameraPositionCoordinates, zoom: 12)
+        
+        //Controls whether the My Location dot and accuracy circle is enabled.
+        
+        print (self.mapView)
+        
+        self.mapView.isMyLocationEnabled = true;
+        
+        //Controls the type of map tiles that should be displayed.
+        
+        // self.mapView.mapType = kGMSTypeNormal;
+        
+        //Shows the compass button on the map
+        
+        self.mapView.settings.compassButton = true;
+        
+        //Shows the my location button on the map
+        
+        self.mapView.settings.myLocationButton = true;
+        
+        //Sets the view controller to be the GMSMapView delegate
+        
+        self.mapView.delegate = self;
+        
+        // self.mapView = GMSMapView.map(withFrame: CGRect.zero, camera: cameraPosition)
+        // self.mapView.isMyLocationEnabled = true
+        
+        /* let marker = GMSMarker()
+         marker.position = CLLocationCoordinate2DMake(18.5203, 73.8567)
+         marker.groundAnchor = CGPoint (x : 0.5, y : 0.5)
+         marker.map = self.mapView
+         
+         let path = GMSMutablePath()
+         path.add(CLLocationCoordinate2DMake(18.520, 73.856))
+         path.add(CLLocationCoordinate2DMake(16.7, 73.8567))
+         
+         let rectangle = GMSPolyline(path: path)
+         rectangle.strokeWidth = 2.0
+         rectangle.map = mapView */
+        
+        // self.mapView = mapView
+        // self.view = mapView
+        
+        calculateEta ()
     }
     
     

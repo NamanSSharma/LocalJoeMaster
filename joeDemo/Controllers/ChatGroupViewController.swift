@@ -101,12 +101,11 @@ class ChatGroupViewController : UIViewController, UITableViewDataSource, UITable
             return UITableViewCell ()
         }
         
-        let ct: ChatId = currentChatArray [indexPath.row].chatId
+        let ct: ChatLink = currentChatArray [indexPath.row];
         
         cell.cellView.layer.cornerRadius = cell.cellView.frame.height / 2
         
-        cell.nameLabel.text = ct // ct.chatId
-        
+        cell.nameLabel.text = ct.username // ct.chatId
         print (ct)
         
         return cell

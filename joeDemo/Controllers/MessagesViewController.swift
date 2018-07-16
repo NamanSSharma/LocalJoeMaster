@@ -101,7 +101,7 @@ extension MessagesViewController {
             
                 self.messages = []
             
-                let key   = snapshot.key
+                let key = snapshot.key
             
                 guard let value = snapshot.value as? NSDictionary else {
                     return
