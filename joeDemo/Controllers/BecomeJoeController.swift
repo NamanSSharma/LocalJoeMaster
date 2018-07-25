@@ -100,17 +100,19 @@ class BecomeJoeController : FormViewController{
                             }
                             
                             let joeId = jobTypeFiltered[0].id
-                            let uuid  = UUID ().uuidString
+                            let senderUUID  = UUID ().uuidString
+                            let joeID = UUID ().uuidString
                             
                             //store information in database
                             let values = [
                                            "joeType"    : joeId,
                                            "daysToWork" : daysToWork,
                                            "online"     : "online",
-                                           "senderId"   : uuid
+                                           "senderId"   : senderUUID,
+                                           "id"         : joeID,
                                          ]
                             
-                            usersRef.updateChildValues(values, withCompletionBlock: {
+                            usersRef.child(joeID).updateChildValues(values, withCompletionBlock: {
                                 (err,ref) in
                                     if err != nil {
                                         print (err as Any)

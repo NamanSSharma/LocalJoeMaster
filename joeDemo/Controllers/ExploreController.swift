@@ -31,8 +31,6 @@ class ExploreController : UIViewController, GMSMapViewDelegate {
                     let key   = snap.key
                     let value = snap.value as? NSDictionary
                     
-                    print (value)
-                    
                     if let name = value?["name"] as? String,
                         let image_url = value?["image_url"] as? String {
                         self.categories.append (JobType (id: key, name : name, image_url : image_url))
@@ -124,7 +122,6 @@ class ExploreController : UIViewController, GMSMapViewDelegate {
     
     // Handles marker tap
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
-        
         // Needed to create the custom info window
         locationMarker = marker
         infoWindow.removeFromSuperview()
@@ -193,8 +190,6 @@ class ExploreController : UIViewController, GMSMapViewDelegate {
         let infoWindow = MapMarkerInfoWindow.instanceFromNib() as! MapMarkerInfoWindow
         return infoWindow
     }
-    
-    
     
     // MARK: Needed to create the custom info window (this is optional)
     func sizeForOffset(view: UIView) -> CGFloat {

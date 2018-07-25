@@ -8,7 +8,8 @@
 import UIKit
 import JSQMessagesViewController
 import Firebase
-
+import FirebaseAuth
+import FirebaseDatabase
 
 class ChatViewController: JSQMessagesViewController {
     var ref: DatabaseReference!

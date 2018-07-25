@@ -6,10 +6,11 @@ target 'joeDemo' do
   use_frameworks!
 
   # Pods for joeDemo
-pod 'Firebase/Core'
 pod 'Firebase/Auth'
-pod 'Firebase/Storage'
+pod 'Firebase/Core'
 pod 'Firebase/Database'
+pod 'Firebase/Messaging'
+pod 'Firebase/Storage'
 pod 'GoogleMaps'
 pod 'Eureka'
 pod 'JSQMessagesViewController'

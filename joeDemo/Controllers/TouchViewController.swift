@@ -7,9 +7,14 @@
 //
 
 import UIKit
+import FirebaseDatabase
+import FirebaseStorage
+import FirebaseAuth
 
 class TouchViewController: UIViewController {
   
+    var ref : DatabaseReference! = Database.database().reference ()
+    let userID:String = (Auth.auth().currentUser?.uid)!
     @IBOutlet weak var becomeJoe: UIButton!
     @IBAction func becomeJoeAction(_ sender: Any) {
         self.performSegue(withIdentifier: "becomeAJoe", sender: self)
@@ -22,9 +27,14 @@ class TouchViewController: UIViewController {
    
     @IBOutlet weak var menuButton: UIBarButtonItem!
     
-   
     override func viewDidLoad() {
         super.viewDidLoad()
+        let userRef = ref.child (FirebaseDatabaseRefs.users).child (userID);
+        userRef.updateChildValues(
+            [
+                "fcmToken" : AppDelegate.fcmToken
+            ]
+        )
        // sideMenu()
         // Do any additional setup after loading the view.
     }

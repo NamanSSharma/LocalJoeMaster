@@ -12,19 +12,30 @@ import FirebaseAuth
 import FirebaseDatabase
 import GoogleMaps
 
-class LocalJoeEstimator : UIViewController, GMSMapViewDelegate {
+class LocalJoeEstimator : UIViewController, GMSMapViewDelegate, CLLocationManagerDelegate {
     
-    @IBOutlet weak var mapView: GMSMapView!
+    var alert: UIAlertController?
     
+    @IBOutlet var mapView: MKMapView!
+    var locationManager: CLLocationManager!
+    var location: CLLocation!
+    
+    let regionRadius: CLLocationDistance = 1000
+    func centerMapOnLocation(location: CLLocation) {
+        let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate,
+                                                                  regionRadius, regionRadius)
+        mapView.setRegion(coordinateRegion, animated: true)
+    }
+    
+    var lat1: NSString = "";
+    var lng1: NSString = "";
+    var userID: String = "";
     private func calculateEta() {
         // Get current position
-        
-        let sourcePlacemark = MKPlacemark(coordinate: CLLocationCoordinate2D (latitude: 57.619302, longitude: 12.954928), addressDictionary: nil)
+        let sourcePlacemark = MKPlacemark(coordinate: CLLocationCoordinate2D (latitude: self.location.coordinate.latitude, longitude: self.location.coordinate.longitude), addressDictionary: nil)
         let sourceMapItem = MKMapItem(placemark: sourcePlacemark)
         
         // Get destination position
-        let lat1: NSString = "57.619302"
-        let lng1: NSString = "11.954928"
         let destinationCoordinates = CLLocationCoordinate2DMake(lat1.doubleValue, lng1.doubleValue)
         let destinationPlacemark = MKPlacemark(coordinate: destinationCoordinates, addressDictionary: nil)
         let destinationMapItem = MKMapItem(placemark: destinationPlacemark)
@@ -36,8 +47,11 @@ class LocalJoeEstimator : UIViewController, GMSMapViewDelegate {
         request.transportType = MKDirectionsTransportType.automobile
         request.requestsAlternateRoutes = false
         let directions = MKDirections(request: request)
+        print("lat:\(self.lat1)")
+        print("lng: \(self.lng1)");
         directions.calculate { response, error in
             if let route = response?.routes.first {
+                self.alert?.message = "ETA: \(route.expectedTravelTime)";
                 print("Distance: \(route.distance), ETA: \(route.expectedTravelTime)")
             } else {
                 print("Error!")
@@ -45,57 +59,38 @@ class LocalJoeEstimator : UIViewController, GMSMapViewDelegate {
         }
     }
     
-    override func loadView() {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
+    {
+        self.location = locations.last! as CLLocation
+        calculateEta ()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let cameraPositionCoordinates = CLLocationCoordinate2D(latitude: 18.5203, longitude: 73.8567)
-        let cameraPosition = GMSCameraPosition.camera(withTarget: cameraPositionCoordinates, zoom: 12)
-        
-        //Controls whether the My Location dot and accuracy circle is enabled.
-        
-        print (self.mapView)
-        
-        self.mapView.isMyLocationEnabled = true;
-        
-        //Controls the type of map tiles that should be displayed.
-        
-        // self.mapView.mapType = kGMSTypeNormal;
-        
-        //Shows the compass button on the map
-        
-        self.mapView.settings.compassButton = true;
-        
-        //Shows the my location button on the map
-        
-        self.mapView.settings.myLocationButton = true;
-        
-        //Sets the view controller to be the GMSMapView delegate
-        
-        self.mapView.delegate = self;
-        
-        // self.mapView = GMSMapView.map(withFrame: CGRect.zero, camera: cameraPosition)
-        // self.mapView.isMyLocationEnabled = true
-        
-        /* let marker = GMSMarker()
-         marker.position = CLLocationCoordinate2DMake(18.5203, 73.8567)
-         marker.groundAnchor = CGPoint (x : 0.5, y : 0.5)
-         marker.map = self.mapView
-         
-         let path = GMSMutablePath()
-         path.add(CLLocationCoordinate2DMake(18.520, 73.856))
-         path.add(CLLocationCoordinate2DMake(16.7, 73.8567))
-         
-         let rectangle = GMSPolyline(path: path)
-         rectangle.strokeWidth = 2.0
-         rectangle.map = mapView */
-        
-        // self.mapView = mapView
-        // self.view = mapView
-        
-        calculateEta ()
+        if (CLLocationManager.locationServicesEnabled())
+        {
+            locationManager = CLLocationManager()
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.requestAlwaysAuthorization()
+            locationManager.startUpdatingLocation()
+        }
+        mapView.showsUserLocation = true
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = CLLocationCoordinate2D(latitude: lat1.doubleValue, longitude: lng1.doubleValue)
+        mapView.addAnnotation(annotation)
+        alert = UIAlertController (title: "ETA", message: "Calculating", preferredStyle: UIAlertControllerStyle.alert)
+        alert!.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.cancel, handler: { _ in
+            self.dismiss(animated: true, completion: nil)
+        }
+            )
+        );
+        let alertWindow = UIWindow(frame: UIScreen.main.bounds)
+        alertWindow.rootViewController = UIViewController()
+        alertWindow.windowLevel = UIWindowLevelAlert + 1;
+        alertWindow.makeKeyAndVisible()
+        alertWindow.rootViewController?.present(alert!, animated: true, completion: nil)
+        // centerMapOnLocation(location: self.location)
     }
-    
     
 }

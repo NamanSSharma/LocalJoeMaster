@@ -102,20 +102,13 @@ class MapMarkerInfoWindow: UIView {
                                     }
                                 }
                             )
-                        
-                        // Add dismiss button to controller
-                        let storyboard : UIStoryboard = UIStoryboard.init (name: "Main", bundle: nil)
-                        
-                            var messagesVC : MessagesViewController = storyboard.instantiateViewController (withIdentifier: "ChatView") as! MessagesViewController
-                        
-                            messagesVC.chatId           = chatId
-                            messagesVC.currentUser      = UserObj (id : myId,  name : myName)
-                            messagesVC.conversationUser = UserObj (id : joeId, name : joeName)
-                            messagesVC.newChat          = true
-                        
-                            // let vc = UIStoryboard.init (name: "Main", bundle: nil).instantiateViewController (withIdentifier: "ChatView") as! UINavigationController
-                        
-                            UIApplication.topViewController()?.present (messagesVC, animated: true, completion: nil)
+                    
+                        let alert = CustomAlert(title: "Hello there", image: #imageLiteral(resourceName: "face"))
+                        alert.show(animated: true);
+//                        messagesVC.chatId           = chatId
+//                        messagesVC.currentUser      = UserObj (id : myId,  name : myName)
+//                        messagesVC.conversationUser = UserObj (id : joeId, name : joeName)
+//                        messagesVC.newChat          = true
                 
                     }
                 ) {
@@ -162,8 +155,6 @@ class MapMarkerInfoWindow: UIView {
      // Drawing code
      }
      */
-    
-    
     
     class func instanceFromNib() -> UIView {
         return UINib(nibName: "MapMarkerInfoWindow", bundle: nil).instantiate(withOwner: self, options: nil).first as! UIView

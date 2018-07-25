@@ -242,7 +242,7 @@
         <!--Local Joe-->
         <scene sceneID="2Hk-l7-JXb">
             <objects>
-                <viewController id="4gE-2j-sTy" customClass="TouchViewController" customModule="joeDemo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="base" id="4gE-2j-sTy" customClass="TouchViewController" customModule="joeDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PWC-YS-Jty">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -445,27 +445,13 @@
         <!--Local Joe Estimator-->
         <scene sceneID="gU0-h1-JdN">
             <objects>
-                <viewController id="REh-uP-K0R" customClass="LocalJoeEstimator" customModule="joeDemo" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="hKa-hJ-dg4">
+                <viewController storyboardIdentifier="ETA" id="REh-uP-K0R" customClass="LocalJoeEstimator" customModule="joeDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <mapView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="xdZ-C3-SvY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Flw-29-Nnp" customClass="GMSMapView">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="Flw-29-Nnp" firstAttribute="leading" secondItem="kVG-ai-Wqx" secondAttribute="leading" id="3W5-Ob-fTd"/>
-                            <constraint firstItem="Flw-29-Nnp" firstAttribute="top" secondItem="kVG-ai-Wqx" secondAttribute="top" id="Ig9-Qv-szm"/>
-                            <constraint firstItem="kVG-ai-Wqx" firstAttribute="bottom" secondItem="Flw-29-Nnp" secondAttribute="bottom" id="TMe-XS-bDa"/>
-                            <constraint firstItem="kVG-ai-Wqx" firstAttribute="trailing" secondItem="Flw-29-Nnp" secondAttribute="trailing" id="tvj-m3-i8n"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="kVG-ai-Wqx"/>
-                    </view>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </mapView>
                     <connections>
-                        <outlet property="mapView" destination="Flw-29-Nnp" id="n8h-h4-sz9"/>
+                        <outlet property="mapView" destination="xdZ-C3-SvY" id="ep2-PS-8jh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Py7-O3-fmK" userLabel="First Responder" sceneMemberID="firstResponder"/>

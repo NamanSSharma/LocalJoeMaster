@@ -13,6 +13,8 @@
 		B945F9BC208476ED00582B69 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B945F9BA208476ED00582B69 /* Main.storyboard */; };
 		B945F9BE208478BE00582B69 /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B945F9BD208478BE00582B69 /* CategoriesViewController.swift */; };
 		B945F9C620847D8700582B69 /* JobTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B945F9C520847D8700582B69 /* JobTypeCell.swift */; };
+		B951C63820FC3776006BBA82 /* Modal.swift in Sources */ = {isa = PBXBuildFile; fileRef = B951C63720FC3776006BBA82 /* Modal.swift */; };
+		B951C63A20FC3792006BBA82 /* CustomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = B951C63920FC3792006BBA82 /* CustomAlert.swift */; };
 		B95C2C39208968A60028A99C /* JobType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95C2C38208968A50028A99C /* JobType.swift */; };
 		B95C2C3C20896C880028A99C /* FirebaseDatabaseRefs.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95C2C3B20896C880028A99C /* FirebaseDatabaseRefs.swift */; };
 		B95C2C3E20897FEA0028A99C /* UsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95C2C3D20897FEA0028A99C /* UsersViewController.swift */; };
@@ -58,6 +60,8 @@
 		B945F9BB208476ED00582B69 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B945F9BD208478BE00582B69 /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
 		B945F9C520847D8700582B69 /* JobTypeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JobTypeCell.swift; path = joeDemo/Layout/Cells/JobTypeCell.swift; sourceTree = SOURCE_ROOT; };
+		B951C63720FC3776006BBA82 /* Modal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modal.swift; sourceTree = "<group>"; };
+		B951C63920FC3792006BBA82 /* CustomAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlert.swift; sourceTree = "<group>"; };
 		B95C2C38208968A50028A99C /* JobType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobType.swift; sourceTree = "<group>"; };
 		B95C2C3B20896C880028A99C /* FirebaseDatabaseRefs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseDatabaseRefs.swift; sourceTree = "<group>"; };
 		B95C2C3D20897FEA0028A99C /* UsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewController.swift; sourceTree = "<group>"; };
@@ -129,6 +133,15 @@
 				B9EC1091208D511400FEC212 /* ChatCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		B951C63620FC3765006BBA82 /* SubComponents */ = {
+			isa = PBXGroup;
+			children = (
+				B951C63720FC3776006BBA82 /* Modal.swift */,
+				B951C63920FC3792006BBA82 /* CustomAlert.swift */,
+			);
+			path = SubComponents;
 			sourceTree = "<group>";
 		};
 		B95C2C37208968920028A99C /* Objects */ = {
@@ -223,6 +236,7 @@
 		CECDAB841FAD955E009B0221 /* joeDemo */ = {
 			isa = PBXGroup;
 			children = (
+				B951C63620FC3765006BBA82 /* SubComponents */,
 				B95C2C3A20896C7B0028A99C /* Constants */,
 				B95C2C37208968920028A99C /* Objects */,
 				CECDAB911FAD955E009B0221 /* Info.plist */,
@@ -284,7 +298,7 @@
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Push = {
-								enabled = 0;
+								enabled = 1;
 							};
 						};
 					};
@@ -375,6 +389,7 @@
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/JSQMessagesViewController/JSQMessagesViewController.framework",
 				"${BUILT_PRODUCTS_DIR}/JSQSystemSoundPlayer/JSQSystemSoundPlayer.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/Stripe/Stripe.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
@@ -386,6 +401,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSQMessagesViewController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSQSystemSoundPlayer.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Stripe.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
@@ -431,7 +447,9 @@
 				CE213FC41FAFFA8200E544C7 /* SWRevealViewController.m in Sources */,
 				B95CEDA91FCAD007003BA298 /* UIImageGif.swift in Sources */,
 				B95C2C39208968A60028A99C /* JobType.swift in Sources */,
+				B951C63820FC3776006BBA82 /* Modal.swift in Sources */,
 				B9EC1096208D530700FEC212 /* Chat.swift in Sources */,
+				B951C63A20FC3792006BBA82 /* CustomAlert.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -570,14 +588,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = joeDemo/joeDemo.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Naman Sharma (TCG3M95S49)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = XMYPNHLNC5;
+				DEVELOPMENT_TEAM = T68Z3DP73E;
 				INFOPLIST_FILE = joeDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.underrateddev.localJoe;
+				PRODUCT_BUNDLE_IDENTIFIER = com.naman.localJoe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "joeDemo/joeDemo-Bridging-Header.h";
@@ -593,14 +612,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = joeDemo/joeDemo.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Naman Sharma (TCG3M95S49)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = XMYPNHLNC5;
+				DEVELOPMENT_TEAM = T68Z3DP73E;
 				INFOPLIST_FILE = joeDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.underrateddev.localJoe;
+				PRODUCT_BUNDLE_IDENTIFIER = com.naman.localJoe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "joeDemo/joeDemo-Bridging-Header.h";

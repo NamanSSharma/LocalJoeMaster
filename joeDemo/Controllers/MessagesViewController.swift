@@ -11,6 +11,7 @@ import JSQMessagesViewController
 
 import FirebaseDatabase
 import FirebaseStorage
+import FirebaseMessaging
 
 struct UserObj {
     let id   : String
@@ -29,8 +30,8 @@ class MessagesViewController : JSQMessagesViewController {
     // let user2 = UserObj (id: "2", name: "Naman Sharma")
     
     var chatId : String = ""
-    
     var ref : DatabaseReference!
+    var quotesRef: DatabaseReference!;
     
     /* var currentUser : UserObj {
         return user1
@@ -43,7 +44,6 @@ class MessagesViewController : JSQMessagesViewController {
     
     // All the messages of user1, user2
     var messages = [FirebaseJSQMessage]()
-    
 }
 
 extension MessagesViewController {
@@ -56,6 +56,7 @@ extension MessagesViewController {
         
         let navItem = UINavigationItem (title: self.conversationUser.name)
         let navBarbutton = UIBarButtonItem (barButtonSystemItem: UIBarButtonSystemItem.bookmarks, target: goBack, action: nil)
+        
         navItem.leftBarButtonItem = navBarbutton
         
         navbar.items = [navItem]
@@ -84,11 +85,11 @@ extension MessagesViewController {
         self.addViewOnTop ()
         
         if self.newChat {
-            print ("HERE")
             addNoNavControllerButtons ()
         }
         
         let chatRef = ref.child (FirebaseDatabaseRefs.chats).child (chatId).child ("messages")
+        quotesRef = ref.child (FirebaseDatabaseRefs.quotes);
         
         let leftButton = UIButton ()
         let sendImage = #imageLiteral(resourceName: "define_location")
@@ -102,7 +103,6 @@ extension MessagesViewController {
                 self.messages = []
             
                 let key = snapshot.key
-            
                 guard let value = snapshot.value as? NSDictionary else {
                     return
                 }
@@ -128,7 +128,6 @@ extension MessagesViewController {
                 )
             
                 self.collectionView.reloadData ()
-        
         }
     }
     
@@ -137,10 +136,18 @@ extension MessagesViewController {
 extension MessagesViewController {
     // newChat button to go back
     @objc private func goBack () {
+        // var messagesVC : MessagesViewController = storyboard.instantiateViewController (withIdentifier: "ChatView") as! MessagesViewController
+        
+        let storyboard :UIStoryboard = UIStoryboard.init (name: "Main", bundle: nil)
+        let explore:ExploreController = storyboard.instantiateViewController (withIdentifier: "Base") as! ExploreController
+        // let vc = UIStoryboard.init (name: "Main", bundle: nil).instantiateViewController (withIdentifier: "ChatView") as! UINavigationController
+        // self.navigationController?.pushViewController(messagesVC, animated: true)
+        
+        UIApplication.topViewController()?.present (explore, animated: true, completion: nil)
         print ("PRESSED")
         
         // Last view controller
-        _ = navigationController?.popViewController (animated: true)
+        // _ = navigationController?.popViewController (animated: true)
         
         // Root view controller
         // _ = navigationController?.popToRootViewController (animated: true)
@@ -148,6 +155,7 @@ extension MessagesViewController {
 }
 
 extension MessagesViewController {
+    
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
         let messageId = UUID().uuidString
         let message   = JSQMessage (senderId: senderId, displayName: senderDisplayName, text: text)
@@ -167,7 +175,6 @@ extension MessagesViewController {
                 "text"        : text,
                 "date"        : String (date.timeIntervalSince1970)
             ]
-        
         chatRef.child (messageId).updateChildValues (messageValues)
         
         finishSendingMessage ()
@@ -178,7 +185,22 @@ extension MessagesViewController {
          let alertController = UIAlertController(title: "Send Quote", message: "Please enter a quote for the client to see", preferredStyle: .alert)
         
         let confirmAction = UIAlertAction(title: "Confirm", style: .default) { (_) in
-           // somewhere
+            if let alertTextField = alertController.textFields?.first, alertTextField.text != nil {
+                print("And the text is... \(alertTextField.text!)!")
+                let amount = alertTextField.text!;
+                // Redo later to have quote ids as properties in each user
+                let id = UUID().uuidString;
+                self.quotesRef.child(id).updateChildValues(
+                    [
+                        "senderID" : self.currentUser.id,
+                        "joeID" : self.conversationUser.id,
+                        "sent" : false,
+                        "amount" : amount,
+                        "accepted" : false,
+                        "id" : id
+                    ]
+                )
+            }
         }
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in }

@@ -12,4 +12,5 @@ enum FirebaseDatabaseRefs {
     static let jobTypes : String = "jobTypes"
     static let users    : String = "users"
     static let chats    : String = "chats"
+    static let quotes   : String = "quotes"
 }
