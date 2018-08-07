@@ -30,6 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure();
+        GMSServices.provideAPIKey("AIzaSyB6pzp673agp4TJoK1S7QtAPJ3YjSwPmts");
         ref = Database.database().reference ();
         Messaging.messaging().delegate = self
         application.registerForRemoteNotifications()

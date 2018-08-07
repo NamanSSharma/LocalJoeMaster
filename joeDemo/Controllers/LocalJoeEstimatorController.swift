@@ -12,11 +12,13 @@ import FirebaseAuth
 import FirebaseDatabase
 import GoogleMaps
 
-class LocalJoeEstimator : UIViewController, GMSMapViewDelegate, CLLocationManagerDelegate {
+class LocalJoeEstimator : UIViewController, CLLocationManagerDelegate {
     
     var alert: UIAlertController?
     
     @IBOutlet var mapView: MKMapView!
+    @IBOutlet var eta: UILabel!
+    var zoomed:Bool! = false
     var locationManager: CLLocationManager!
     var location: CLLocation!
     
@@ -41,6 +43,10 @@ class LocalJoeEstimator : UIViewController, GMSMapViewDelegate, CLLocationManage
         let destinationMapItem = MKMapItem(placemark: destinationPlacemark)
         
         // Create request
+        if !zoomed {
+            centerMapOnLocation(location: self.location)
+            zoomed = false;
+        }
         let request = MKDirectionsRequest()
         request.source = sourceMapItem
         request.destination = destinationMapItem
@@ -51,7 +57,8 @@ class LocalJoeEstimator : UIViewController, GMSMapViewDelegate, CLLocationManage
         print("lng: \(self.lng1)");
         directions.calculate { response, error in
             if let route = response?.routes.first {
-                self.alert?.message = "ETA: \(route.expectedTravelTime)";
+//                self.alert?.message = "ETA: \(route.expectedTravelTime)";
+                self.eta.text = "ETA: \(route.expectedTravelTime)";
                 print("Distance: \(route.distance), ETA: \(route.expectedTravelTime)")
             } else {
                 print("Error!")
@@ -65,6 +72,10 @@ class LocalJoeEstimator : UIViewController, GMSMapViewDelegate, CLLocationManage
         calculateEta ()
     }
     
+    // zoom in
+    // add button
+    // eta on bottom
+    // line maybe??
     override func viewDidLoad() {
         super.viewDidLoad()
         if (CLLocationManager.locationServicesEnabled())
@@ -79,18 +90,13 @@ class LocalJoeEstimator : UIViewController, GMSMapViewDelegate, CLLocationManage
         let annotation = MKPointAnnotation()
         annotation.coordinate = CLLocationCoordinate2D(latitude: lat1.doubleValue, longitude: lng1.doubleValue)
         mapView.addAnnotation(annotation)
-        alert = UIAlertController (title: "ETA", message: "Calculating", preferredStyle: UIAlertControllerStyle.alert)
-        alert!.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.cancel, handler: { _ in
-            self.dismiss(animated: true, completion: nil)
-        }
-            )
-        );
-        let alertWindow = UIWindow(frame: UIScreen.main.bounds)
-        alertWindow.rootViewController = UIViewController()
-        alertWindow.windowLevel = UIWindowLevelAlert + 1;
-        alertWindow.makeKeyAndVisible()
-        alertWindow.rootViewController?.present(alert!, animated: true, completion: nil)
-        // centerMapOnLocation(location: self.location)
+    }
+    
+    @IBAction func goBack(_ sender: Any) {
+        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        let viewController = mainStoryboard.instantiateViewController(withIdentifier: "TabbarIdentifier") as! UITabBarController
+        UIApplication.shared.keyWindow?.rootViewController = viewController
     }
     
 }

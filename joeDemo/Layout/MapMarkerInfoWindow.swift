@@ -44,7 +44,6 @@ class MapMarkerInfoWindow: UIView {
                             let value = snapshot.value as? NSDictionary
                             // Get user's name
                             let joeName       = value?["name"]     as? String ?? ""
-                            let joeProfession = value?["joeType"]  as? String ?? ""
                             let joeId         = value?["senderId"] as? String ?? ""
                         
                             let chatId        = myId > joeId ? "\(myId)_\(joeId)" : "\(joeId)_\(myId)" // UUID().uuidString;
@@ -68,13 +67,6 @@ class MapMarkerInfoWindow: UIView {
                                 "userid" : myId,
                                 "joeid"  : joeId,
                             ]
-                        
-                            /*
-     
-                             "joe": "\(joeName) the \(joeProfession)",
-                             "messageID": "\(userID)with\(joeID)",
-                             "joeID": "\(joeID)",
-                             "client": "\(myName)"*/
                         
                             usersRef.child ("chats").child (chatId).updateChildValues (userChatValues, withCompletionBlock: {
                                 (err,ref) in

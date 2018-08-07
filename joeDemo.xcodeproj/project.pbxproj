@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		65F7376E707A935576AD664A /* Pods_joeDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F49789B3894D364973D9C75 /* Pods_joeDemo.framework */; };
 		B911802820A12D610076EA9D /* ChatLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = B911802720A12D610076EA9D /* ChatLink.swift */; };
+		B923E31B2117C9EE006B85EB /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B923E31A2117C9EE006B85EB /* MapViewController.swift */; };
+		B923E31D2117CAEA006B85EB /* MapJoe.swift in Sources */ = {isa = PBXBuildFile; fileRef = B923E31C2117CAEA006B85EB /* MapJoe.swift */; };
 		B940606020B511AE00362C74 /* LocalJoeEstimatorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B940605F20B511AE00362C74 /* LocalJoeEstimatorController.swift */; };
 		B945F9BC208476ED00582B69 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B945F9BA208476ED00582B69 /* Main.storyboard */; };
 		B945F9BE208478BE00582B69 /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B945F9BD208478BE00582B69 /* CategoriesViewController.swift */; };
@@ -56,6 +58,8 @@
 		2F49789B3894D364973D9C75 /* Pods_joeDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_joeDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		503D11343C0D729BA2B209B0 /* Pods-joeDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-joeDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-joeDemo/Pods-joeDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		B911802720A12D610076EA9D /* ChatLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatLink.swift; sourceTree = "<group>"; };
+		B923E31A2117C9EE006B85EB /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		B923E31C2117CAEA006B85EB /* MapJoe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapJoe.swift; sourceTree = "<group>"; };
 		B940605F20B511AE00362C74 /* LocalJoeEstimatorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalJoeEstimatorController.swift; sourceTree = "<group>"; };
 		B945F9BB208476ED00582B69 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B945F9BD208478BE00582B69 /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
@@ -152,6 +156,7 @@
 				B911802720A12D610076EA9D /* ChatLink.swift */,
 				B9EC108F208C282300FEC212 /* Message.swift */,
 				B9EC1095208D530700FEC212 /* Chat.swift */,
+				B923E31C2117CAEA006B85EB /* MapJoe.swift */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -188,11 +193,11 @@
 				E14A157C2034E60300B8EFBE /* StripePaymentVC.swift */,
 				CEB50D591FCE303A000D64A0 /* ViewJoeProfileController.swift */,
 				CE213FC71FB0114B00E544C7 /* ExploreController.swift */,
+				B923E31A2117C9EE006B85EB /* MapViewController.swift */,
+				B9EC1093208D51E000FEC212 /* ChatGroupViewController.swift */,
 				CE213FC51FAFFCCA00E544C7 /* TouchViewController.swift */,
 				B95C2C3D20897FEA0028A99C /* UsersViewController.swift */,
 				B9EC108D208C276600FEC212 /* MessagesViewController.swift */,
-				B9EC1093208D51E000FEC212 /* ChatGroupViewController.swift */,
-				CECDAB8C1FAD955E009B0221 /* Assets.xcassets */,
 				CE213FC31FAFFA8200E544C7 /* SWRevealViewController.h */,
 				CE213FC21FAFFA8200E544C7 /* SWRevealViewController.m */,
 			);
@@ -236,16 +241,17 @@
 		CECDAB841FAD955E009B0221 /* joeDemo */ = {
 			isa = PBXGroup;
 			children = (
+				CECDAB911FAD955E009B0221 /* Info.plist */,
+				CEAA687A1FB42E3000ECAB0C /* GoogleService-Info.plist */,
+				CEF4FA072058EBA8009FDF8F /* joeDemo.entitlements */,
+				CEB8F9E920550399004483F6 /* joeDemo-Bridging-Header.h */,
 				B951C63620FC3765006BBA82 /* SubComponents */,
 				B95C2C3A20896C7B0028A99C /* Constants */,
 				B95C2C37208968920028A99C /* Objects */,
-				CECDAB911FAD955E009B0221 /* Info.plist */,
-				CEAA687A1FB42E3000ECAB0C /* GoogleService-Info.plist */,
 				B95CEDA71FCACFD1003BA298 /* Supporting Files */,
-				CEF4FA072058EBA8009FDF8F /* joeDemo.entitlements */,
-				CEB8F9E920550399004483F6 /* joeDemo-Bridging-Header.h */,
 				B9AFDFAF1FCACDEB00C07B26 /* Layout */,
 				B9AFDFAC1FCACC8F00C07B26 /* Controllers */,
+				CECDAB8C1FAD955E009B0221 /* Assets.xcassets */,
 			);
 			path = joeDemo;
 			sourceTree = "<group>";
@@ -440,12 +446,14 @@
 				B95C2C3E20897FEA0028A99C /* UsersViewController.swift in Sources */,
 				CE07A0571FBF781400823CE6 /* Reachability.swift in Sources */,
 				B911802820A12D610076EA9D /* ChatLink.swift in Sources */,
+				B923E31B2117C9EE006B85EB /* MapViewController.swift in Sources */,
 				CE213FC61FAFFCCA00E544C7 /* TouchViewController.swift in Sources */,
 				B9D1F29D1FCBC4F0002C35C1 /* ChatViewController.swift in Sources */,
 				E14A157D2034E60300B8EFBE /* StripePaymentVC.swift in Sources */,
 				B9AFDF9E1FCAA2DA00C07B26 /* MapMarkerInfoWindow.swift in Sources */,
 				CE213FC41FAFFA8200E544C7 /* SWRevealViewController.m in Sources */,
 				B95CEDA91FCAD007003BA298 /* UIImageGif.swift in Sources */,
+				B923E31D2117CAEA006B85EB /* MapJoe.swift in Sources */,
 				B95C2C39208968A60028A99C /* JobType.swift in Sources */,
 				B951C63820FC3776006BBA82 /* Modal.swift in Sources */,
 				B9EC1096208D530700FEC212 /* Chat.swift in Sources */,
@@ -594,7 +602,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T68Z3DP73E;
 				INFOPLIST_FILE = joeDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.naman.localJoe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -618,7 +626,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T68Z3DP73E;
 				INFOPLIST_FILE = joeDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.naman.localJoe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
