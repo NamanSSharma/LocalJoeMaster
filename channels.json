@@ -1,0 +1,17 @@
+{
+  "channels": {
+    "name": "Channel 1",
+    "messages": {
+      "1": { 
+        "text": "Hey person!", 
+        "senderName": "Alice",
+        "senderId": "foo" 
+      },
+      "2": {
+        "text": "Yo!",
+        "senderName": "Bob",
+        "senderId": "bar"
+      }
+    }
+  }
+}

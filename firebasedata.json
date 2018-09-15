@@ -1,0 +1,71 @@
+{
+  "channels": {
+    "name": "Channel 1",
+    "messages": {
+      "1": { 
+        "text": "Hey person!", 
+        "senderName": "Alice",
+        "senderId": "foo" 
+      },
+      "2": {
+        "text": "Yo!",
+        "senderName": "Bob",
+        "senderId": "bar"
+      }
+    }
+  },
+  "users" : {
+      "01pg959QM5Td4JuiIYUYnuE4qE23" : {
+        "email" : "Navi.jassal@hotmail.com",
+        "name" : "Nav"
+      },
+      "BpvE0r6xqxRkWtLkJnAk5wMsFGL2" : {
+        "daysToWork" : "4-7",
+        "email" : "namansharma@live.ca",
+        "joeType" : "Mechanic",
+        "lat" : "49.1866767313789",
+        "long" : "-122.848905176039",
+        "name" : "Naman Sharma",
+        "numPhotos" : "3",
+        "online" : "online"
+      },
+      "L36a4YkJX0WmdEJmFCO5zOgPtpz1" : {
+        "daysToWork" : "4-7",
+        "email" : "jessy.johal1@gmail.com",
+        "joeType" : "Mechanic",
+        "lat" : "49.2767691568252",
+        "long" : "-122.832648602068",
+        "name" : "jessy johal",
+        "numPhotos" : "0",
+        "online" : "online"
+      },
+      "blQhsCS7okXGiUar1Z7L9Y6zu353" : {
+        "daysToWork" : "4-7",
+        "email" : "parvezjhaj99@gmail.com",
+        "joeType" : "Electrician",
+        "lat" : "49.1868469543074",
+        "long" : "-122.848984134883",
+        "name" : "Parvez Jhaj",
+        "numPhotos" : "1",
+        "online" : "offline"
+      },
+      "gr6Za03lfkgba8IsjviiltM4ME72" : {
+        "email" : "rajyudhvir29@gmail.com",
+        "joeType" : "none",
+        "lat" : "49.2271364294451",
+        "long" : "-122.921472005661",
+        "name" : "Yudhvir Raj",
+        "numPhotos" : "0"
+      },
+      "li91MvUHDpgDZjXZ6F4mcYBmV7k1" : {
+        "daysToWork" : "1",
+        "email" : "john@hotmail.com",
+        "joeType" : "Plumber",
+        "lat" : "49.1874286300029",
+        "long" : "-122.849709000553",
+        "name" : "jack",
+        "numPhotos" : "0",
+        "online" : "online"
+      }
+    }
+}
