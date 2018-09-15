@@ -49,6 +49,9 @@
 		CE5ACB6020392AD30037F105 /* Local-Joe-Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = CE5ACB5F20392AD30037F105 /* Local-Joe-Logo.png */; };
 		CE8FB224214DC9EE00363D67 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE8FB223214DC9EE00363D67 /* Main.storyboard */; };
 		CE8FB228214DCB5000363D67 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8FB227214DCB5000363D67 /* MapViewController.swift */; };
+		CE8FB22A214DCF9300363D67 /* BottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8FB229214DCF9300363D67 /* BottomSheetViewController.swift */; };
+		CE8FB22C214DCFC100363D67 /* MapMarkerInfoWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8FB22B214DCFC100363D67 /* MapMarkerInfoWindow.swift */; };
+		CE8FB22E214DCFF100363D67 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8FB22D214DCFF100363D67 /* Images.swift */; };
 		CE9C3F7221377114004C418E /* SCLExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9C3F7021377114004C418E /* SCLExtensions.swift */; };
 		CE9C3F7321377114004C418E /* SCLAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9C3F7121377114004C418E /* SCLAlertView.swift */; };
 		CEA514F11FC261C5000DF26C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA514F01FC261BB000DF26C /* CoreLocation.framework */; };
@@ -59,10 +62,7 @@
 		CECDAB861FAD955E009B0221 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECDAB851FAD955E009B0221 /* AppDelegate.swift */; };
 		CECDAB881FAD955E009B0221 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECDAB871FAD955E009B0221 /* ViewController.swift */; };
 		CECDAB8D1FAD955E009B0221 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CECDAB8C1FAD955E009B0221 /* Assets.xcassets */; };
-		CECE4C90211E894F008D8028 /* BottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECE4C8F211E894F008D8028 /* BottomSheetViewController.swift */; };
-		CECE4C94211E8C97008D8028 /* MapMarkerInfoWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECE4C93211E8C97008D8028 /* MapMarkerInfoWindow.swift */; };
 		CECE4C96211E8CAA008D8028 /* BottomSheetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CECE4C95211E8CAA008D8028 /* BottomSheetViewController.xib */; };
-		CEDB7EA1211FDCB700EE5562 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDB7EA0211FDCB700EE5562 /* Images.swift */; };
 		CEDB7EAE211FE2FE00EE5562 /* paper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDB7EAD211FE2FE00EE5562 /* paper.swift */; };
 		CEDB7EB4211FE3CE00EE5562 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CEDB7EB2211FE3CE00EE5562 /* Info.plist */; };
 		CEDB7EBE211FE42000EE5562 /* PaperOnboardingDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDB7EBB211FE41F00EE5562 /* PaperOnboardingDataSource.swift */; };
@@ -130,6 +130,9 @@
 		CE5ACB5F20392AD30037F105 /* Local-Joe-Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Local-Joe-Logo.png"; sourceTree = "<group>"; };
 		CE8FB223214DC9EE00363D67 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		CE8FB227214DCB5000363D67 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		CE8FB229214DCF9300363D67 /* BottomSheetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomSheetViewController.swift; sourceTree = "<group>"; };
+		CE8FB22B214DCFC100363D67 /* MapMarkerInfoWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapMarkerInfoWindow.swift; sourceTree = "<group>"; };
+		CE8FB22D214DCFF100363D67 /* Images.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		CE9C3F7021377114004C418E /* SCLExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCLExtensions.swift; sourceTree = "<group>"; };
 		CE9C3F7121377114004C418E /* SCLAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCLAlertView.swift; sourceTree = "<group>"; };
 		CEA514F01FC261BB000DF26C /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -143,10 +146,7 @@
 		CECDAB871FAD955E009B0221 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		CECDAB8C1FAD955E009B0221 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CECDAB911FAD955E009B0221 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CECE4C8F211E894F008D8028 /* BottomSheetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BottomSheetViewController.swift; path = "../../../LocalJoeMaster-feature-hacks 2/joeDemo/Controllers/BottomSheetViewController.swift"; sourceTree = "<group>"; };
-		CECE4C93211E8C97008D8028 /* MapMarkerInfoWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapMarkerInfoWindow.swift; path = "../../../LocalJoeMaster-feature-hacks 2/joeDemo/Layout/MapMarkerInfoWindow.swift"; sourceTree = "<group>"; };
 		CECE4C95211E8CAA008D8028 /* BottomSheetViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BottomSheetViewController.xib; path = "../../../LocalJoeMaster-feature-hacks 2/joeDemo/Layout/BottomSheetViewController.xib"; sourceTree = "<group>"; };
-		CEDB7EA0211FDCB700EE5562 /* Images.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Images.swift; path = "../../../paper-onboarding-master/PaperOnboardingDemo/Constants/Images.swift"; sourceTree = "<group>"; };
 		CEDB7EAD211FE2FE00EE5562 /* paper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = paper.swift; sourceTree = "<group>"; };
 		CEDB7EB2211FE3CE00EE5562 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CEDB7EB3211FE3CE00EE5562 /* PaperOnboarding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaperOnboarding.h; sourceTree = "<group>"; };
@@ -227,8 +227,8 @@
 		B95C2C3A20896C7B0028A99C /* Constants */ = {
 			isa = PBXGroup;
 			children = (
+				CE8FB22D214DCFF100363D67 /* Images.swift */,
 				B95C2C3B20896C880028A99C /* FirebaseDatabaseRefs.swift */,
-				CEDB7EA0211FDCB700EE5562 /* Images.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -246,6 +246,7 @@
 		B9AFDFAC1FCACC8F00C07B26 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				CE8FB229214DCF9300363D67 /* BottomSheetViewController.swift */,
 				CE8FB227214DCB5000363D67 /* MapViewController.swift */,
 				CECDAB851FAD955E009B0221 /* AppDelegate.swift */,
 				CE2E5AA4210E951C00173F3C /* NewLoginController.swift */,
@@ -268,7 +269,6 @@
 				CE2E5AA6210E9A0800173F3C /* Images.xcassets */,
 				CE213FC31FAFFA8200E544C7 /* SWRevealViewController.h */,
 				CE213FC21FAFFA8200E544C7 /* SWRevealViewController.m */,
-				CECE4C8F211E894F008D8028 /* BottomSheetViewController.swift */,
 				CECDAB871FAD955E009B0221 /* ViewController.swift */,
 				CEAA68771FB4290A00ECAB0C /* LoginController.swift */,
 			);
@@ -279,8 +279,8 @@
 			isa = PBXGroup;
 			children = (
 				B9356C31208BE91B00ED9FCC /* Cells */,
-				CECE4C93211E8C97008D8028 /* MapMarkerInfoWindow.swift */,
 				B9AFDFA31FCAACEA00C07B26 /* NibView.swift */,
+				CE8FB22B214DCFC100363D67 /* MapMarkerInfoWindow.swift */,
 				CE8FB223214DC9EE00363D67 /* Main.storyboard */,
 				B9AFDF9F1FCAA3B200C07B26 /* MapMarkerInfoWindow.xib */,
 				CECE4C95211E8CAA008D8028 /* BottomSheetViewController.xib */,
@@ -664,19 +664,21 @@
 				B9EC1094208D51E000FEC212 /* ChatGroupViewController.swift in Sources */,
 				CE213FC81FB0114B00E544C7 /* ExploreController.swift in Sources */,
 				CE2E5AA2210E950A00173F3C /* AMInputView.swift in Sources */,
+				CE8FB22A214DCF9300363D67 /* BottomSheetViewController.swift in Sources */,
 				CECDAB861FAD955E009B0221 /* AppDelegate.swift in Sources */,
 				CE2E5A94210A94D400173F3C /* TableCell.swift in Sources */,
 				CEB50D5A1FCE303A000D64A0 /* ViewJoeProfileController.swift in Sources */,
 				CEDB7EC0211FE42000EE5562 /* PaperOnboardingDelegate.swift in Sources */,
 				CE0FF581202272E700FD60D9 /* ViewPaymentsController.swift in Sources */,
+				CE8FB22E214DCFF100363D67 /* Images.swift in Sources */,
 				B9EC108E208C276600FEC212 /* MessagesViewController.swift in Sources */,
 				CEDB7EBE211FE42000EE5562 /* PaperOnboardingDataSource.swift in Sources */,
 				CE9C3F7221377114004C418E /* SCLExtensions.swift in Sources */,
+				CE8FB22C214DCFC100363D67 /* MapMarkerInfoWindow.swift in Sources */,
 				B9D1F29F1FCBC751002C35C1 /* Constants.swift in Sources */,
 				B9EC1092208D511400FEC212 /* ChatCell.swift in Sources */,
 				CEDB7EAE211FE2FE00EE5562 /* paper.swift in Sources */,
 				CE9C3F7321377114004C418E /* SCLAlertView.swift in Sources */,
-				CECE4C94211E8C97008D8028 /* MapMarkerInfoWindow.swift in Sources */,
 				B940606020B511AE00362C74 /* LocalJoeEstimatorController.swift in Sources */,
 				B9AFDFA41FCAACEA00C07B26 /* NibView.swift in Sources */,
 				B95C2C40208980C40028A99C /* UserCell.swift in Sources */,
@@ -684,13 +686,11 @@
 				B9EC1090208C282300FEC212 /* Message.swift in Sources */,
 				CE2E5A8F210A939900173F3C /* ProfileViewController.swift in Sources */,
 				B95C2C3E20897FEA0028A99C /* UsersViewController.swift in Sources */,
-				CECE4C90211E894F008D8028 /* BottomSheetViewController.swift in Sources */,
 				CE07A0571FBF781400823CE6 /* Reachability.swift in Sources */,
 				B911802820A12D610076EA9D /* ChatLink.swift in Sources */,
 				CEDB7ED1211FE54500EE5562 /* PageViewItem.swift in Sources */,
 				CEDB7EC4211FE47200EE5562 /* FillAnimationView.swift in Sources */,
 				CE213FC61FAFFCCA00E544C7 /* TouchViewController.swift in Sources */,
-				CEDB7EA1211FDCB700EE5562 /* Images.swift in Sources */,
 				B9D1F29D1FCBC4F0002C35C1 /* ChatViewController.swift in Sources */,
 				CEDB7EBF211FE42000EE5562 /* PaperOnboarding.swift in Sources */,
 				CEDB7EC7211FE48E00EE5562 /* Configuring.swift in Sources */,
