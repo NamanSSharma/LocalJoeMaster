@@ -172,10 +172,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UIImagePicker
         let myLocation: CLLocationCoordinate2D = manager.location!.coordinate
         lat = String(myLocation.latitude)
         long = String(myLocation.longitude)
-        originLocation = lat + "," + long
-        print(originLocation)
-        //store information in database
         
+        // store information in database
         ref = Database.database().reference()
         let userID : String = (Auth.auth().currentUser?.uid)!
         let usersRef = self.ref.child("users").child(userID);

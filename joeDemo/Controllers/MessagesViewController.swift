@@ -9,9 +9,12 @@
 import Foundation
 import JSQMessagesViewController
 
+import FirebaseAuth
 import FirebaseDatabase
 import FirebaseStorage
 import FirebaseMessaging
+import SCLAlertView
+
 
 struct UserObj {
     let id   : String
@@ -26,12 +29,20 @@ struct FirebaseJSQMessage {
 
 class MessagesViewController : JSQMessagesViewController {
     
-    // let user1 = UserObj (id: "1", name: "Yudhvir Raj")
-    // let user2 = UserObj (id: "2", name: "Naman Sharma")
+    //database
+    var ref: DatabaseReference!
+    var handle:DatabaseHandle?
+    let storage = Storage.storage().reference();
+    let userID : String = (Auth.auth ().currentUser?.uid)!
+
     
     var chatId : String = ""
-    var ref : DatabaseReference!
     var quotesRef: DatabaseReference!;
+    var displayID: String = ""
+    var joeDescription: String = ""
+    var icon : UIImage!
+    var count: Int = 1
+
     
     /* var currentUser : UserObj {
         return user1
@@ -54,16 +65,81 @@ extension MessagesViewController {
         navbar.tintColor = UIColor.lightGray
         self.view.addSubview (navbar)
         
-        let navItem = UINavigationItem (title: self.conversationUser.name)
+        let button =  UIButton(type: .custom)
+        button.frame = CGRect(x: 0, y: 0, width: 100, height: 40)
+        button.backgroundColor = UIColor.red
+        button.setTitle("", for: .normal)
+        button.addTarget(self, action: #selector(self.clickOnButton), for: .touchUpInside)
+        self.navigationItem.titleView = button
+        
+       // let navItem = UINavigationItem (title: self.conversationUser.name)
         let navBarbutton = UIBarButtonItem (barButtonSystemItem: UIBarButtonSystemItem.bookmarks, target: goBack, action: nil)
         
-        navItem.leftBarButtonItem = navBarbutton
+        //navItem.leftBarButtonItem = navBarbutton
         
-        navbar.items = [navItem]
+        //navbar.items = [navItem]
+    }
+    
+    @objc func clickOnButton(button: UIButton) {
+        let usersStorageRef = self.storage.child("users").child(self.displayID);
+        let profile = usersStorageRef.child("profilePic")
+        profile.getData(maxSize: 1*1000*1000){ (data,error) in
+            if error == nil{
+                self.icon = UIImage(data:data!)!
+                //self.icon = self.maskRoundedImage(image: UIImage(data:data!)!, radius: 50)
+                self.icon = self.icon!.circleMasked
+                let appearance = SCLAlertView.SCLAppearance(
+                    kTitleFont: UIFont(name: "HelveticaNeue", size: 20)!,
+                    kTextFont: UIFont(name: "HelveticaNeue", size: 14)!,
+                    kButtonFont: UIFont(name: "HelveticaNeue-Bold", size: 14)!,
+                    showCloseButton: false,
+                    dynamicAnimatorActive: false,
+                    buttonsLayout: .horizontal
+                )
+                let alert = SCLAlertView(appearance: appearance)
+                _ = alert.addButton("Close", target:self, selector:#selector(self.firstButton))
+                
+                // let icon = UIImage(named:"custom_icon.png")
+                let color = UIColor.blue
+                
+                
+                
+                _ = alert.showCustom("Description", subTitle: self.joeDescription, color: color, closeButtonTitle: "close", circleIconImage: self.icon!)
+            }else{
+                print(error?.localizedDescription ?? "")
+                self.icon = UIImage(named:"profilePic")!
+
+            }
+        }
+       
+    }
+    
+    @objc func firstButton() {
+        print("First button tapped")
+    }
+    
+    func maskRoundedImage(image: UIImage, radius: CGFloat) -> UIImage {
+        let imageView: UIImageView = UIImageView(image: image)
+        let layer = imageView.layer
+        layer.masksToBounds = true
+        layer.cornerRadius = radius
+        UIGraphicsBeginImageContext(imageView.bounds.size)
+        layer.render(in: UIGraphicsGetCurrentContext()!)
+        let roundedImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return roundedImage!
     }
     
     func addViewOnTop () {
-        self.navigationItem.title = self.conversationUser.name
+        //self.navigationItem.title = self.conversationUser.name
+        let button =  UIButton(type: .custom)
+        button.frame = CGRect(x: 0, y: 0, width: 100, height: 40)
+        //button.backgroundColor = UIColor.red
+        button.setTitle("\(self.conversationUser.name)", for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        button.addTarget(self, action: #selector(self.clickOnButton), for: .touchUpInside)
+        self.navigationItem.titleView = button
+        
         /* let selectableView = UIView (frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 40))
         selectableView.backgroundColor = .red
         let randomViewLabel  = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 16))
@@ -71,6 +147,8 @@ extension MessagesViewController {
         selectableView.addSubview (randomViewLabel)
         view.addSubview (selectableView) */
     }
+    
+   
     
     override func viewDidLoad() {
         super.viewDidLoad ()
@@ -89,13 +167,52 @@ extension MessagesViewController {
         }
         
         let chatRef = ref.child (FirebaseDatabaseRefs.chats).child (chatId).child ("messages")
+        let joeIDRef = ref.child (FirebaseDatabaseRefs.chats).child (chatId)
         quotesRef = ref.child (FirebaseDatabaseRefs.quotes);
         
         let leftButton = UIButton ()
-        let sendImage = #imageLiteral(resourceName: "define_location")
+        let sendImage = #imageLiteral(resourceName: "search")
         leftButton.setImage (sendImage, for: [])
 
         self.inputToolbar.contentView.leftBarButtonItem = leftButton;
+        
+        joeIDRef.observeSingleEvent (of: .value, with:
+            {
+                (snapshot) in
+                let value = snapshot.value as! NSDictionary
+                let firstID: String = value["firstID"] as! String
+                let secondID: String = value["secondID"] as! String
+                if (self.userID == firstID){
+                    self.displayID = secondID;
+                    let joeDescriptionRef = self.ref.child("users/").child(self.displayID)
+                    joeDescriptionRef.observeSingleEvent(of: .value, with:
+                        {
+                            (snapshot) in
+                            if let val = snapshot.value as? NSDictionary{
+                                if let description = val["joeDescription"] as? String {
+                                    self.joeDescription = description
+                                }
+                            }
+                        }
+                    )
+                    
+                }else { self.displayID = firstID
+                    let joeDescriptionRef = self.ref.child(self.displayID)
+                    joeDescriptionRef.observeSingleEvent(of: .value, with:
+                        {
+                            (snapshot) in
+                            if let val = snapshot.value as? NSDictionary{
+                                if let description = val["joeDescription"] as? String {
+                                    self.joeDescription = description
+                                }
+                            }
+                    }
+                    )
+                }
+            }
+        )
+        
+
         
         chatRef.observe (.value) {
             (snapshot) in
@@ -180,9 +297,18 @@ extension MessagesViewController {
         finishSendingMessage ()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "estimatorSegue" {
+            if let destination = segue.destination as? LocalJoeEstimator {
+                destination.chatID = self.chatId
+            }
+        }
+    }
+    
     override func didPressAccessoryButton (_ sender: UIButton!) {
         print ("Button pressed")
-         let alertController = UIAlertController(title: "Send Quote", message: "Please enter a quote for the client to see", preferredStyle: .alert)
+        self.performSegue(withIdentifier: "estimatorSegue", sender: self)
+      /*  let alertController = UIAlertController(title: "Send Quote", message: "Please enter a quote for the client to see", preferredStyle: .alert)
         
         let confirmAction = UIAlertAction(title: "Confirm", style: .default) { (_) in
             if let alertTextField = alertController.textFields?.first, alertTextField.text != nil {
@@ -211,8 +337,8 @@ extension MessagesViewController {
         
         alertController.addAction(confirmAction)
         alertController.addAction(cancelAction)
-        self.present(alertController, animated: true, completion: nil)
-        
+        self.present(alertController, animated: true, completion: nil) 
+       */
     }
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, attributedTextForMessageBubbleTopLabelAt indexPath: IndexPath!) -> NSAttributedString! {
@@ -250,5 +376,20 @@ extension MessagesViewController {
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageDataForItemAt indexPath: IndexPath!) -> JSQMessageData! {
         return messages [indexPath.row].msg
+    }
+}
+extension UIImage {
+    var isPortrait:  Bool    { return size.height > size.width }
+    var isLandscape: Bool    { return size.width > size.height }
+    var breadth:     CGFloat { return min(size.width, size.height) }
+    var breadthSize: CGSize  { return CGSize(width: breadth, height: breadth) }
+    var breadthRect: CGRect  { return CGRect(origin: .zero, size: breadthSize) }
+    var circleMasked: UIImage? {
+        UIGraphicsBeginImageContextWithOptions(breadthSize, false, scale)
+        defer { UIGraphicsEndImageContext() }
+        guard let cgImage = cgImage?.cropping(to: CGRect(origin: CGPoint(x: isLandscape ? floor((size.width - size.height) / 2) : 0, y: isPortrait  ? floor((size.height - size.width) / 2) : 0), size: breadthSize)) else { return nil }
+        UIBezierPath(ovalIn: breadthRect).addClip()
+        UIImage(cgImage: cgImage, scale: 1, orientation: imageOrientation).draw(in: breadthRect)
+        return UIGraphicsGetImageFromCurrentImageContext()
     }
 }

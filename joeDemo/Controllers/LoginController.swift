@@ -15,45 +15,47 @@ class LoginController: UIViewController {
     @IBOutlet weak var actionButton: UIButton! //submit email/pass
     @IBOutlet weak var forgotPass: UIButton! //forgot password button
     
-   
+    
     @IBAction func segmentClick(_ sender: Any) { //choosing between login/signup
         if segmentControl.selectedSegmentIndex == 0 //Login Option
         {   name.isHidden = true; //don't need name for login
             phone.isHidden = true; //don't need phone for login
         }else{
-        name.isHidden = false; // need name for signup
-        phone.isHidden = false; //need phone for signup
+            name.isHidden = false; // need name for signup
+            phone.isHidden = false; //need phone for signup
         }
     }
     
     @IBAction func buttonAction(_ sender: Any) { //click enter
-        if user.text != "" && pass.text != ""//do the following if email/pass is entered
+        self.actionButton.isEnabled = false // disable it on click
+        if user.text != "" && pass.text != ""   //do the following if email/pass is entered
         {
             if segmentControl.selectedSegmentIndex == 0 //Login User
             {   Auth.auth().signIn(withEmail: user.text!, password: pass.text!, completion: { (user, error) in //backend verification
-                    if user != nil //if the user exists
-                    {   print("SUCCESS")
-                        self.performSegue(withIdentifier: "loginSegue", sender: self) //proceed to the homescreen
+                if user != nil //if the user exists
+                {   print("SUCCESS")
+                    self.performSegue(withIdentifier: "loginSegue", sender: self) //proceed to the homescreen
+                }
+                else { //if the user does not exist
+                    let alert = UIAlertController(title: "Invalid Login", message: "Sorry, the Email/Password do not match our records", preferredStyle: UIAlertControllerStyle.alert)
+                    // alert actions (buttons)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                    if let myError = error?.localizedDescription
+                    { print(myError)
                     }
-                    else { //if the user does not exist
-                        let alert = UIAlertController(title: "Invalid Login", message: "Sorry, the Email/Password do not match our records", preferredStyle: UIAlertControllerStyle.alert)
-                        // alert actions (buttons)
-                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-                        self.present(alert, animated: true, completion: nil)
-                        if let myError = error?.localizedDescription
-                        { print(myError)
-                        }
-                        else{
-                           print("ERROR")
-                        }
+                    else{
+                        print("ERROR")
                     }
-                })
+                }
+            })
             }
             else //User is choosing to create an account
             {
                 PhoneAuthProvider.provider().verifyPhoneNumber(phone.text!, uiDelegate: nil) { (verificationID, error) in
+                    
                     if let error = error {
-                       //error
+                        //error
                         print (error)
                         return
                     }
@@ -65,9 +67,7 @@ class LoginController: UIViewController {
                             //check verification
                             UserDefaults.standard.set(verificationID, forKey: "authVerificationID")
                             let verificationID = UserDefaults.standard.string(forKey: "authVerificationID")
-                            let credential = PhoneAuthProvider.provider().credential(
-                                withVerificationID: verificationID!,
-                                verificationCode: verificationCodeUser)
+                            
                             
                             Auth.auth().createUser (withEmail: self.user.text!, password: self.pass.text!, completion: { (newUser, error) in
                                 if newUser != nil
@@ -84,19 +84,26 @@ class LoginController: UIViewController {
                                         print("Saved user successfully into Firebase DB")
                                     })
                                     
-                                    /* Auth.auth().signIn (with: credential) { (user, error) in
+                                    let credential = PhoneAuthProvider.provider().credential(
+                                        withVerificationID: verificationID!,
+                                        verificationCode: verificationCodeUser)
+                                    
+                                    
+                                    Auth.auth().signInAndRetrieveData(with: credential) { (authResult, error) in
                                         if let error = error {
                                             print(error)
-                                            
                                             let user = Auth.auth().currentUser;
                                             user?.delete();
-                                            return
+                                            let alert = UIAlertController(title: "Invalid Verification Code", message: "Sorry, the phone verification is incorrect. Please try again.", preferredStyle: UIAlertControllerStyle.alert)
+                                            // alert actions (buttons)
+                                            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                                            self.present(alert, animated: true, completion: nil)
                                         }else{
                                             // User is signed in
                                             self.performSegue(withIdentifier: "loginSegue", sender: self) //proceed to the homescreen
                                         }
                                         
-                                    } */
+                                    }
                                     
                                 }
                                 else //signing up failed
@@ -119,8 +126,6 @@ class LoginController: UIViewController {
                                 }
                             })
                             
-                           
-                            
                         } else {
                             // user did not fill field
                         }
@@ -136,7 +141,7 @@ class LoginController: UIViewController {
                     alertController.addAction(cancelAction)
                     self.present(alertController, animated: true, completion: nil)
                     
-                   
+                    
                 }
                 
                 
@@ -147,10 +152,10 @@ class LoginController: UIViewController {
     
     @IBAction func forgotAction(_ sender: Any) { //user has forgotten their password
         
-       // Auth.auth().sendPasswordReset(withEmail: user.text!) { (error) in
-       //self.performSegue (withIdentifier: "forgotPassSegue", sender: self)
+        // Auth.auth().sendPasswordReset(withEmail: user.text!) { (error) in
+        //self.performSegue (withIdentifier: "forgotPassSegue", sender: self)
         
-       
+        
         let alertController = UIAlertController(title: "Forgot Password", message: "Please input your email:", preferredStyle: .alert)
         
         let confirmAction = UIAlertAction(title: "Confirm", style: .default) { (_) in
@@ -177,7 +182,7 @@ class LoginController: UIViewController {
         
         self.present(alertController, animated: true, completion: nil)
         
-      
+        
     }
     
     override func viewDidLoad() {
@@ -196,7 +201,7 @@ class LoginController: UIViewController {
         {   name.isHidden = true;
             phone.isHidden = true;
         }
-       
+        
         reachability.whenUnreachable = { _ in //alert for no internet connection
             DispatchQueue.main.async {
                 // create the alert
@@ -210,7 +215,7 @@ class LoginController: UIViewController {
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
         self.view.addGestureRecognizer(tapGesture)
-
+        
         
         //no internet connection start
         reachability.whenUnreachable = { _ in

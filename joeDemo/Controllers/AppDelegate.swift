@@ -17,7 +17,7 @@ import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    
     var window: UIWindow?
     var navController : UINavigationController?
     var ref : DatabaseReference!;
@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return UIApplication.shared.delegate as! AppDelegate
     }
     static var fcmToken: String = "";
-
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure();
@@ -65,25 +65,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             application.registerUserNotificationSettings(settings)
         }
     }
-
+    
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
     }
-
+    
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
     }
-
+    
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
     }
-
+    
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     }
-
+    
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
@@ -141,27 +141,27 @@ extension AppDelegate : MessagingDelegate {
             print(lng)
             let alert = UIAlertController(title: "Quote", message: "$\(amount)", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "Accept", style: UIAlertActionStyle.default, handler:
-                    {
-                        (alertAction: UIAlertAction!) in
-                        let quoteRef = self.ref.child (FirebaseDatabaseRefs.quotes).child (quoteID);
-                            quoteRef.updateChildValues(
-                                [
-                                    "accepted" : true
-                                ]
-                            )
-                        if let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ETA") as? LocalJoeEstimator {
-                            controller.userID = userID
-                            controller.lat1 = lat as NSString;
-                            controller.lng1 = lng as NSString;
-                            if let window = self.window, let rootViewController = window.rootViewController {
-                                var currentController = rootViewController
-                                while let presentedController = currentController.presentedViewController {
-                                    currentController = presentedController
-                                }
-                                currentController.present(controller, animated: true, completion: nil)
+                {
+                    (alertAction: UIAlertAction!) in
+                    let quoteRef = self.ref.child (FirebaseDatabaseRefs.quotes).child (quoteID);
+                    quoteRef.updateChildValues(
+                        [
+                            "accepted" : true
+                        ]
+                    )
+                    if let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ETA") as? LocalJoeEstimator {
+                       // controller.userID = userID
+                       // controller.lat1 = lat as NSString;
+                       // controller.lng1 = lng as NSString;
+                        if let window = self.window, let rootViewController = window.rootViewController {
+                            var currentController = rootViewController
+                            while let presentedController = currentController.presentedViewController {
+                                currentController = presentedController
                             }
+                            currentController.present(controller, animated: true, completion: nil)
                         }
                     }
+            }
                 )
             );
             alert.addAction(UIAlertAction(title: "Decline", style: UIAlertActionStyle.cancel, handler: nil));
@@ -177,3 +177,4 @@ extension AppDelegate : MessagingDelegate {
         }
     }
 }
+

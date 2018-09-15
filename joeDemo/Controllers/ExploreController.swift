@@ -1,3 +1,4 @@
+
 //
 //  ExploreController.swift
 //  joeDemo
@@ -48,7 +49,7 @@ class ExploreController : UIViewController, GMSMapViewDelegate {
         allUsers.observeSingleEvent(of: .value, with: {
             (allUserSnap) in
             
-            // setup MapView (set camera to your location)
+            //setup MapView (set camera to your location)
             let camera = GMSCameraPosition.camera(withLatitude: 49.18683, longitude: -122.84899, zoom: 10)
             let mapView = GMSMapView.map(withFrame: .zero, camera: camera)
             
@@ -106,7 +107,7 @@ class ExploreController : UIViewController, GMSMapViewDelegate {
         ref = Database.database ().reference ()
         // let usersRef = self.ref.child ("users").child (userID);
         setupCategories ()
-        super.viewDidAppear(animated)
+        
     }
     
     
@@ -196,4 +197,5 @@ class ExploreController : UIViewController, GMSMapViewDelegate {
         return  135.0
     }
 }
+ 
 

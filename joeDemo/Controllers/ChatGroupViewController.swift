@@ -23,13 +23,23 @@ class ChatGroupViewController : UIViewController, UITableViewDataSource, UITable
     
     let reuseCellIdentifier : String = "ChatCell"
     
+    //database
     var ref: DatabaseReference!
+    var handle:DatabaseHandle?
+    let storage = Storage.storage().reference();
+    var displayID: String = ""
     
     var chatArray        = [ChatLink]() // Full list
     var currentChatArray = [ChatLink]() // Update Table
     
     var senderId    : String = ""
     var displayName : String = ""
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setupChats()
+       
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad ()
@@ -65,15 +75,22 @@ class ChatGroupViewController : UIViewController, UITableViewDataSource, UITable
                     guard let chats:NSDictionary = value["chats"] as? NSDictionary else {
                         return
                     }
-                
+                    self.chatArray.removeAll();
                     for chat in chats {
                         let chatObj = chat.value as! NSDictionary
                         let id:       String   = chat.key as! String
                         
                         let userid:   String   = chatObj["userid"] as! String
                         let username: String   = chatObj["username"] as! String
+                        let image_url: String = ""
                         
-                        let chatLk: ChatLink = ChatLink (chatId: id, userId: userid, username: username)
+                        let firstID: String = chatObj["firstID"] as! String
+                        let secondID: String = chatObj["secondID"] as! String
+                        if (userID == firstID){
+                            self.displayID = secondID;
+                        }else { self.displayID = firstID}
+                        
+                        let chatLk: ChatLink = ChatLink (chatId: id, userId: userid, username: username, image_url : image_url, displayID: self.displayID)
                         
                         print ("SHAT \(chat)")
                         // let recieverId = chat
@@ -92,6 +109,7 @@ class ChatGroupViewController : UIViewController, UITableViewDataSource, UITable
         searchBar.delegate = self
     }
     
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return currentChatArray.count
     }
@@ -106,9 +124,46 @@ class ChatGroupViewController : UIViewController, UITableViewDataSource, UITable
         cell.cellView.layer.cornerRadius = cell.cellView.frame.height / 2
         
         cell.nameLabel.text = ct.username // ct.chatId
+        
+        let usersStorageRef = self.storage.child("users").child(ct.displayID);
+        print(self.displayID)
+        let profile = usersStorageRef.child("profilePic")
+        cell.imgView.image = #imageLiteral(resourceName: "profilePic")
+        cell.cellView.layer.cornerRadius = cell.cellView.frame.height / 2
+        cell.imgView.layer.cornerRadius  = cell.imgView.frame.height / 2
+        
+        profile.getData(maxSize: 1*1000*1000){ (data,error) in
+            if error == nil{
+                cell.imgView.image  = UIImage(data:data!)
+                cell.imgView.setRounded()
+
+                cell.imgView.layer.borderWidth = 1
+                cell.imgView.layer.masksToBounds = false
+                cell.imgView.layer.borderColor = UIColor.black.cgColor
+                cell.imgView.layer.cornerRadius = cell.imgView.frame.height/2 //This will change with corners of image and height/2 will make this circle shape
+                cell.imgView.clipsToBounds = true
+                
+            }else{
+                print(error?.localizedDescription ?? "")
+                cell.imgView.image = #imageLiteral(resourceName: "profilePic")
+            }
+        }
+        
         print (ct)
         
         return cell
+    }
+    
+    private func getImageFromUrl (image_url: String) -> UIImage {
+        let url  = URL (string: image_url)
+        let data = try? Data (contentsOf: url!)
+        
+        if let imageData = data {
+            return UIImage (data: imageData)!
+        }
+        
+        return #imageLiteral(resourceName: "star")
+        
     }
     
     func tableView (_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -136,7 +191,7 @@ class ChatGroupViewController : UIViewController, UITableViewDataSource, UITable
         currentChatArray = chatArray.filter (
             {
                 (chatItem) -> Bool in
-                chatItem.chatId.lowercased ().contains (searchText.lowercased ())
+                chatItem.username.lowercased ().contains (searchText.lowercased ())
             }
         )
         
