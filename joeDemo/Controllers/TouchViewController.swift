@@ -30,6 +30,7 @@ class TouchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let userRef = ref.child (FirebaseDatabaseRefs.users).child (userID);
+        print("ABC: \(AppDelegate.fcmToken)")
         userRef.updateChildValues(
             [
                 "fcmToken" : AppDelegate.fcmToken

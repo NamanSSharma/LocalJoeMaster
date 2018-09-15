@@ -11,22 +11,17 @@ import UIKit
 
 import FirebaseDatabase
 import FirebaseStorage
-import FirebaseAuth
 
 class UsersViewController : UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     
     @IBOutlet weak var table : UITableView!
     @IBOutlet var searchBar  : UISearchBar!
     
-    let userID : String = (Auth.auth().currentUser?.uid)!
     let reuseCellIdentifier:String = "UserCell"
     
     var jobTypeId = ""
     
-    //database
     var ref: DatabaseReference!
-    var handle:DatabaseHandle?
-    let storage = Storage.storage().reference();
     
     var usersArray        = [User]() // Full list
     var currentUsersArray = [User]() // Update Table
@@ -39,7 +34,7 @@ class UsersViewController : UIViewController, UITableViewDataSource, UITableView
     }
     
     private func setupUsers () {
-        print("setup users")
+        
         ref = Database.database().reference ()
         let usersRef = ref.child (FirebaseDatabaseRefs.users)
         
@@ -50,9 +45,9 @@ class UsersViewController : UIViewController, UITableViewDataSource, UITableView
                     let snap  = child as! DataSnapshot
                     let key   = snap.key
                     let value = snap.value as? NSDictionary
-                    print(key)
-                    print(value)
+                    
                     if let joeType    = value?["joeType"]    as? String,
+                       let checkedOut = value?["checkedOut"] as? String,
                        let email      = value?["email"]      as? String,
                        let name       = value?["name"]       as? String,
                        let numPhotos  = value?["numPhotos"]  as? String {
@@ -61,7 +56,7 @@ class UsersViewController : UIViewController, UITableViewDataSource, UITableView
                         
                         // numPhotos should be changed to int in database
                         if (joeType == self.jobTypeId) {
-                            self.usersArray.append (User (id: key, email: email, joeType: joeType, name: name, numPhotos: Int (numPhotos)!))
+                            self.usersArray.append (User (id: key, checkedOut: checkedOut, email: email, joeType: joeType, name: name, numPhotos: Int (numPhotos)!))
                         }
                         
                     }
@@ -113,140 +108,15 @@ class UsersViewController : UIViewController, UITableViewDataSource, UITableView
         }
         
         let user: User = currentUsersArray [indexPath.row];
+        
         cell.nameLabel.text = user.name
         
-        let usersStorageRef = self.storage.child("users").child(user.id);
-        let profile = usersStorageRef.child("profilePic")
-        cell.imgView.image = #imageLiteral(resourceName: "profilePic")
-
-        profile.getData(maxSize: 1*1000*1000){ (data,error) in
-            if error == nil{
-                cell.imgView.image  = UIImage(data:data!)
-                cell.cellView.layer.cornerRadius = cell.cellView.frame.height / 2
-                cell.imgView.layer.cornerRadius  = cell.imgView.frame.height / 2
-            }else{
-                print(error?.localizedDescription ?? "")
-                cell.imgView.image = #imageLiteral(resourceName: "profilePic")
-            }
-        }
+        cell.imgView.image  = #imageLiteral(resourceName: "profile")
         
+        cell.cellView.layer.cornerRadius = cell.cellView.frame.height / 2
+        cell.imgView.layer.cornerRadius  = cell.imgView.frame.height / 2
         
         return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let user = userAtIndexPath(indexPath: indexPath as NSIndexPath)
-        let alert = UIAlertController(title: "Send a message", message: "Enter message", preferredStyle: .alert)
-        alert.addTextField {
-            (textField) in
-            textField.text = ""
-        }
-        
-        alert.addAction(UIAlertAction(title: "Send Message", style: .default, handler:
-            {
-                [weak alert] (_) in
-                let text = alert!.textFields![0].text // Force unwrapping because we know it exists.
-                let joeID = user.id
-                
-                let messageId = UUID().uuidString
-                let chatsRef = self.ref.child("chats");
-                let usersRef = self.ref.child("users").child (self.userID);
-                usersRef.observeSingleEvent (of: .value, with:
-                    {
-                        (snapshot) in
-                        let value = snapshot.value as? NSDictionary
-                        
-                        // Get user's name
-                        // Get joeID from marker
-                        let joeRef = self.ref.child (FirebaseDatabaseRefs.users).child (joeID);
-                        let myName = value?["name"] as? String ?? ""
-                        let myId   = value?["senderId"] as? String ?? ""
-                        
-                        joeRef.observeSingleEvent(of: .value, with:
-                            {
-                                (snapshot) in
-                                let value = snapshot.value as? NSDictionary
-                                // Get user's name
-                                let joeName       = value?["name"]     as? String ?? ""
-                                let joeId         = value?["senderId"] as? String ?? ""
-                                
-                                let chatId        = myId > joeId ? "\(myId)_\(joeId)" : "\(joeId)_\(myId)" // UUID().uuidString;
-                                
-                                if myId == joeId {
-                                    return
-                                }
-                                
-                                let userChatValues = [
-                                    "userid"   : joeId,
-                                    "username" : joeName,
-                                    "firstID" : self.userID,
-                                    "secondID" : joeID
-                                ]
-                                
-                                let joeChatValues = [
-                                    "userid"   : myId,
-                                    "username" : myName,
-                                    "firstID" : self.userID,
-                                    "secondID" : joeID
-                                ]
-                                
-                                let chatValues = [
-                                    "chatid" : chatId,
-                                    "userid" : myId,
-                                    "joeid"  : joeId,
-                                    "firstID" : self.userID,
-                                    "secondID" : joeID
-                                    ]
-                                
-                                usersRef.child ("chats").child (chatId).updateChildValues (userChatValues, withCompletionBlock: {
-                                    (err,ref) in
-                                    if err != nil {
-                                        print(err as Any)
-                                        return
-                                    }
-                                }
-                                )
-                                
-                                joeRef.child ("chats").child (chatId).updateChildValues (joeChatValues, withCompletionBlock: {
-                                    (err,ref) in
-                                    if err != nil {
-                                        print (err as Any)
-                                        return
-                                    }
-                                }
-                                )
-                                
-                                chatsRef.child (chatId).updateChildValues (chatValues, withCompletionBlock: {
-                                    (err,ref) in
-                                    if err != nil {
-                                        print(err as Any)
-                                        return
-                                    }
-                                }
-                                )
-                                
-                                let chatRef = self.ref.child (FirebaseDatabaseRefs.chats).child (chatId).child ("messages")
-                                let messageValues =
-                                    [
-                                        "senderId"    : myId,
-                                        "displayName" : myName,
-                                        "text"        : text,
-                                        "date"        : String (Date().timeIntervalSince1970)
-                                ]
-                                chatRef.child (messageId).updateChildValues (messageValues)
-                        }
-                        ) {
-                            (error) in
-                            print(error.localizedDescription)
-                        }
-                        
-                }
-                )
-            }
-            )
-        )
-        
-        self.present(alert, animated: true, completion: nil)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -293,8 +163,5 @@ class UsersViewController : UIViewController, UITableViewDataSource, UITableView
         searchBar.placeholder            = "Search Users"
     }
     
-    private func userAtIndexPath (indexPath: NSIndexPath) -> User {
-        return currentUsersArray [indexPath.row]
-    }
     
 }

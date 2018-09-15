@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		65F7376E707A935576AD664A /* Pods_joeDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F49789B3894D364973D9C75 /* Pods_joeDemo.framework */; };
 		B911802820A12D610076EA9D /* ChatLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = B911802720A12D610076EA9D /* ChatLink.swift */; };
+		B923E31B2117C9EE006B85EB /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B923E31A2117C9EE006B85EB /* MapViewController.swift */; };
+		B923E31D2117CAEA006B85EB /* MapJoe.swift in Sources */ = {isa = PBXBuildFile; fileRef = B923E31C2117CAEA006B85EB /* MapJoe.swift */; };
 		B940606020B511AE00362C74 /* LocalJoeEstimatorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B940605F20B511AE00362C74 /* LocalJoeEstimatorController.swift */; };
 		B945F9BC208476ED00582B69 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B945F9BA208476ED00582B69 /* Main.storyboard */; };
 		B945F9BE208478BE00582B69 /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B945F9BD208478BE00582B69 /* CategoriesViewController.swift */; };
@@ -20,6 +22,7 @@
 		B95C2C3E20897FEA0028A99C /* UsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95C2C3D20897FEA0028A99C /* UsersViewController.swift */; };
 		B95C2C40208980C40028A99C /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95C2C3F208980C40028A99C /* UserCell.swift */; };
 		B95CEDA91FCAD007003BA298 /* UIImageGif.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95CEDA81FCAD007003BA298 /* UIImageGif.swift */; };
+		B9AFDF9E1FCAA2DA00C07B26 /* MapMarkerInfoWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AFDF9D1FCAA2DA00C07B26 /* MapMarkerInfoWindow.swift */; };
 		B9AFDFA01FCAA3B200C07B26 /* MapMarkerInfoWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9AFDF9F1FCAA3B200C07B26 /* MapMarkerInfoWindow.xib */; };
 		B9AFDFA41FCAACEA00C07B26 /* NibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AFDFA31FCAACEA00C07B26 /* NibView.swift */; };
 		B9B98E70208466610021FDC3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9B98E6E208466610021FDC3 /* LaunchScreen.storyboard */; };
@@ -38,18 +41,7 @@
 		CE213FC41FAFFA8200E544C7 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE213FC21FAFFA8200E544C7 /* SWRevealViewController.m */; };
 		CE213FC61FAFFCCA00E544C7 /* TouchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE213FC51FAFFCCA00E544C7 /* TouchViewController.swift */; };
 		CE213FC81FB0114B00E544C7 /* ExploreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE213FC71FB0114B00E544C7 /* ExploreController.swift */; };
-		CE2E5A8D21097FEF00173F3C /* coin_dollar.png in Resources */ = {isa = PBXBuildFile; fileRef = CE2E5A8C21097FEE00173F3C /* coin_dollar.png */; };
-		CE2E5A8F210A939900173F3C /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2E5A8E210A939900173F3C /* ProfileViewController.swift */; };
-		CE2E5A91210A93B400173F3C /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2E5A90210A93B400173F3C /* DetailViewController.swift */; };
-		CE2E5A94210A94D400173F3C /* TableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2E5A93210A94D400173F3C /* TableCell.swift */; };
-		CE2E5AA2210E950A00173F3C /* AMInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2E5AA0210E950A00173F3C /* AMInputView.swift */; };
-		CE2E5AA3210E950A00173F3C /* AMInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE2E5AA1210E950A00173F3C /* AMInputView.xib */; };
-		CE2E5AA5210E951C00173F3C /* NewLoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2E5AA4210E951C00173F3C /* NewLoginController.swift */; };
-		CE2E5AA7210E9A0800173F3C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE2E5AA6210E9A0800173F3C /* Images.xcassets */; };
-		CE2E5AC3211BC34700173F3C /* MapJoe.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2E5AC2211BC34700173F3C /* MapJoe.swift */; };
 		CE5ACB6020392AD30037F105 /* Local-Joe-Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = CE5ACB5F20392AD30037F105 /* Local-Joe-Logo.png */; };
-		CE9C3F7221377114004C418E /* SCLExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9C3F7021377114004C418E /* SCLExtensions.swift */; };
-		CE9C3F7321377114004C418E /* SCLAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9C3F7121377114004C418E /* SCLAlertView.swift */; };
 		CEA514F11FC261C5000DF26C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA514F01FC261BB000DF26C /* CoreLocation.framework */; };
 		CEA725F81FC9375E00B8C6CB /* localJoeFont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CEA725F71FC9375D00B8C6CB /* localJoeFont.ttf */; };
 		CEAA68781FB4290A00ECAB0C /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAA68771FB4290A00ECAB0C /* LoginController.swift */; };
@@ -58,29 +50,6 @@
 		CECDAB861FAD955E009B0221 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECDAB851FAD955E009B0221 /* AppDelegate.swift */; };
 		CECDAB881FAD955E009B0221 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECDAB871FAD955E009B0221 /* ViewController.swift */; };
 		CECDAB8D1FAD955E009B0221 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CECDAB8C1FAD955E009B0221 /* Assets.xcassets */; };
-		CECE4C90211E894F008D8028 /* BottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECE4C8F211E894F008D8028 /* BottomSheetViewController.swift */; };
-		CECE4C92211E89BD008D8028 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECE4C91211E89BC008D8028 /* MapViewController.swift */; };
-		CECE4C94211E8C97008D8028 /* MapMarkerInfoWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECE4C93211E8C97008D8028 /* MapMarkerInfoWindow.swift */; };
-		CECE4C96211E8CAA008D8028 /* BottomSheetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CECE4C95211E8CAA008D8028 /* BottomSheetViewController.xib */; };
-		CEDB7EA1211FDCB700EE5562 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDB7EA0211FDCB700EE5562 /* Images.swift */; };
-		CEDB7EAE211FE2FE00EE5562 /* paper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDB7EAD211FE2FE00EE5562 /* paper.swift */; };
-		CEDB7EB4211FE3CE00EE5562 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CEDB7EB2211FE3CE00EE5562 /* Info.plist */; };
-		CEDB7EBE211FE42000EE5562 /* PaperOnboardingDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDB7EBB211FE41F00EE5562 /* PaperOnboardingDataSource.swift */; };
-		CEDB7EBF211FE42000EE5562 /* PaperOnboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDB7EBC211FE42000EE5562 /* PaperOnboarding.swift */; };
-		CEDB7EC0211FE42000EE5562 /* PaperOnboardingDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDB7EBD211FE42000EE5562 /* PaperOnboardingDelegate.swift */; };
-		CEDB7EC2211FE46B00EE5562 /* GestureControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDB7EC1211FE46B00EE5562 /* GestureControl.swift */; };
-		CEDB7EC4211FE47200EE5562 /* FillAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDB7EC3211FE47200EE5562 /* FillAnimationView.swift */; };
-		CEDB7EC7211FE48E00EE5562 /* Configuring.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDB7EC5211FE48E00EE5562 /* Configuring.swift */; };
-		CEDB7EC8211FE48E00EE5562 /* ConstraintsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDB7EC6211FE48E00EE5562 /* ConstraintsHelper.swift */; };
-		CEDB7ECA211FE49A00EE5562 /* OnboardingContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDB7EC9211FE49A00EE5562 /* OnboardingContentView.swift */; };
-		CEDB7ECD211FE4A800EE5562 /* OnboardingContantViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDB7ECC211FE4A800EE5562 /* OnboardingContantViewItem.swift */; };
-		CEDB7ED1211FE54500EE5562 /* PageViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDB7ED0211FE54500EE5562 /* PageViewItem.swift */; };
-		CEDB7ED3211FE55400EE5562 /* PageContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDB7ED2211FE55400EE5562 /* PageContainer.swift */; };
-		CEDB7ED5211FE55F00EE5562 /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDB7ED4211FE55F00EE5562 /* PageView.swift */; };
-		CEDB7EDB211FE58300EE5562 /* Nunito-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CEDB7ED7211FE58300EE5562 /* Nunito-Regular.ttf */; };
-		CEDB7EDC211FE58300EE5562 /* Nunito-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CEDB7ED8211FE58300EE5562 /* Nunito-Light.ttf */; };
-		CEDB7EDD211FE58300EE5562 /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CEDB7ED9211FE58300EE5562 /* Nunito-Bold.ttf */; };
-		CEDB7EDE211FE58300EE5562 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CEDB7EDA211FE58300EE5562 /* OpenSans-Regular.ttf */; };
 		E14A157D2034E60300B8EFBE /* StripePaymentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14A157C2034E60300B8EFBE /* StripePaymentVC.swift */; };
 /* End PBXBuildFile section */
 
@@ -89,6 +58,8 @@
 		2F49789B3894D364973D9C75 /* Pods_joeDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_joeDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		503D11343C0D729BA2B209B0 /* Pods-joeDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-joeDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-joeDemo/Pods-joeDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		B911802720A12D610076EA9D /* ChatLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatLink.swift; sourceTree = "<group>"; };
+		B923E31A2117C9EE006B85EB /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		B923E31C2117CAEA006B85EB /* MapJoe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapJoe.swift; sourceTree = "<group>"; };
 		B940605F20B511AE00362C74 /* LocalJoeEstimatorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalJoeEstimatorController.swift; sourceTree = "<group>"; };
 		B945F9BB208476ED00582B69 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B945F9BD208478BE00582B69 /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
@@ -100,6 +71,7 @@
 		B95C2C3D20897FEA0028A99C /* UsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewController.swift; sourceTree = "<group>"; };
 		B95C2C3F208980C40028A99C /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		B95CEDA81FCAD007003BA298 /* UIImageGif.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageGif.swift; sourceTree = "<group>"; };
+		B9AFDF9D1FCAA2DA00C07B26 /* MapMarkerInfoWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapMarkerInfoWindow.swift; sourceTree = "<group>"; };
 		B9AFDF9F1FCAA3B200C07B26 /* MapMarkerInfoWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapMarkerInfoWindow.xib; sourceTree = "<group>"; };
 		B9AFDFA31FCAACEA00C07B26 /* NibView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibView.swift; sourceTree = "<group>"; };
 		B9B98E6F208466610021FDC3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -119,18 +91,7 @@
 		CE213FC31FAFFA8200E544C7 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		CE213FC51FAFFCCA00E544C7 /* TouchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchViewController.swift; sourceTree = "<group>"; };
 		CE213FC71FB0114B00E544C7 /* ExploreController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreController.swift; sourceTree = "<group>"; };
-		CE2E5A8C21097FEE00173F3C /* coin_dollar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coin_dollar.png; sourceTree = "<group>"; };
-		CE2E5A8E210A939900173F3C /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		CE2E5A90210A93B400173F3C /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
-		CE2E5A93210A94D400173F3C /* TableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableCell.swift; sourceTree = "<group>"; };
-		CE2E5AA0210E950A00173F3C /* AMInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AMInputView.swift; sourceTree = "<group>"; };
-		CE2E5AA1210E950A00173F3C /* AMInputView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AMInputView.xib; sourceTree = "<group>"; };
-		CE2E5AA4210E951C00173F3C /* NewLoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewLoginController.swift; sourceTree = "<group>"; };
-		CE2E5AA6210E9A0800173F3C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		CE2E5AC2211BC34700173F3C /* MapJoe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapJoe.swift; sourceTree = "<group>"; };
 		CE5ACB5F20392AD30037F105 /* Local-Joe-Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Local-Joe-Logo.png"; sourceTree = "<group>"; };
-		CE9C3F7021377114004C418E /* SCLExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCLExtensions.swift; sourceTree = "<group>"; };
-		CE9C3F7121377114004C418E /* SCLAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCLAlertView.swift; sourceTree = "<group>"; };
 		CEA514F01FC261BB000DF26C /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		CEA725F71FC9375D00B8C6CB /* localJoeFont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = localJoeFont.ttf; sourceTree = "<group>"; };
 		CEAA68771FB4290A00ECAB0C /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
@@ -142,30 +103,6 @@
 		CECDAB871FAD955E009B0221 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		CECDAB8C1FAD955E009B0221 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CECDAB911FAD955E009B0221 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CECE4C8F211E894F008D8028 /* BottomSheetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BottomSheetViewController.swift; path = "../../../LocalJoeMaster-feature-hacks 2/joeDemo/Controllers/BottomSheetViewController.swift"; sourceTree = "<group>"; };
-		CECE4C91211E89BC008D8028 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapViewController.swift; path = "../../../LocalJoeMaster-feature-hacks 2/joeDemo/Controllers/MapViewController.swift"; sourceTree = "<group>"; };
-		CECE4C93211E8C97008D8028 /* MapMarkerInfoWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapMarkerInfoWindow.swift; path = "../../../LocalJoeMaster-feature-hacks 2/joeDemo/Layout/MapMarkerInfoWindow.swift"; sourceTree = "<group>"; };
-		CECE4C95211E8CAA008D8028 /* BottomSheetViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BottomSheetViewController.xib; path = "../../../LocalJoeMaster-feature-hacks 2/joeDemo/Layout/BottomSheetViewController.xib"; sourceTree = "<group>"; };
-		CEDB7EA0211FDCB700EE5562 /* Images.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Images.swift; path = "../../../paper-onboarding-master/PaperOnboardingDemo/Constants/Images.swift"; sourceTree = "<group>"; };
-		CEDB7EAD211FE2FE00EE5562 /* paper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = paper.swift; sourceTree = "<group>"; };
-		CEDB7EB2211FE3CE00EE5562 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CEDB7EB3211FE3CE00EE5562 /* PaperOnboarding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaperOnboarding.h; sourceTree = "<group>"; };
-		CEDB7EBB211FE41F00EE5562 /* PaperOnboardingDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaperOnboardingDataSource.swift; sourceTree = "<group>"; };
-		CEDB7EBC211FE42000EE5562 /* PaperOnboarding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaperOnboarding.swift; sourceTree = "<group>"; };
-		CEDB7EBD211FE42000EE5562 /* PaperOnboardingDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaperOnboardingDelegate.swift; sourceTree = "<group>"; };
-		CEDB7EC1211FE46B00EE5562 /* GestureControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GestureControl.swift; sourceTree = "<group>"; };
-		CEDB7EC3211FE47200EE5562 /* FillAnimationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FillAnimationView.swift; sourceTree = "<group>"; };
-		CEDB7EC5211FE48E00EE5562 /* Configuring.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuring.swift; sourceTree = "<group>"; };
-		CEDB7EC6211FE48E00EE5562 /* ConstraintsHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstraintsHelper.swift; sourceTree = "<group>"; };
-		CEDB7EC9211FE49A00EE5562 /* OnboardingContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingContentView.swift; sourceTree = "<group>"; };
-		CEDB7ECC211FE4A800EE5562 /* OnboardingContantViewItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingContantViewItem.swift; sourceTree = "<group>"; };
-		CEDB7ED0211FE54500EE5562 /* PageViewItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewItem.swift; sourceTree = "<group>"; };
-		CEDB7ED2211FE55400EE5562 /* PageContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageContainer.swift; sourceTree = "<group>"; };
-		CEDB7ED4211FE55F00EE5562 /* PageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
-		CEDB7ED7211FE58300EE5562 /* Nunito-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Regular.ttf"; sourceTree = "<group>"; };
-		CEDB7ED8211FE58300EE5562 /* Nunito-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Light.ttf"; sourceTree = "<group>"; };
-		CEDB7ED9211FE58300EE5562 /* Nunito-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Bold.ttf"; sourceTree = "<group>"; };
-		CEDB7EDA211FE58300EE5562 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
 		CEF4FA072058EBA8009FDF8F /* joeDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = joeDemo.entitlements; sourceTree = "<group>"; };
 		E14A157C2034E60300B8EFBE /* StripePaymentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripePaymentVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -215,11 +152,11 @@
 			isa = PBXGroup;
 			children = (
 				B95C2C38208968A50028A99C /* JobType.swift */,
-				B911802720A12D610076EA9D /* ChatLink.swift */,
 				B9E6A4DF208983BA005873D7 /* User.swift */,
+				B911802720A12D610076EA9D /* ChatLink.swift */,
 				B9EC108F208C282300FEC212 /* Message.swift */,
 				B9EC1095208D530700FEC212 /* Chat.swift */,
-				CE2E5AC2211BC34700173F3C /* MapJoe.swift */,
+				B923E31C2117CAEA006B85EB /* MapJoe.swift */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -228,7 +165,6 @@
 			isa = PBXGroup;
 			children = (
 				B95C2C3B20896C880028A99C /* FirebaseDatabaseRefs.swift */,
-				CEDB7EA0211FDCB700EE5562 /* Images.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -247,30 +183,23 @@
 			isa = PBXGroup;
 			children = (
 				CECDAB851FAD955E009B0221 /* AppDelegate.swift */,
-				CE2E5AA4210E951C00173F3C /* NewLoginController.swift */,
-				CECE4C91211E89BC008D8028 /* MapViewController.swift */,
-				CE2E5A8E210A939900173F3C /* ProfileViewController.swift */,
-				CE2E5A90210A93B400173F3C /* DetailViewController.swift */,
+				CEAA68771FB4290A00ECAB0C /* LoginController.swift */,
+				CECDAB871FAD955E009B0221 /* ViewController.swift */,
 				B940605F20B511AE00362C74 /* LocalJoeEstimatorController.swift */,
-				CEDB7EAD211FE2FE00EE5562 /* paper.swift */,
 				CE07A0541FBF657B00823CE6 /* BecomeJoeController.swift */,
 				B945F9BD208478BE00582B69 /* CategoriesViewController.swift */,
-				B95C2C3D20897FEA0028A99C /* UsersViewController.swift */,
-				B9EC1093208D51E000FEC212 /* ChatGroupViewController.swift */,
-				B9EC108D208C276600FEC212 /* MessagesViewController.swift */,
+				B9D1F29C1FCBC4F0002C35C1 /* ChatViewController.swift */,
 				CE0FF580202272E700FD60D9 /* ViewPaymentsController.swift */,
 				E14A157C2034E60300B8EFBE /* StripePaymentVC.swift */,
 				CEB50D591FCE303A000D64A0 /* ViewJoeProfileController.swift */,
 				CE213FC71FB0114B00E544C7 /* ExploreController.swift */,
+				B923E31A2117C9EE006B85EB /* MapViewController.swift */,
+				B9EC1093208D51E000FEC212 /* ChatGroupViewController.swift */,
 				CE213FC51FAFFCCA00E544C7 /* TouchViewController.swift */,
-				B9D1F29C1FCBC4F0002C35C1 /* ChatViewController.swift */,
-				CECDAB8C1FAD955E009B0221 /* Assets.xcassets */,
-				CE2E5AA6210E9A0800173F3C /* Images.xcassets */,
+				B95C2C3D20897FEA0028A99C /* UsersViewController.swift */,
+				B9EC108D208C276600FEC212 /* MessagesViewController.swift */,
 				CE213FC31FAFFA8200E544C7 /* SWRevealViewController.h */,
 				CE213FC21FAFFA8200E544C7 /* SWRevealViewController.m */,
-				CECE4C8F211E894F008D8028 /* BottomSheetViewController.swift */,
-				CECDAB871FAD955E009B0221 /* ViewController.swift */,
-				CEAA68771FB4290A00ECAB0C /* LoginController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -279,46 +208,18 @@
 			isa = PBXGroup;
 			children = (
 				B9356C31208BE91B00ED9FCC /* Cells */,
-				CECE4C93211E8C97008D8028 /* MapMarkerInfoWindow.swift */,
+				B9AFDF9D1FCAA2DA00C07B26 /* MapMarkerInfoWindow.swift */,
 				B9AFDFA31FCAACEA00C07B26 /* NibView.swift */,
 				B945F9BA208476ED00582B69 /* Main.storyboard */,
 				B9AFDF9F1FCAA3B200C07B26 /* MapMarkerInfoWindow.xib */,
-				CECE4C95211E8CAA008D8028 /* BottomSheetViewController.xib */,
 				B9B98E6E208466610021FDC3 /* LaunchScreen.storyboard */,
 			);
 			path = Layout;
 			sourceTree = "<group>";
 		};
-		CE2E5A92210A94C800173F3C /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				CE2E5A93210A94D400173F3C /* TableCell.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		CE2E5A9F210E94FC00173F3C /* AMInputView */ = {
-			isa = PBXGroup;
-			children = (
-				CE2E5AA0210E950A00173F3C /* AMInputView.swift */,
-				CE2E5AA1210E950A00173F3C /* AMInputView.xib */,
-			);
-			path = AMInputView;
-			sourceTree = "<group>";
-		};
-		CE9C3F6F213770E6004C418E /* SCLAlertView */ = {
-			isa = PBXGroup;
-			children = (
-				CE9C3F7121377114004C418E /* SCLAlertView.swift */,
-				CE9C3F7021377114004C418E /* SCLExtensions.swift */,
-			);
-			path = SCLAlertView;
-			sourceTree = "<group>";
-		};
 		CECDAB791FAD955E009B0221 = {
 			isa = PBXGroup;
 			children = (
-				CE2E5A8C21097FEE00173F3C /* coin_dollar.png */,
 				CE5ACB5F20392AD30037F105 /* Local-Joe-Logo.png */,
 				B9F18E961FCAD4A100724A52 /* Default-568h@2x.png */,
 				CEA725F71FC9375D00B8C6CB /* localJoeFont.ttf */,
@@ -340,130 +241,19 @@
 		CECDAB841FAD955E009B0221 /* joeDemo */ = {
 			isa = PBXGroup;
 			children = (
-				CE9C3F6F213770E6004C418E /* SCLAlertView */,
-				CEDB7ED6211FE57B00EE5562 /* Fonts */,
-				CEDB7EB5211FE3DD00EE5562 /* Source */,
-				CEDB7EB1211FE3BE00EE5562 /* PaperOnboarding */,
-				CE2E5A9F210E94FC00173F3C /* AMInputView */,
-				CE2E5A92210A94C800173F3C /* Model */,
+				CECDAB911FAD955E009B0221 /* Info.plist */,
+				CEAA687A1FB42E3000ECAB0C /* GoogleService-Info.plist */,
+				CEF4FA072058EBA8009FDF8F /* joeDemo.entitlements */,
+				CEB8F9E920550399004483F6 /* joeDemo-Bridging-Header.h */,
 				B951C63620FC3765006BBA82 /* SubComponents */,
 				B95C2C3A20896C7B0028A99C /* Constants */,
 				B95C2C37208968920028A99C /* Objects */,
-				CECDAB911FAD955E009B0221 /* Info.plist */,
-				CEAA687A1FB42E3000ECAB0C /* GoogleService-Info.plist */,
 				B95CEDA71FCACFD1003BA298 /* Supporting Files */,
-				CEF4FA072058EBA8009FDF8F /* joeDemo.entitlements */,
-				CEB8F9E920550399004483F6 /* joeDemo-Bridging-Header.h */,
 				B9AFDFAF1FCACDEB00C07B26 /* Layout */,
 				B9AFDFAC1FCACC8F00C07B26 /* Controllers */,
+				CECDAB8C1FAD955E009B0221 /* Assets.xcassets */,
 			);
 			path = joeDemo;
-			sourceTree = "<group>";
-		};
-		CEDB7EB1211FE3BE00EE5562 /* PaperOnboarding */ = {
-			isa = PBXGroup;
-			children = (
-				CEDB7EB2211FE3CE00EE5562 /* Info.plist */,
-				CEDB7EB3211FE3CE00EE5562 /* PaperOnboarding.h */,
-			);
-			name = PaperOnboarding;
-			path = "New Group";
-			sourceTree = "<group>";
-		};
-		CEDB7EB5211FE3DD00EE5562 /* Source */ = {
-			isa = PBXGroup;
-			children = (
-				CEDB7EBC211FE42000EE5562 /* PaperOnboarding.swift */,
-				CEDB7EBB211FE41F00EE5562 /* PaperOnboardingDataSource.swift */,
-				CEDB7EBD211FE42000EE5562 /* PaperOnboardingDelegate.swift */,
-				CEDB7EBA211FE40C00EE5562 /* PageView */,
-				CEDB7EB9211FE40400EE5562 /* OnboardingContentView */,
-				CEDB7EB8211FE3FF00EE5562 /* Helpers */,
-				CEDB7EB7211FE3F700EE5562 /* GestureControl */,
-				CEDB7EB6211FE3EC00EE5562 /* FillAnimationView */,
-			);
-			name = Source;
-			path = "New Group1";
-			sourceTree = "<group>";
-		};
-		CEDB7EB6211FE3EC00EE5562 /* FillAnimationView */ = {
-			isa = PBXGroup;
-			children = (
-				CEDB7EC3211FE47200EE5562 /* FillAnimationView.swift */,
-			);
-			path = FillAnimationView;
-			sourceTree = "<group>";
-		};
-		CEDB7EB7211FE3F700EE5562 /* GestureControl */ = {
-			isa = PBXGroup;
-			children = (
-				CEDB7EC1211FE46B00EE5562 /* GestureControl.swift */,
-			);
-			path = GestureControl;
-			sourceTree = "<group>";
-		};
-		CEDB7EB8211FE3FF00EE5562 /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				CEDB7EC5211FE48E00EE5562 /* Configuring.swift */,
-				CEDB7EC6211FE48E00EE5562 /* ConstraintsHelper.swift */,
-			);
-			path = Helpers;
-			sourceTree = "<group>";
-		};
-		CEDB7EB9211FE40400EE5562 /* OnboardingContentView */ = {
-			isa = PBXGroup;
-			children = (
-				CEDB7ECB211FE49D00EE5562 /* Item */,
-				CEDB7EC9211FE49A00EE5562 /* OnboardingContentView.swift */,
-			);
-			path = OnboardingContentView;
-			sourceTree = "<group>";
-		};
-		CEDB7EBA211FE40C00EE5562 /* PageView */ = {
-			isa = PBXGroup;
-			children = (
-				CEDB7ED4211FE55F00EE5562 /* PageView.swift */,
-				CEDB7ECF211FE53800EE5562 /* PageContainerView */,
-				CEDB7ECE211FE52F00EE5562 /* Item */,
-			);
-			path = PageView;
-			sourceTree = "<group>";
-		};
-		CEDB7ECB211FE49D00EE5562 /* Item */ = {
-			isa = PBXGroup;
-			children = (
-				CEDB7ECC211FE4A800EE5562 /* OnboardingContantViewItem.swift */,
-			);
-			path = Item;
-			sourceTree = "<group>";
-		};
-		CEDB7ECE211FE52F00EE5562 /* Item */ = {
-			isa = PBXGroup;
-			children = (
-				CEDB7ED0211FE54500EE5562 /* PageViewItem.swift */,
-			);
-			path = Item;
-			sourceTree = "<group>";
-		};
-		CEDB7ECF211FE53800EE5562 /* PageContainerView */ = {
-			isa = PBXGroup;
-			children = (
-				CEDB7ED2211FE55400EE5562 /* PageContainer.swift */,
-			);
-			path = PageContainerView;
-			sourceTree = "<group>";
-		};
-		CEDB7ED6211FE57B00EE5562 /* Fonts */ = {
-			isa = PBXGroup;
-			children = (
-				CEDB7ED9211FE58300EE5562 /* Nunito-Bold.ttf */,
-				CEDB7ED8211FE58300EE5562 /* Nunito-Light.ttf */,
-				CEDB7ED7211FE58300EE5562 /* Nunito-Regular.ttf */,
-				CEDB7EDA211FE58300EE5562 /* OpenSans-Regular.ttf */,
-			);
-			name = Fonts;
-			path = "New Group2";
 			sourceTree = "<group>";
 		};
 		D104D06EF62EF23B724650DE /* Frameworks */ = {
@@ -543,23 +333,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CEDB7EDB211FE58300EE5562 /* Nunito-Regular.ttf in Resources */,
-				CEDB7EB4211FE3CE00EE5562 /* Info.plist in Resources */,
-				CE2E5A8D21097FEF00173F3C /* coin_dollar.png in Resources */,
 				B9B98E70208466610021FDC3 /* LaunchScreen.storyboard in Resources */,
 				CEA725F81FC9375E00B8C6CB /* localJoeFont.ttf in Resources */,
 				B9AFDFA01FCAA3B200C07B26 /* MapMarkerInfoWindow.xib in Resources */,
-				CE2E5AA7210E9A0800173F3C /* Images.xcassets in Resources */,
 				CEAA687B1FB42E3000ECAB0C /* GoogleService-Info.plist in Resources */,
 				CE5ACB6020392AD30037F105 /* Local-Joe-Logo.png in Resources */,
 				CECDAB8D1FAD955E009B0221 /* Assets.xcassets in Resources */,
-				CE2E5AA3210E950A00173F3C /* AMInputView.xib in Resources */,
-				CEDB7EDD211FE58300EE5562 /* Nunito-Bold.ttf in Resources */,
 				B945F9BC208476ED00582B69 /* Main.storyboard in Resources */,
 				B9F18E971FCAD4A100724A52 /* Default-568h@2x.png in Resources */,
-				CEDB7EDC211FE58300EE5562 /* Nunito-Light.ttf in Resources */,
-				CEDB7EDE211FE58300EE5562 /* OpenSans-Regular.ttf in Resources */,
-				CECE4C96211E8CAA008D8028 /* BottomSheetViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -614,11 +395,8 @@
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/JSQMessagesViewController/JSQMessagesViewController.framework",
 				"${BUILT_PRODUCTS_DIR}/JSQSystemSoundPlayer/JSQSystemSoundPlayer.framework",
-				"${BUILT_PRODUCTS_DIR}/PostalAddressRow/PostalAddressRow.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
-				"${BUILT_PRODUCTS_DIR}/SCLAlertView/SCLAlertView.framework",
 				"${BUILT_PRODUCTS_DIR}/Stripe/Stripe.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftyStoreKit/SwiftyStoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -629,11 +407,8 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSQMessagesViewController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSQSystemSoundPlayer.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PostalAddressRow.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SCLAlertView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Stripe.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyStoreKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -649,62 +424,40 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CEDB7ECD211FE4A800EE5562 /* OnboardingContantViewItem.swift in Sources */,
-				CEDB7EC8211FE48E00EE5562 /* ConstraintsHelper.swift in Sources */,
 				B9E6A4E0208983BA005873D7 /* User.swift in Sources */,
-				CE2E5A91210A93B400173F3C /* DetailViewController.swift in Sources */,
 				CECDAB881FAD955E009B0221 /* ViewController.swift in Sources */,
-				CE2E5AC3211BC34700173F3C /* MapJoe.swift in Sources */,
 				B95C2C3C20896C880028A99C /* FirebaseDatabaseRefs.swift in Sources */,
-				CEDB7ED5211FE55F00EE5562 /* PageView.swift in Sources */,
 				CE07A0551FBF657B00823CE6 /* BecomeJoeController.swift in Sources */,
 				B945F9BE208478BE00582B69 /* CategoriesViewController.swift in Sources */,
-				CEDB7EC2211FE46B00EE5562 /* GestureControl.swift in Sources */,
 				CEAA68781FB4290A00ECAB0C /* LoginController.swift in Sources */,
 				B9EC1094208D51E000FEC212 /* ChatGroupViewController.swift in Sources */,
 				CE213FC81FB0114B00E544C7 /* ExploreController.swift in Sources */,
-				CE2E5AA2210E950A00173F3C /* AMInputView.swift in Sources */,
 				CECDAB861FAD955E009B0221 /* AppDelegate.swift in Sources */,
-				CE2E5A94210A94D400173F3C /* TableCell.swift in Sources */,
 				CEB50D5A1FCE303A000D64A0 /* ViewJoeProfileController.swift in Sources */,
-				CEDB7EC0211FE42000EE5562 /* PaperOnboardingDelegate.swift in Sources */,
 				CE0FF581202272E700FD60D9 /* ViewPaymentsController.swift in Sources */,
 				B9EC108E208C276600FEC212 /* MessagesViewController.swift in Sources */,
-				CEDB7EBE211FE42000EE5562 /* PaperOnboardingDataSource.swift in Sources */,
-				CE9C3F7221377114004C418E /* SCLExtensions.swift in Sources */,
 				B9D1F29F1FCBC751002C35C1 /* Constants.swift in Sources */,
 				B9EC1092208D511400FEC212 /* ChatCell.swift in Sources */,
-				CEDB7EAE211FE2FE00EE5562 /* paper.swift in Sources */,
-				CE9C3F7321377114004C418E /* SCLAlertView.swift in Sources */,
-				CECE4C94211E8C97008D8028 /* MapMarkerInfoWindow.swift in Sources */,
 				B940606020B511AE00362C74 /* LocalJoeEstimatorController.swift in Sources */,
 				B9AFDFA41FCAACEA00C07B26 /* NibView.swift in Sources */,
 				B95C2C40208980C40028A99C /* UserCell.swift in Sources */,
 				B945F9C620847D8700582B69 /* JobTypeCell.swift in Sources */,
 				B9EC1090208C282300FEC212 /* Message.swift in Sources */,
-				CECE4C92211E89BD008D8028 /* MapViewController.swift in Sources */,
-				CE2E5A8F210A939900173F3C /* ProfileViewController.swift in Sources */,
 				B95C2C3E20897FEA0028A99C /* UsersViewController.swift in Sources */,
-				CECE4C90211E894F008D8028 /* BottomSheetViewController.swift in Sources */,
 				CE07A0571FBF781400823CE6 /* Reachability.swift in Sources */,
 				B911802820A12D610076EA9D /* ChatLink.swift in Sources */,
-				CEDB7ED1211FE54500EE5562 /* PageViewItem.swift in Sources */,
-				CEDB7EC4211FE47200EE5562 /* FillAnimationView.swift in Sources */,
+				B923E31B2117C9EE006B85EB /* MapViewController.swift in Sources */,
 				CE213FC61FAFFCCA00E544C7 /* TouchViewController.swift in Sources */,
-				CEDB7EA1211FDCB700EE5562 /* Images.swift in Sources */,
 				B9D1F29D1FCBC4F0002C35C1 /* ChatViewController.swift in Sources */,
-				CEDB7EBF211FE42000EE5562 /* PaperOnboarding.swift in Sources */,
-				CEDB7EC7211FE48E00EE5562 /* Configuring.swift in Sources */,
 				E14A157D2034E60300B8EFBE /* StripePaymentVC.swift in Sources */,
+				B9AFDF9E1FCAA2DA00C07B26 /* MapMarkerInfoWindow.swift in Sources */,
 				CE213FC41FAFFA8200E544C7 /* SWRevealViewController.m in Sources */,
-				CE2E5AA5210E951C00173F3C /* NewLoginController.swift in Sources */,
 				B95CEDA91FCAD007003BA298 /* UIImageGif.swift in Sources */,
+				B923E31D2117CAEA006B85EB /* MapJoe.swift in Sources */,
 				B95C2C39208968A60028A99C /* JobType.swift in Sources */,
 				B951C63820FC3776006BBA82 /* Modal.swift in Sources */,
 				B9EC1096208D530700FEC212 /* Chat.swift in Sources */,
-				CEDB7ED3211FE55400EE5562 /* PageContainer.swift in Sources */,
 				B951C63A20FC3792006BBA82 /* CustomAlert.swift in Sources */,
-				CEDB7ECA211FE49A00EE5562 /* OnboardingContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -851,7 +604,7 @@
 				INFOPLIST_FILE = joeDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.namansharma.localJoeApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.naman.localJoe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "joeDemo/joeDemo-Bridging-Header.h";
@@ -875,7 +628,7 @@
 				INFOPLIST_FILE = joeDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.namansharma.localJoeApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.naman.localJoe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "joeDemo/joeDemo-Bridging-Header.h";

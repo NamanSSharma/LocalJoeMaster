@@ -21,13 +21,13 @@ PODS:
   - FirebaseAnalytics (5.0.1):
     - FirebaseCore (~> 5.0)
     - FirebaseInstanceID (~> 3.0)
-    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
+    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
     - nanopb (~> 0.3)
   - FirebaseAuth (5.0.2):
     - FirebaseCore (~> 5.0)
     - GTMSessionFetcher/Core (~> 1.1)
   - FirebaseCore (5.0.6):
-    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
+    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
   - FirebaseDatabase (5.0.2):
     - FirebaseCore (~> 5.0)
     - leveldb-library (~> 1.18)
@@ -49,7 +49,7 @@ PODS:
   - GoogleToolboxForMac/Defines (2.1.4)
   - GoogleToolboxForMac/Logger (2.1.4):
     - GoogleToolboxForMac/Defines (= 2.1.4)
-  - "GoogleToolboxForMac/NSData+zlib (2.1.4)":
+  - GoogleToolboxForMac/NSData+zlib (2.1.4):
     - GoogleToolboxForMac/Defines (= 2.1.4)
   - GTMSessionFetcher/Core (1.1.15)
   - JSQMessagesViewController (7.3.5):
@@ -61,12 +61,8 @@ PODS:
     - nanopb/encode (= 0.3.8)
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
-  - PostalAddressRow (2.1.0):
-    - Eureka (~> 4.0)
   - Protobuf (3.6.0)
-  - SCLAlertView (0.8)
   - Stripe (13.1.0)
-  - SwiftyStoreKit (0.13.3)
 
 DEPENDENCIES:
   - CardIO
@@ -78,35 +74,7 @@ DEPENDENCIES:
   - Firebase/Storage
   - GoogleMaps
   - JSQMessagesViewController
-  - PostalAddressRow
-  - SCLAlertView
   - Stripe
-  - SwiftyStoreKit
-
-SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
-    - CardIO
-    - Eureka
-    - Firebase
-    - FirebaseAnalytics
-    - FirebaseAuth
-    - FirebaseCore
-    - FirebaseDatabase
-    - FirebaseInstanceID
-    - FirebaseMessaging
-    - FirebaseStorage
-    - GoogleMaps
-    - GoogleToolboxForMac
-    - GTMSessionFetcher
-    - JSQMessagesViewController
-    - JSQSystemSoundPlayer
-    - leveldb-library
-    - nanopb
-    - PostalAddressRow
-    - Protobuf
-    - SCLAlertView
-    - Stripe
-    - SwiftyStoreKit
 
 SPEC CHECKSUMS:
   CardIO: 56983b39b62f495fc6dae9ad7cf875143df06443
@@ -126,12 +94,9 @@ SPEC CHECKSUMS:
   JSQSystemSoundPlayer: c5850e77a4363ffd374cd851154b9af93264ed8d
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
-  PostalAddressRow: 291d38a46a859a977d3acdb4cdf32af63da9810b
   Protobuf: 0fc0ad8bec688b2a3017a139953e01374fedbd5f
-  SCLAlertView: 6a77bb2edfc65e04dbe57725546cb4107a506b85
   Stripe: 4f043bb840721b1f30492fa77790bbf9e3508ab0
-  SwiftyStoreKit: 9ebd15971e28aa2989825fe8bc092eb5f75dd0b2
 
-PODFILE CHECKSUM: 929243bd209d0b9b9619939d54950781d5e99520
+PODFILE CHECKSUM: ebacc53000fa297c9ccf95d91f889b81ae9b4ed9
 
-COCOAPODS: 1.5.2
+COCOAPODS: 1.4.0

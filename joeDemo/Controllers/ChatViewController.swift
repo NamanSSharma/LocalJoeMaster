@@ -34,7 +34,6 @@ class ChatViewController: JSQMessagesViewController {
         self.navigationController?.isNavigationBarHidden = false
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         appDelegate.navController = self.navigationController

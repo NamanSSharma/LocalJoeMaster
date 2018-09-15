@@ -48,14 +48,9 @@ class CategoriesViewController : UIViewController, UITableViewDataSource, UITabl
                        let image_url = value?["image_url"] as? String {
                         self.jobTypeArray.append (JobType (id: key, name : name, image_url : image_url))
                     }
+                
                 }
                 
-                self.jobTypeArray.sort(by:
-                    {
-                        (lhs, rhs) -> Bool in
-                            return lhs.name < rhs.name
-                    }
-                )
                 self.currentJobTypeArray = self.jobTypeArray
                 self.table.reloadData ()
             }
@@ -155,6 +150,11 @@ class CategoriesViewController : UIViewController, UITableViewDataSource, UITabl
         
         table.estimatedSectionHeaderHeight = 50
         table.tableHeaderView              = UIView ()
+        
+        // Search Bar in navigation bar
+        // navigationItem.leftBarButtonItem = UIBarButtonItem (customView: searchBar)
+        // let backButton: UIBarButtonItem  = UIBarButtonItem (title: "Back", style: .plain, target: self, action: #selector(back))
+        // navigationItem.backBarButtonItem = backButton
         
         searchBar.showsScopeBar          = false
     }

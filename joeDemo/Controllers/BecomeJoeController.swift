@@ -8,49 +8,15 @@
 
 import Foundation
 import Eureka
-import PostalAddressRow
-import MessageUI
-
 import FirebaseAuth
 import FirebaseDatabase
 
-class BecomeJoeController : FormViewController, MFMailComposeViewControllerDelegate{
+class BecomeJoeController : FormViewController{
     
     var ref: DatabaseReference!
     let reachability = Reachability()!
-    let userID : String = (Auth.auth().currentUser?.uid)!
-
+    
     var jobTypesArray = [JobType]()
-    
-    func configureMailController() -> MFMailComposeViewController {
-        let dict       = self.form.values (includeHidden: true)
-        let joePhone = dict["Phone"] as? String ?? ""
-        // let daysToWork = dict["daysToWork"] as! String
-        
-        
-        let mailComposerVC = MFMailComposeViewController()
-        mailComposerVC.mailComposeDelegate = self
-        
-        mailComposerVC.setToRecipients(["Info@localjoeservices.com"])
-        mailComposerVC.setSubject("LocalJoe: New Joe Applicant")
-        mailComposerVC.setMessageBody("Verify my profile: \nUserID:\(userID)\n\(joePhone)" , isHTML: false)
-        
-        return mailComposerVC
-    }
-    
-    func showMailError(){
-        let sendMailErrorAlert = UIAlertController(title: "Could not send application", message: "Please try again later", preferredStyle: .alert)
-        let dismiss = UIAlertAction(title: "Ok", style: .default, handler: nil)
-        sendMailErrorAlert.addAction(dismiss)
-        self.present(sendMailErrorAlert, animated:true, completion:  nil)
-        
-    }
-    
-    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
-        controller.dismiss(animated:true, completion: nil)
-        _ = self.navigationController?.popToRootViewController(animated: true)
-
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad ()
@@ -86,56 +52,34 @@ class BecomeJoeController : FormViewController, MFMailComposeViewControllerDeleg
                 }
                 
                 self.form
+                    +++ Section ("Tell us about yourself")
                     
-                    +++ Section ("About yourself:")
-                    
-                    <<< PushRow<String>() {
-                        $0.tag = "joeGender"
-                        $0.title = "Gender:"
-                        $0.selectorTitle = "Type of Joe:"
-                        $0.options = ["Male", "Female", "Other"]
-                    }
-                    
-                    <<< DateRow(){
-                        $0.tag = "joeBirthday"
-                        $0.title = "Birthday"
-                        $0.value = Date(timeIntervalSinceReferenceDate: 0)
-                    }
                     <<< PushRow<String>() {
                         $0.tag = "joeType"
-                        $0.title = "Occupation:"
+                        $0.title = "Type of Joe:"
                         $0.selectorTitle = "Type of Joe:"
                         $0.options = options
                         $0.value = options[0]    // initially selected
                     }
                     
-
+                    +++ Section("How Often Can You Work?")
                     
-                    +++ Section ("Address: ")
-                    
-                    <<< PostalAddressRow() {
-                        $0.tag = "joeAddress"
-                        $0.streetPlaceholder = "Street"
-                        $0.statePlaceholder = "Province"
-                        $0.cityPlaceholder = "City"
-                        $0.postalCodePlaceholder = "Zip code"
-                    }
-                   
-                    
-                   
-                    +++ Section("What is your phone number? :")
-                    
-                    <<< PhoneRow(){
-                        $0.tag = "Phone"
-                        $0.title = "Phone Number"
+                    <<< ActionSheetRow<String>() {
+                        $0.tag = "daysToWork"
+                        $0.title = "Days In A Week:"
+                        $0.selectorTitle = "Days In A Week:"
+                        $0.options = ["1","2-4","4-7"]
+                        $0.value = "1"    // initially selected
                     }
                     
-                    +++ Section ("Tell us a little about yourself")
+                    +++ Section("Preferred Method of Payment:")
                     
-                    <<< TextAreaRow(){
-                        $0.tag = "joeDescription"
-                        $0.title = "Text Row"
-                        $0.placeholder = "Enter description here"
+                    <<< PushRow<String>() {
+                        $0.tag = "payment"
+                        $0.title = "Choose One:"
+                        $0.selectorTitle = "Choose One:"
+                        $0.options = ["E-transfer","Bank Account"]
+                        $0.value = "E-transfer"    // initially selected
                     }
                     
                     +++ Section()
@@ -145,22 +89,9 @@ class BecomeJoeController : FormViewController, MFMailComposeViewControllerDeleg
                         }
                         .onCellSelection {  cell, row in
                             
-                            let mailComposeViewController = self.configureMailController()
-                            if MFMailComposeViewController.canSendMail() {
-                                self.present(mailComposeViewController, animated: true, completion: nil)
-                            }else {
-                                self.showMailError()
-                            }
-                            
                             let dict       = self.form.values (includeHidden: true)
-                            let joeEmail = dict["email"] as? String ?? ""
-                            // let joeBirthday = dict["joeBirthday"] as! String
-                            let joeGender = dict["joeGender"] as? String ?? "Other"
-                            let joeType    = dict["joeType"] as! String ?? ""
-                            // let joeAddress = dict["joeAddress"] as! String
-                            let joePhone = dict["Phone"] as? String ?? ""
-                            let joeDescription = dict["joeDescription"] as? String ?? ""
-                            // let daysToWork = dict["daysToWork"] as! String
+                            let joeType    = dict["joeType"] as! String
+                            let daysToWork = dict["daysToWork"] as! String
                             
                             let jobTypeFiltered = self.jobTypesArray.filter { $0.name == joeType }
                             
@@ -170,32 +101,33 @@ class BecomeJoeController : FormViewController, MFMailComposeViewControllerDeleg
                             
                             let joeId = jobTypeFiltered[0].id
                             let senderUUID  = UUID ().uuidString
+                            let joeID = UUID ().uuidString
                             
                             //store information in database
                             let values = [
-                               "joeGender"  : joeGender,
-                                "joeEmail"  : joeEmail,
-                                "joeType"   : joeId,
-                               // "daysToWork" : daysToWork,
-                               // "joeAddress" : joeAddress,
-                                "joePhone" : joePhone,
-                                "joeDescription": joeDescription,
-                               "online"     : "online",
-                               "status"     : "unapproved",
-                               "senderId"   : senderUUID,
-                               "id"         : userID,
-                             ]
+                                           "joeType"    : joeId,
+                                           "daysToWork" : daysToWork,
+                                           "online"     : "online",
+                                           "senderId"   : senderUUID,
+                                           "id"         : joeID,
+                                         ]
                             
-                            usersRef.updateChildValues(values, withCompletionBlock: {
+                            usersRef.child(joeID).updateChildValues(values, withCompletionBlock: {
                                 (err,ref) in
                                     if err != nil {
                                         print (err as Any)
                                         return
                                     }
                                     print("Saved user successfully into Firebase DB")
-
                                 }
                             )
+                            
+                            // create an alert
+                            let alert = UIAlertController(title : "Congrats!", message : "You are now a registered Joe", preferredStyle : UIAlertControllerStyle.alert)
+                            
+                            alert.addAction (UIAlertAction (title : "OK", style : UIAlertActionStyle.default, handler: nil))
+                            
+                            self.present (alert, animated : true, completion : nil)
                             
                 }
                 
