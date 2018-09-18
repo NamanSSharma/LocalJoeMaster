@@ -35,10 +35,11 @@ class ChatGroupViewController : UIViewController, UITableViewDataSource, UITable
     var senderId    : String = ""
     var displayName : String = ""
     
+    var userID: String = ""
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setupChats()
-       
     }
     
     override func viewDidLoad() {
@@ -48,29 +49,24 @@ class ChatGroupViewController : UIViewController, UITableViewDataSource, UITable
         alterLayout       ()
     }
     
+    private func resetCurrentChatArray() {
+        self.currentChatArray = self.chatArray
+    }
+    
     private func setupChats () {
-        
         ref = Database.database().reference ()
-        let userID : String = (Auth.auth ().currentUser?.uid)!
+        self.userID = (Auth.auth ().currentUser?.uid)!
         
         let chatsRef    = self.ref.child (FirebaseDatabaseRefs.users).child (userID);
         
         chatsRef.observeSingleEvent (of: .value, with :
             {
                 (snapshot) in
-                // for child in snapshot.children {
                     let key   = snapshot.key
                     let value = snapshot.value as! NSDictionary
                 
                     self.senderId    = value["senderId"] as! String
                     self.displayName = value["name"]     as! String
-                
-                    /*
-                         init (chatId : String, messages : [JSQMessage]) {
-                         self.chatId   = chatId
-                         self.messages = messages
-                         }
-                    */
                 
                     guard let chats:NSDictionary = value["chats"] as? NSDictionary else {
                         return
@@ -78,6 +74,13 @@ class ChatGroupViewController : UIViewController, UITableViewDataSource, UITable
                     self.chatArray.removeAll();
                     for chat in chats {
                         let chatObj = chat.value as! NSDictionary
+                        
+                        if let deleted: Bool = chatObj["deleted"] as? Bool {
+                            if deleted {
+                                continue
+                            }
+                        }
+                        
                         let id:       String   = chat.key as! String
                         
                         let userid:   String   = chatObj["userid"] as! String
@@ -86,20 +89,21 @@ class ChatGroupViewController : UIViewController, UITableViewDataSource, UITable
                         
                         let firstID: String = chatObj["firstID"] as! String
                         let secondID: String = chatObj["secondID"] as! String
-                        if (userID == firstID){
+                        
+                        if (self.userID == firstID){
                             self.displayID = secondID;
-                        }else { self.displayID = firstID}
+                        }else {
+                            self.displayID = firstID
+                        }
                         
                         let chatLk: ChatLink = ChatLink (chatId: id, userId: userid, username: username, image_url : image_url, displayID: self.displayID)
                         
-                        print ("SHAT \(chat)")
-                        // let recieverId = chat
                         self.chatArray.append (chatLk)
                     }
                 
                     print (self.chatArray)
                 
-                    self.currentChatArray = self.chatArray
+                    self.resetCurrentChatArray()
                     self.table.reloadData ()
             }
         )
@@ -126,7 +130,6 @@ class ChatGroupViewController : UIViewController, UITableViewDataSource, UITable
         cell.nameLabel.text = ct.username // ct.chatId
         
         let usersStorageRef = self.storage.child("users").child(ct.displayID);
-        print(self.displayID)
         let profile = usersStorageRef.child("profilePic")
         cell.imgView.image = #imageLiteral(resourceName: "profilePic")
         cell.cellView.layer.cornerRadius = cell.cellView.frame.height / 2
@@ -148,8 +151,6 @@ class ChatGroupViewController : UIViewController, UITableViewDataSource, UITable
                 cell.imgView.image = #imageLiteral(resourceName: "profilePic")
             }
         }
-        
-        print (ct)
         
         return cell
     }
@@ -179,12 +180,43 @@ class ChatGroupViewController : UIViewController, UITableViewDataSource, UITable
         return UITableViewAutomaticDimension
     }
     
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let cl: ChatLink = self.chatTypeAtIndexPath(indexPath: indexPath as NSIndexPath)
+            if userID.isEmpty {
+                return
+            }
+            
+            self.ref.child (FirebaseDatabaseRefs.users).child (self.userID).child(FirebaseDatabaseRefs.chats).child(cl.chatId).updateChildValues(
+                [
+                    "deleted" : true
+                ],
+                withCompletionBlock: {
+                    (err,ref) in
+                        if err != nil {
+                            print(err as Any)
+                            return
+                        }
+                        // remove data from array and update table
+                        self.chatArray.remove(at: indexPath.row)
+                        self.resetCurrentChatArray()
+                        self.table.reloadData()
+                }
+            )
+            
+        }
+    }
+    
     // Search Bar
     func searchBar (_ searchBar: UISearchBar, textDidChange searchText: String) {
         
         guard !searchText.isEmpty else {
-            currentChatArray = chatArray
-            table.reloadData ()
+            self.resetCurrentChatArray()
+            self.table.reloadData ()
             return
         }
         
@@ -222,12 +254,6 @@ class ChatGroupViewController : UIViewController, UITableViewDataSource, UITable
         
         table.estimatedSectionHeaderHeight = 50
         table.tableHeaderView              = UIView ()
-        
-        // Search Bar in navigation bar
-        // navigationItem.leftBarButtonItem = UIBarButtonItem (customView: searchBar)
-        // let backButton: UIBarButtonItem  = UIBarButtonItem (title: "Back", style: .plain, target: self, action: #selector(back))
-        // navigationItem.backBarButtonItem = backButton
-        
         searchBar.showsScopeBar          = false
     }
     
@@ -259,6 +285,5 @@ class ChatGroupViewController : UIViewController, UITableViewDataSource, UITable
     private func chatTypeAtIndexPath (indexPath: NSIndexPath) -> ChatLink {
         return currentChatArray [indexPath.row]
     }
-    
     
 }

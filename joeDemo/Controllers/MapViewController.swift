@@ -46,6 +46,23 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     private var categories = [JobType]()
     private var markers = [MapJoe]()
     
+    private func setupFCMToken () {
+        let userRef = ref.child (FirebaseDatabaseRefs.users).child (userID);
+        userRef.updateChildValues(
+            [
+                "fcmToken" : AppDelegate.fcmToken
+            ]
+        ) {
+            (err, ref) in
+            if err != nil {
+                print(err as Any)
+                return
+            }
+            
+            print("completed: \(AppDelegate.fcmToken)")
+        }
+    }
+    
     private func setupCategories () {
         let jobTypesRef = ref.child (FirebaseDatabaseRefs.jobTypes)
         
@@ -81,23 +98,16 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
                     let status = value["status"] as? String ?? ""
                     if (isOnline == "online" && status == "approved") {
                         let joeID   = value["id"] as? String ?? ""
-                        print("IDD \(joeID)")
-                        print(value)
+                        if joeID == self.userID {
+                            continue
+                        }
                         let name    = value["name"]    as? String ?? ""
                         let joeType = value["joeType"] as? String ?? ""
                         let lat     = value["lat"]     as? Double ?? 0.0
                         let long    = value["long"]    as? Double ?? 0.0
                         
                         print("\(name), \(joeType), \(lat), \(long)")
-                        
-                        guard let latNum:CLLocationDegrees  = CLLocationDegrees (lat) else {
-                            continue
-                        }
-                        
-                        guard let longNum:CLLocationDegrees = CLLocationDegrees (long) else {
-                            continue
-                        }
-                        let marker = MapJoe(title: name, joeID: joeID, profession: joeType, coordinate: CLLocationCoordinate2DMake (latNum, longNum), distance: -1)
+                        let marker = MapJoe(title: name, joeID: joeID, profession: joeType, coordinate: CLLocationCoordinate2DMake (CLLocationDegrees (lat), CLLocationDegrees (long)), distance: -1)
                         
                         print(self.categories.count)
                         if let joeTypeFound = self.categories.first (where: { $0.id == joeType } ) {
@@ -125,6 +135,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
             print("COUNT IS :\(size)")
             if size > 0 {
                 for index in 0 ..< size {
+                    print("INDEX: \(index), \(markers[index].joeID ?? "" )")
                     markers[index].distance = (self.location.distance(from: CLLocation(latitude: markers[index].coordinate.latitude, longitude: markers[index].coordinate.longitude)))/1000; // result is in meters
                 }
                 markers = markers.sorted(by:
@@ -180,7 +191,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         
         // Loads All Users To Map
         setupCategories ()
-        setupUsers ()
+        setupFCMToken ()
+        // setupUsers ()
         map.delegate = self
     }
     
@@ -340,8 +352,17 @@ extension MapViewController: MKMapViewDelegate {
                     )
                 )
             
-                self.present(alert, animated: true, completion: nil)
+                self.present(alert, animated: true, completion:
+                    {
+                        alert.view.superview?.isUserInteractionEnabled = true
+                        alert.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.alertControllerBackgroundTapped)))
+                    }
+                )
         }
+    }
+    
+    @objc func alertControllerBackgroundTapped() {
+        self.dismiss(animated: true, completion: nil)
     }
 }
 

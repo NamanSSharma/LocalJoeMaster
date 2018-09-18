@@ -81,12 +81,27 @@
 			<key>orderHint</key>
 			<integer>12</integer>
 		</dict>
+		<key>PostalAddressRow-PostalAddressRow.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>18</integer>
+		</dict>
+		<key>PostalAddressRow.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>17</integer>
+		</dict>
 		<key>Protobuf.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>13</integer>
+		</dict>
+		<key>SCLAlertView.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>19</integer>
 		</dict>
 		<key>Stripe-Stripe.xcscheme</key>
 		<dict>
@@ -101,6 +116,11 @@
 			<false/>
 			<key>orderHint</key>
 			<integer>14</integer>
+		</dict>
+		<key>SwiftyStoreKit.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>20</integer>
 		</dict>
 		<key>leveldb-library.xcscheme</key>
 		<dict>

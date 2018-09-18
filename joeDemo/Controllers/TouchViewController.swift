@@ -34,7 +34,15 @@ class TouchViewController: UIViewController {
             [
                 "fcmToken" : AppDelegate.fcmToken
             ]
-        )
+        ) {
+            (err, ref) in
+                if err != nil {
+                    print(err)
+                    return
+                }
+            
+                print("completed: \(AppDelegate.fcmToken)")
+        }
        // sideMenu()
         // Do any additional setup after loading the view.
     }

@@ -9,9 +9,6 @@
 import UIKit
 
 @IBDesignable class AMInputView: UIView,UITextFieldDelegate {
-    
-    
-    
     let animationDuration = 0.25
     
     @IBOutlet weak var contentView: UIView!
@@ -117,14 +114,13 @@ import UIKit
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        
         self.endEditing(true)
         return true
     }
     
     
     
-    //MARK: - change view
+    // MARK: - change view
     private func setViewExpandMode(expand:Bool){
     
         backViewHeightExpandConstraint.priority = UILayoutPriority(rawValue: UILayoutPriority.RawValue(expand ? 500:200))
@@ -142,7 +138,8 @@ import UIKit
             
             if expand {
             
-                let leftMargin = (-1 * ((1-scale)*(self.labelView.layer.bounds.size.width))/2 ) - 11;
+                let distanceFromScale: CGFloat = (1 - scale)
+                let leftMargin = (-1 * (distanceFromScale * (self.labelView.layer.bounds.size.width)) / 2 ) - 11;
                 self.labelView.transform = self.labelView.transform.translatedBy(x: leftMargin, y: 0)
             }
         }

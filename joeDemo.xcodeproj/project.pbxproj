@@ -99,6 +99,7 @@
 		B95C2C3D20897FEA0028A99C /* UsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewController.swift; sourceTree = "<group>"; };
 		B95C2C3F208980C40028A99C /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		B95CEDA81FCAD007003BA298 /* UIImageGif.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageGif.swift; sourceTree = "<group>"; };
+		B985B4642150AF6D0099B600 /* joeDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "joeDemo-Bridging-Header.h"; sourceTree = "<group>"; };
 		B9AFDF9F1FCAA3B200C07B26 /* MapMarkerInfoWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapMarkerInfoWindow.xib; sourceTree = "<group>"; };
 		B9AFDFA31FCAACEA00C07B26 /* NibView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibView.swift; sourceTree = "<group>"; };
 		B9B98E6F208466610021FDC3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -141,7 +142,6 @@
 		CEAA68771FB4290A00ECAB0C /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		CEAA687A1FB42E3000ECAB0C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CEB50D591FCE303A000D64A0 /* ViewJoeProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewJoeProfileController.swift; sourceTree = "<group>"; };
-		CEB8F9E920550399004483F6 /* joeDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "joeDemo-Bridging-Header.h"; sourceTree = "<group>"; };
 		CECDAB821FAD955E009B0221 /* joeDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = joeDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CECDAB851FAD955E009B0221 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CECDAB871FAD955E009B0221 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -323,6 +323,10 @@
 				B9F18E961FCAD4A100724A52 /* Default-568h@2x.png */,
 				CEA725F71FC9375D00B8C6CB /* localJoeFont.ttf */,
 				CECDAB841FAD955E009B0221 /* joeDemo */,
+				CEF4FA072058EBA8009FDF8F /* joeDemo.entitlements */,
+				B985B4642150AF6D0099B600 /* joeDemo-Bridging-Header.h */,
+				CEAA687A1FB42E3000ECAB0C /* GoogleService-Info.plist */,
+				CECDAB911FAD955E009B0221 /* Info.plist */,
 				CECDAB831FAD955E009B0221 /* Products */,
 				4AAA338856B97960EFBC114C /* Pods */,
 				D104D06EF62EF23B724650DE /* Frameworks */,
@@ -349,11 +353,7 @@
 				B951C63620FC3765006BBA82 /* SubComponents */,
 				B95C2C3A20896C7B0028A99C /* Constants */,
 				B95C2C37208968920028A99C /* Objects */,
-				CECDAB911FAD955E009B0221 /* Info.plist */,
-				CEAA687A1FB42E3000ECAB0C /* GoogleService-Info.plist */,
 				B95CEDA71FCACFD1003BA298 /* Supporting Files */,
-				CEF4FA072058EBA8009FDF8F /* joeDemo.entitlements */,
-				CEB8F9E920550399004483F6 /* joeDemo-Bridging-Header.h */,
 				B9AFDFAF1FCACDEB00C07B26 /* Layout */,
 				B9AFDFAC1FCACC8F00C07B26 /* Controllers */,
 			);
@@ -835,7 +835,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = joeDemo/joeDemo.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "iPhone Developer: Naman Sharma (TCG3M95S49)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
@@ -859,7 +859,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = joeDemo/joeDemo.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "iPhone Developer: Naman Sharma (TCG3M95S49)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;

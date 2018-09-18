@@ -49,7 +49,6 @@ class CustomAlert: UIView, Modal {
         separatorLineView.backgroundColor = UIColor.groupTableViewBackground
         dialogView.addSubview(separatorLineView)
         
-        
         let imageView = UIImageView()
         imageView.frame.origin = CGPoint(x: 8, y: separatorLineView.frame.height + separatorLineView.frame.origin.y + 8)
         imageView.frame.size = CGSize(width: dialogViewWidth - 16 , height: dialogViewWidth - 16)

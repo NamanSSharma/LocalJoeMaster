@@ -219,7 +219,7 @@ extension MessagesViewController {
             
                 self.messages = []
             
-                let key = snapshot.key
+                let _ = snapshot.key
                 guard let value = snapshot.value as? NSDictionary else {
                     return
                 }
@@ -308,37 +308,6 @@ extension MessagesViewController {
     override func didPressAccessoryButton (_ sender: UIButton!) {
         print ("Button pressed")
         self.performSegue(withIdentifier: "estimatorSegue", sender: self)
-      /*  let alertController = UIAlertController(title: "Send Quote", message: "Please enter a quote for the client to see", preferredStyle: .alert)
-        
-        let confirmAction = UIAlertAction(title: "Confirm", style: .default) { (_) in
-            if let alertTextField = alertController.textFields?.first, alertTextField.text != nil {
-                print("And the text is... \(alertTextField.text!)!")
-                let amount = alertTextField.text!;
-                // Redo later to have quote ids as properties in each user
-                let id = UUID().uuidString;
-                self.quotesRef.child(id).updateChildValues(
-                    [
-                        "senderID" : self.currentUser.id,
-                        "joeID" : self.conversationUser.id,
-                        "sent" : false,
-                        "amount" : amount,
-                        "accepted" : false,
-                        "id" : id
-                    ]
-                )
-            }
-        }
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in }
-        
-        alertController.addTextField { (textField) in
-            textField.placeholder = "Quote Price"
-        }
-        
-        alertController.addAction(confirmAction)
-        alertController.addAction(cancelAction)
-        self.present(alertController, animated: true, completion: nil) 
-       */
     }
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, attributedTextForMessageBubbleTopLabelAt indexPath: IndexPath!) -> NSAttributedString! {
