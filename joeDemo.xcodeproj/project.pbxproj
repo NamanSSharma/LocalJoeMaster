@@ -53,6 +53,28 @@
 		CE8FB22C214DCFC100363D67 /* MapMarkerInfoWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8FB22B214DCFC100363D67 /* MapMarkerInfoWindow.swift */; };
 		CE8FB22E214DCFF100363D67 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8FB22D214DCFF100363D67 /* Images.swift */; };
 		CE8FB230214DD1B700363D67 /* BottomSheetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE8FB22F214DD1B700363D67 /* BottomSheetViewController.xib */; };
+		CE8FB23821558F6F00363D67 /* pin.png in Resources */ = {isa = PBXBuildFile; fileRef = CE8FB23721558F6E00363D67 /* pin.png */; };
+		CE8FB23C2155B60600363D67 /* EditInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8FB23B2155B60600363D67 /* EditInfoController.swift */; };
+		CE8FB23E2155B72400363D67 /* EditDescriptionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8FB23D2155B72400363D67 /* EditDescriptionController.swift */; };
+		CE8FB2412156E60600363D67 /* CosmosDistrib.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8FB2402156E60600363D67 /* CosmosDistrib.swift */; };
+		CE8FB2442156E62400363D67 /* RatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8FB2422156E62400363D67 /* RatingViewController.swift */; };
+		CE8FB2572156E7FE00363D67 /* PopupDialogDefaultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8FB2472156E7FA00363D67 /* PopupDialogDefaultView.swift */; };
+		CE8FB2582156E7FE00363D67 /* PopupDialogDefaultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8FB2482156E7FB00363D67 /* PopupDialogDefaultViewController.swift */; };
+		CE8FB2592156E7FE00363D67 /* PopupDialogDefaultButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8FB2492156E7FB00363D67 /* PopupDialogDefaultButtons.swift */; };
+		CE8FB25A2156E7FE00363D67 /* PopupDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8FB24A2156E7FB00363D67 /* PopupDialog.swift */; };
+		CE8FB25B2156E7FE00363D67 /* PopupDialogContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8FB24B2156E7FB00363D67 /* PopupDialogContainerView.swift */; };
+		CE8FB25C2156E7FE00363D67 /* TransitionAnimations.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8FB24C2156E7FB00363D67 /* TransitionAnimations.swift */; };
+		CE8FB25D2156E7FE00363D67 /* UIViewController+Visibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8FB24D2156E7FC00363D67 /* UIViewController+Visibility.swift */; };
+		CE8FB25E2156E7FE00363D67 /* PopupDialogButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8FB24E2156E7FC00363D67 /* PopupDialogButton.swift */; };
+		CE8FB25F2156E7FE00363D67 /* PopupDialog+Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8FB24F2156E7FC00363D67 /* PopupDialog+Keyboard.swift */; };
+		CE8FB2602156E7FE00363D67 /* UIView+Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8FB2502156E7FC00363D67 /* UIView+Animations.swift */; };
+		CE8FB2612156E7FE00363D67 /* PopupDialogOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8FB2512156E7FC00363D67 /* PopupDialogOverlayView.swift */; };
+		CE8FB2622156E7FE00363D67 /* PresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8FB2522156E7FC00363D67 /* PresentationController.swift */; };
+		CE8FB2632156E7FE00363D67 /* InteractiveTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8FB2532156E7FD00363D67 /* InteractiveTransition.swift */; };
+		CE8FB2642156E7FE00363D67 /* PresentationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8FB2542156E7FD00363D67 /* PresentationManager.swift */; };
+		CE8FB2652156E7FE00363D67 /* UIImageView+Calculations.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8FB2552156E7FD00363D67 /* UIImageView+Calculations.swift */; };
+		CE8FB2662156E7FE00363D67 /* TransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8FB2562156E7FD00363D67 /* TransitionAnimator.swift */; };
+		CE8FB2682156EB1C00363D67 /* RatingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE8FB2672156EB1C00363D67 /* RatingViewController.xib */; };
 		CE9C3F7221377114004C418E /* SCLExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9C3F7021377114004C418E /* SCLExtensions.swift */; };
 		CE9C3F7321377114004C418E /* SCLAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9C3F7121377114004C418E /* SCLAlertView.swift */; };
 		CEA514F11FC261C5000DF26C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA514F01FC261BB000DF26C /* CoreLocation.framework */; };
@@ -135,6 +157,28 @@
 		CE8FB22B214DCFC100363D67 /* MapMarkerInfoWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapMarkerInfoWindow.swift; sourceTree = "<group>"; };
 		CE8FB22D214DCFF100363D67 /* Images.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		CE8FB22F214DD1B700363D67 /* BottomSheetViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BottomSheetViewController.xib; sourceTree = "<group>"; };
+		CE8FB23721558F6E00363D67 /* pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pin.png; sourceTree = "<group>"; };
+		CE8FB23B2155B60600363D67 /* EditInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditInfoController.swift; sourceTree = "<group>"; };
+		CE8FB23D2155B72400363D67 /* EditDescriptionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDescriptionController.swift; sourceTree = "<group>"; };
+		CE8FB2402156E60600363D67 /* CosmosDistrib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CosmosDistrib.swift; sourceTree = "<group>"; };
+		CE8FB2422156E62400363D67 /* RatingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingViewController.swift; sourceTree = "<group>"; };
+		CE8FB2472156E7FA00363D67 /* PopupDialogDefaultView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupDialogDefaultView.swift; sourceTree = "<group>"; };
+		CE8FB2482156E7FB00363D67 /* PopupDialogDefaultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupDialogDefaultViewController.swift; sourceTree = "<group>"; };
+		CE8FB2492156E7FB00363D67 /* PopupDialogDefaultButtons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupDialogDefaultButtons.swift; sourceTree = "<group>"; };
+		CE8FB24A2156E7FB00363D67 /* PopupDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupDialog.swift; sourceTree = "<group>"; };
+		CE8FB24B2156E7FB00363D67 /* PopupDialogContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupDialogContainerView.swift; sourceTree = "<group>"; };
+		CE8FB24C2156E7FB00363D67 /* TransitionAnimations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionAnimations.swift; sourceTree = "<group>"; };
+		CE8FB24D2156E7FC00363D67 /* UIViewController+Visibility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Visibility.swift"; sourceTree = "<group>"; };
+		CE8FB24E2156E7FC00363D67 /* PopupDialogButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupDialogButton.swift; sourceTree = "<group>"; };
+		CE8FB24F2156E7FC00363D67 /* PopupDialog+Keyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PopupDialog+Keyboard.swift"; sourceTree = "<group>"; };
+		CE8FB2502156E7FC00363D67 /* UIView+Animations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Animations.swift"; sourceTree = "<group>"; };
+		CE8FB2512156E7FC00363D67 /* PopupDialogOverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupDialogOverlayView.swift; sourceTree = "<group>"; };
+		CE8FB2522156E7FC00363D67 /* PresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationController.swift; sourceTree = "<group>"; };
+		CE8FB2532156E7FD00363D67 /* InteractiveTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InteractiveTransition.swift; sourceTree = "<group>"; };
+		CE8FB2542156E7FD00363D67 /* PresentationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationManager.swift; sourceTree = "<group>"; };
+		CE8FB2552156E7FD00363D67 /* UIImageView+Calculations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Calculations.swift"; sourceTree = "<group>"; };
+		CE8FB2562156E7FD00363D67 /* TransitionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionAnimator.swift; sourceTree = "<group>"; };
+		CE8FB2672156EB1C00363D67 /* RatingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RatingViewController.xib; sourceTree = "<group>"; };
 		CE9C3F7021377114004C418E /* SCLExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCLExtensions.swift; sourceTree = "<group>"; };
 		CE9C3F7121377114004C418E /* SCLAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCLAlertView.swift; sourceTree = "<group>"; };
 		CEA514F01FC261BB000DF26C /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -253,6 +297,8 @@
 				CE2E5AA4210E951C00173F3C /* NewLoginController.swift */,
 				CE2E5A8E210A939900173F3C /* ProfileViewController.swift */,
 				CE2E5A90210A93B400173F3C /* DetailViewController.swift */,
+				CE8FB23B2155B60600363D67 /* EditInfoController.swift */,
+				CE8FB23D2155B72400363D67 /* EditDescriptionController.swift */,
 				B940605F20B511AE00362C74 /* LocalJoeEstimatorController.swift */,
 				CEDB7EAD211FE2FE00EE5562 /* paper.swift */,
 				CE07A0541FBF657B00823CE6 /* BecomeJoeController.swift */,
@@ -285,6 +331,9 @@
 				CE8FB223214DC9EE00363D67 /* Main.storyboard */,
 				B9AFDF9F1FCAA3B200C07B26 /* MapMarkerInfoWindow.xib */,
 				B9B98E6E208466610021FDC3 /* LaunchScreen.storyboard */,
+				CE8FB2422156E62400363D67 /* RatingViewController.swift */,
+				CE8FB2672156EB1C00363D67 /* RatingViewController.xib */,
+				CE8FB2402156E60600363D67 /* CosmosDistrib.swift */,
 			);
 			path = Layout;
 			sourceTree = "<group>";
@@ -306,6 +355,37 @@
 			path = AMInputView;
 			sourceTree = "<group>";
 		};
+		CE8FB23F2156E5DF00363D67 /* PopupDialog */ = {
+			isa = PBXGroup;
+			children = (
+				CE8FB2462156E7E800363D67 /* Classes */,
+			);
+			path = PopupDialog;
+			sourceTree = "<group>";
+		};
+		CE8FB2462156E7E800363D67 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				CE8FB2532156E7FD00363D67 /* InteractiveTransition.swift */,
+				CE8FB24A2156E7FB00363D67 /* PopupDialog.swift */,
+				CE8FB24F2156E7FC00363D67 /* PopupDialog+Keyboard.swift */,
+				CE8FB24E2156E7FC00363D67 /* PopupDialogButton.swift */,
+				CE8FB24B2156E7FB00363D67 /* PopupDialogContainerView.swift */,
+				CE8FB2492156E7FB00363D67 /* PopupDialogDefaultButtons.swift */,
+				CE8FB2472156E7FA00363D67 /* PopupDialogDefaultView.swift */,
+				CE8FB2482156E7FB00363D67 /* PopupDialogDefaultViewController.swift */,
+				CE8FB2512156E7FC00363D67 /* PopupDialogOverlayView.swift */,
+				CE8FB2522156E7FC00363D67 /* PresentationController.swift */,
+				CE8FB2542156E7FD00363D67 /* PresentationManager.swift */,
+				CE8FB24C2156E7FB00363D67 /* TransitionAnimations.swift */,
+				CE8FB2562156E7FD00363D67 /* TransitionAnimator.swift */,
+				CE8FB2552156E7FD00363D67 /* UIImageView+Calculations.swift */,
+				CE8FB2502156E7FC00363D67 /* UIView+Animations.swift */,
+				CE8FB24D2156E7FC00363D67 /* UIViewController+Visibility.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
 		CE9C3F6F213770E6004C418E /* SCLAlertView */ = {
 			isa = PBXGroup;
 			children = (
@@ -320,6 +400,7 @@
 			children = (
 				CE2E5A8C21097FEE00173F3C /* coin_dollar.png */,
 				CE5ACB5F20392AD30037F105 /* Local-Joe-Logo.png */,
+				CE8FB23721558F6E00363D67 /* pin.png */,
 				B9F18E961FCAD4A100724A52 /* Default-568h@2x.png */,
 				CEA725F71FC9375D00B8C6CB /* localJoeFont.ttf */,
 				CECDAB841FAD955E009B0221 /* joeDemo */,
@@ -344,6 +425,7 @@
 		CECDAB841FAD955E009B0221 /* joeDemo */ = {
 			isa = PBXGroup;
 			children = (
+				CE8FB23F2156E5DF00363D67 /* PopupDialog */,
 				CE9C3F6F213770E6004C418E /* SCLAlertView */,
 				CEDB7ED6211FE57B00EE5562 /* Fonts */,
 				CEDB7EB5211FE3DD00EE5562 /* Source */,
@@ -558,6 +640,8 @@
 				CE2E5AA3210E950A00173F3C /* AMInputView.xib in Resources */,
 				CEDB7EDD211FE58300EE5562 /* Nunito-Bold.ttf in Resources */,
 				B9F18E971FCAD4A100724A52 /* Default-568h@2x.png in Resources */,
+				CE8FB2682156EB1C00363D67 /* RatingViewController.xib in Resources */,
+				CE8FB23821558F6F00363D67 /* pin.png in Resources */,
 				CEDB7EDC211FE58300EE5562 /* Nunito-Light.ttf in Resources */,
 				CEDB7EDE211FE58300EE5562 /* OpenSans-Regular.ttf in Resources */,
 			);
@@ -609,11 +693,13 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-joeDemo/Pods-joeDemo-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/DynamicBlurView/DynamicBlurView.framework",
 				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/JSQMessagesViewController/JSQMessagesViewController.framework",
 				"${BUILT_PRODUCTS_DIR}/JSQSystemSoundPlayer/JSQSystemSoundPlayer.framework",
+				"${BUILT_PRODUCTS_DIR}/PopupDialog/PopupDialog.framework",
 				"${BUILT_PRODUCTS_DIR}/PostalAddressRow/PostalAddressRow.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/SCLAlertView/SCLAlertView.framework",
@@ -624,11 +710,13 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DynamicBlurView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Eureka.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSQMessagesViewController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSQSystemSoundPlayer.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PopupDialog.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PostalAddressRow.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SCLAlertView.framework",
@@ -649,35 +737,47 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE8FB25D2156E7FE00363D67 /* UIViewController+Visibility.swift in Sources */,
 				CEDB7ECD211FE4A800EE5562 /* OnboardingContantViewItem.swift in Sources */,
 				CEDB7EC8211FE48E00EE5562 /* ConstraintsHelper.swift in Sources */,
 				B9E6A4E0208983BA005873D7 /* User.swift in Sources */,
+				CE8FB2412156E60600363D67 /* CosmosDistrib.swift in Sources */,
 				CE2E5A91210A93B400173F3C /* DetailViewController.swift in Sources */,
 				CECDAB881FAD955E009B0221 /* ViewController.swift in Sources */,
+				CE8FB2642156E7FE00363D67 /* PresentationManager.swift in Sources */,
 				CE2E5AC3211BC34700173F3C /* MapJoe.swift in Sources */,
 				B95C2C3C20896C880028A99C /* FirebaseDatabaseRefs.swift in Sources */,
+				CE8FB2652156E7FE00363D67 /* UIImageView+Calculations.swift in Sources */,
 				CEDB7ED5211FE55F00EE5562 /* PageView.swift in Sources */,
 				CE07A0551FBF657B00823CE6 /* BecomeJoeController.swift in Sources */,
 				B945F9BE208478BE00582B69 /* CategoriesViewController.swift in Sources */,
 				CEDB7EC2211FE46B00EE5562 /* GestureControl.swift in Sources */,
 				CEAA68781FB4290A00ECAB0C /* LoginController.swift in Sources */,
+				CE8FB25E2156E7FE00363D67 /* PopupDialogButton.swift in Sources */,
+				CE8FB25B2156E7FE00363D67 /* PopupDialogContainerView.swift in Sources */,
 				B9EC1094208D51E000FEC212 /* ChatGroupViewController.swift in Sources */,
 				CE213FC81FB0114B00E544C7 /* ExploreController.swift in Sources */,
 				CE2E5AA2210E950A00173F3C /* AMInputView.swift in Sources */,
+				CE8FB25A2156E7FE00363D67 /* PopupDialog.swift in Sources */,
 				CE8FB22A214DCF9300363D67 /* BottomSheetViewController.swift in Sources */,
 				CECDAB861FAD955E009B0221 /* AppDelegate.swift in Sources */,
 				CE2E5A94210A94D400173F3C /* TableCell.swift in Sources */,
+				CE8FB2612156E7FE00363D67 /* PopupDialogOverlayView.swift in Sources */,
 				CEB50D5A1FCE303A000D64A0 /* ViewJoeProfileController.swift in Sources */,
 				CEDB7EC0211FE42000EE5562 /* PaperOnboardingDelegate.swift in Sources */,
+				CE8FB2442156E62400363D67 /* RatingViewController.swift in Sources */,
 				CE0FF581202272E700FD60D9 /* ViewPaymentsController.swift in Sources */,
 				CE8FB22E214DCFF100363D67 /* Images.swift in Sources */,
 				B9EC108E208C276600FEC212 /* MessagesViewController.swift in Sources */,
 				CEDB7EBE211FE42000EE5562 /* PaperOnboardingDataSource.swift in Sources */,
+				CE8FB2572156E7FE00363D67 /* PopupDialogDefaultView.swift in Sources */,
 				CE9C3F7221377114004C418E /* SCLExtensions.swift in Sources */,
 				CE8FB22C214DCFC100363D67 /* MapMarkerInfoWindow.swift in Sources */,
 				B9D1F29F1FCBC751002C35C1 /* Constants.swift in Sources */,
 				B9EC1092208D511400FEC212 /* ChatCell.swift in Sources */,
 				CEDB7EAE211FE2FE00EE5562 /* paper.swift in Sources */,
+				CE8FB2632156E7FE00363D67 /* InteractiveTransition.swift in Sources */,
+				CE8FB2592156E7FE00363D67 /* PopupDialogDefaultButtons.swift in Sources */,
 				CE9C3F7321377114004C418E /* SCLAlertView.swift in Sources */,
 				B940606020B511AE00362C74 /* LocalJoeEstimatorController.swift in Sources */,
 				B9AFDFA41FCAACEA00C07B26 /* NibView.swift in Sources */,
@@ -687,14 +787,20 @@
 				CE2E5A8F210A939900173F3C /* ProfileViewController.swift in Sources */,
 				B95C2C3E20897FEA0028A99C /* UsersViewController.swift in Sources */,
 				CE07A0571FBF781400823CE6 /* Reachability.swift in Sources */,
+				CE8FB2622156E7FE00363D67 /* PresentationController.swift in Sources */,
 				B911802820A12D610076EA9D /* ChatLink.swift in Sources */,
 				CEDB7ED1211FE54500EE5562 /* PageViewItem.swift in Sources */,
 				CEDB7EC4211FE47200EE5562 /* FillAnimationView.swift in Sources */,
 				CE213FC61FAFFCCA00E544C7 /* TouchViewController.swift in Sources */,
 				B9D1F29D1FCBC4F0002C35C1 /* ChatViewController.swift in Sources */,
+				CE8FB25F2156E7FE00363D67 /* PopupDialog+Keyboard.swift in Sources */,
+				CE8FB2662156E7FE00363D67 /* TransitionAnimator.swift in Sources */,
+				CE8FB25C2156E7FE00363D67 /* TransitionAnimations.swift in Sources */,
 				CEDB7EBF211FE42000EE5562 /* PaperOnboarding.swift in Sources */,
 				CEDB7EC7211FE48E00EE5562 /* Configuring.swift in Sources */,
 				E14A157D2034E60300B8EFBE /* StripePaymentVC.swift in Sources */,
+				CE8FB23E2155B72400363D67 /* EditDescriptionController.swift in Sources */,
+				CE8FB2602156E7FE00363D67 /* UIView+Animations.swift in Sources */,
 				CE213FC41FAFFA8200E544C7 /* SWRevealViewController.m in Sources */,
 				CE2E5AA5210E951C00173F3C /* NewLoginController.swift in Sources */,
 				B95CEDA91FCAD007003BA298 /* UIImageGif.swift in Sources */,
@@ -704,7 +810,9 @@
 				CEDB7ED3211FE55400EE5562 /* PageContainer.swift in Sources */,
 				B951C63A20FC3792006BBA82 /* CustomAlert.swift in Sources */,
 				CEDB7ECA211FE49A00EE5562 /* OnboardingContentView.swift in Sources */,
+				CE8FB23C2155B60600363D67 /* EditInfoController.swift in Sources */,
 				CE8FB228214DCB5000363D67 /* MapViewController.swift in Sources */,
+				CE8FB2582156E7FE00363D67 /* PopupDialogDefaultViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

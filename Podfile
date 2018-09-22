@@ -19,4 +19,5 @@ pod 'CardIO'
 pod 'PostalAddressRow'
 pod 'SwiftyStoreKit'
 pod 'SCLAlertView'
+pod 'PopupDialog', '~> 0.8'
 end

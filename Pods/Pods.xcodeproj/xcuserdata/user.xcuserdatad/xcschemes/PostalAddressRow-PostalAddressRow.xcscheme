@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B56E52014F984FF6EC0FAE829D67FE4F"
+               BlueprintIdentifier = "082FDF6C2E1C7473618E2B5249937BB3"
                BuildableName = "PostalAddressRow.bundle"
                BlueprintName = "PostalAddressRow-PostalAddressRow"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -47,7 +47,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B56E52014F984FF6EC0FAE829D67FE4F"
+            BlueprintIdentifier = "082FDF6C2E1C7473618E2B5249937BB3"
             BuildableName = "PostalAddressRow.bundle"
             BlueprintName = "PostalAddressRow-PostalAddressRow"
             ReferencedContainer = "container:Pods.xcodeproj">

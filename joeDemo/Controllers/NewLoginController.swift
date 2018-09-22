@@ -163,7 +163,7 @@ class NewLoginController: UIViewController {
             toggleViewMode(animated: true)
         }else{
             //signup
-            let userName = signupEmailInputView.textFieldView.text
+            let userName = (signupEmailInputView.textFieldView.text)?.capitalized
             let userEmail = signupPasswordInputView.textFieldView.text
             let userPass = signupPasswordConfirmInputView.textFieldView.text
             let senderUUID  = UUID ().uuidString
@@ -326,6 +326,8 @@ class NewLoginController: UIViewController {
     override var prefersStatusBarHidden: Bool {
         return true
     }
+    
 }
+
 
 

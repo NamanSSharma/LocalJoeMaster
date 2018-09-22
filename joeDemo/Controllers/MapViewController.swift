@@ -351,6 +351,10 @@ extension MapViewController: MKMapViewDelegate {
                         }
                     )
                 )
+                
+            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: {(action:UIAlertAction!) in
+                print("cancelled")
+            }))
             
                 self.present(alert, animated: true, completion:
                     {

@@ -1,5 +1,6 @@
 PODS:
   - CardIO (5.4.1)
+  - DynamicBlurView (2.0.2)
   - Eureka (4.2.0)
   - Firebase/Auth (5.4.1):
     - Firebase/CoreOnly
@@ -61,6 +62,8 @@ PODS:
     - nanopb/encode (= 0.3.8)
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
+  - PopupDialog (0.8.0):
+    - DynamicBlurView (~> 2.0)
   - PostalAddressRow (2.1.0):
     - Eureka (~> 4.0)
   - Protobuf (3.6.0)
@@ -78,6 +81,7 @@ DEPENDENCIES:
   - Firebase/Storage
   - GoogleMaps
   - JSQMessagesViewController
+  - PopupDialog (~> 0.8)
   - PostalAddressRow
   - SCLAlertView
   - Stripe
@@ -86,6 +90,7 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - CardIO
+    - DynamicBlurView
     - Eureka
     - Firebase
     - FirebaseAnalytics
@@ -102,6 +107,7 @@ SPEC REPOS:
     - JSQSystemSoundPlayer
     - leveldb-library
     - nanopb
+    - PopupDialog
     - PostalAddressRow
     - Protobuf
     - SCLAlertView
@@ -110,6 +116,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   CardIO: 56983b39b62f495fc6dae9ad7cf875143df06443
+  DynamicBlurView: aa6db4defc6e537eb86fc5e58dd3991666178399
   Eureka: 0748c7bbb2560130e43c7bfa83e99c98854a1f42
   Firebase: 355bd535bfdacaa82a7fe8d9784115edefd6fc03
   FirebaseAnalytics: b3628aea54c50464c32c393fb2ea032566e7ecc2
@@ -126,12 +133,13 @@ SPEC CHECKSUMS:
   JSQSystemSoundPlayer: c5850e77a4363ffd374cd851154b9af93264ed8d
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
+  PopupDialog: 11347197b6ac3e0548ac445d40ce68d1d407e9a0
   PostalAddressRow: 291d38a46a859a977d3acdb4cdf32af63da9810b
   Protobuf: 0fc0ad8bec688b2a3017a139953e01374fedbd5f
   SCLAlertView: 6a77bb2edfc65e04dbe57725546cb4107a506b85
   Stripe: 4f043bb840721b1f30492fa77790bbf9e3508ab0
   SwiftyStoreKit: 9ebd15971e28aa2989825fe8bc092eb5f75dd0b2
 
-PODFILE CHECKSUM: 929243bd209d0b9b9619939d54950781d5e99520
+PODFILE CHECKSUM: b338e96b59125c329ab184d11ee4ebe6d75547a2
 
 COCOAPODS: 1.5.2

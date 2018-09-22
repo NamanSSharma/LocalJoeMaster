@@ -103,14 +103,20 @@ class ProfileViewController: UITableViewController, MFMailComposeViewControllerD
         
         if(indexPath.row == 1)
         { //Change Password
-            let user = Auth.auth().currentUser
-            if let user = user {
-                Auth.auth().sendPasswordReset(withEmail: (user.email)!) { (error) in}
-                let alert = UIAlertController(title: "Success!", message: "Check your email to reset your password", preferredStyle: UIAlertControllerStyle.alert)
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
-                
-            }
+            let alert = UIAlertController(title: "Change Password", message: "Are you sure?", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(action:UIAlertAction!) in
+                let user = Auth.auth().currentUser
+                if let user = user {
+                    Auth.auth().sendPasswordReset(withEmail: (user.email)!) { (error) in}
+                    let alert = UIAlertController(title: "Success!", message: "Check your email to reset your password", preferredStyle: UIAlertControllerStyle.alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                    
+                }
+            }))
+            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+           
             
         }
         

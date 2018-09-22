@@ -53,6 +53,7 @@ class UsersViewController : UIViewController, UITableViewDataSource, UITableView
                     print(key)
                     print(value)
                     if let joeType    = value?["joeType"]    as? String,
+                       let joeStatus = value?["status"]   as? String,
                        let email      = value?["email"]      as? String,
                        let name       = value?["name"]       as? String,
                        let numPhotos  = value?["numPhotos"]  as? String {
@@ -60,7 +61,7 @@ class UsersViewController : UIViewController, UITableViewDataSource, UITableView
                         print (joeType + " " + self.jobTypeId)
                         
                         // numPhotos should be changed to int in database
-                        if (joeType == self.jobTypeId) {
+                        if (joeType == self.jobTypeId && joeStatus == "approved") {
                             self.usersArray.append (User (id: key, email: email, joeType: joeType, name: name, numPhotos: Int (numPhotos)!))
                         }
                         

@@ -120,7 +120,6 @@ class BecomeJoeController : FormViewController, MFMailComposeViewControllerDeleg
                         $0.cityPlaceholder = "City"
                         $0.postalCodePlaceholder = "Zip code"
                     }
-                   
                     
                    
                     +++ Section("What is your phone number? :")
@@ -153,49 +152,56 @@ class BecomeJoeController : FormViewController, MFMailComposeViewControllerDeleg
                             }
                             
                             let dict       = self.form.values (includeHidden: true)
-                            let joeEmail = dict["email"] as? String ?? ""
-                            // let joeBirthday = dict["joeBirthday"] as! String
+                            let date = dict["joeBirthday"] as! Date
+                            let joeBirthday = date.toString(dateFormat: "dd-MM-YYYY") as? String ?? "Other"
                             let joeGender = dict["joeGender"] as? String ?? "Other"
                             let joeType    = dict["joeType"] as! String ?? ""
                             // let joeAddress = dict["joeAddress"] as! String
+                          //  print(dict["joeAddress"] as! String)
                             let joePhone = dict["Phone"] as? String ?? ""
                             let joeDescription = dict["joeDescription"] as? String ?? ""
-                            // let daysToWork = dict["daysToWork"] as! String
                             
-                            let jobTypeFiltered = self.jobTypesArray.filter { $0.name == joeType }
+                            if(joeDescription.count < 50){
+                                let alert = UIAlertController(title: "Edit Description", message: "the minimum length for the description is 50 characters", preferredStyle: UIAlertControllerStyle.alert)
+                                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: {(action:UIAlertAction!) in
+                                }))
+                                self.present(alert, animated: true, completion: nil)
+                            }else{
                             
-                            if jobTypeFiltered.isEmpty {
-                                return;
-                            }
-                            
-                            let joeId = jobTypeFiltered[0].id
-                            let senderUUID  = UUID ().uuidString
-                            
-                            //store information in database
-                            let values = [
-                               "joeGender"  : joeGender,
-                                "joeEmail"  : joeEmail,
-                                "joeType"   : joeId,
-                               // "daysToWork" : daysToWork,
-                               // "joeAddress" : joeAddress,
-                                "joePhone" : joePhone,
-                                "joeDescription": joeDescription,
-                               "online"     : "online",
-                               "status"     : "unapproved",
-                               "senderId"   : senderUUID,
-                               "id"         : userID,
-                             ]
-                            
-                            usersRef.updateChildValues(values, withCompletionBlock: {
-                                (err,ref) in
-                                    if err != nil {
-                                        print (err as Any)
-                                        return
-                                    }
-                                    print("Saved user successfully into Firebase DB")
-
+                                let jobTypeFiltered = self.jobTypesArray.filter { $0.name == joeType }
+                                
+                                if jobTypeFiltered.isEmpty {
+                                    return;
                                 }
-                            )
+                                
+                                let joeId = jobTypeFiltered[0].id
+                                let senderUUID  = UUID ().uuidString
+                                
+                                //store information in database
+                                let values = [
+                                   "joeGender"  : joeGender,
+                                    "joeType"   : joeId,
+                                    "joeBirthday":joeBirthday,
+                                   // "joeAddress" : joeAddress,
+                                    "joePhone" : joePhone,
+                                    "joeDescription": joeDescription,
+                                   "online"     : "online",
+                                   "status"     : "unapproved",
+                                   "senderId"   : senderUUID,
+                                   "id"         : userID,
+                                 ]
+                                
+                                usersRef.updateChildValues(values, withCompletionBlock: {
+                                    (err,ref) in
+                                        if err != nil {
+                                            print (err as Any)
+                                            return
+                                        }
+                                        print("Saved user successfully into Firebase DB")
+
+                                    }
+                                )
+                            }
                             
                 }
                 
@@ -203,4 +209,14 @@ class BecomeJoeController : FormViewController, MFMailComposeViewControllerDeleg
         )
        
     }
+}
+extension Date
+{
+    func toString( dateFormat format  : String ) -> String
+    {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = format
+        return dateFormatter.string(from: self)
+    }
+    
 }

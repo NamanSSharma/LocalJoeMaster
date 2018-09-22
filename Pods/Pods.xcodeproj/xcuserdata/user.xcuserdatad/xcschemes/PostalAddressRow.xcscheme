@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "92D6A7DF09F8279843E3D86B087D29C9"
+               BlueprintIdentifier = "40A086AC20E9FA5CBABF4F80ED7DC7AB"
                BlueprintName = "PostalAddressRow"
                ReferencedContainer = "container:Pods.xcodeproj"
                BuildableName = "PostalAddressRow.framework">
