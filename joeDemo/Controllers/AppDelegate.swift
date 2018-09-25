@@ -37,7 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         requestNotificationAuthorization(application: application)
         if let userInfo = launchOptions?[UIApplicationLaunchOptionsKey.remoteNotification] {
             NSLog("[RemoteNotification] applicationState: \(applicationStateString) didFinishLaunchingWithOptions for iOS9: \(userInfo)")
-            //TODO: Handle background notification
+            // TODO: Handle background notification
         }
         
         // test key
@@ -94,8 +94,11 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         let userInfo = notification.request.content.userInfo
         NSLog("[UserNotificationCenter] applicationState: \(applicationStateString) willPresentNotification: \(userInfo)")
-        //TODO: Handle foreground notification
+        // TODO: Handle foreground notification
         completionHandler([.alert])
+        let message: String = userInfo["message"] as? String ?? "";
+        print("MESSAGE: \(message)")
+        presetNotificationAlert(message: message)
     }
     
     // iOS10+, called when received response (default open, dismiss or custom action) for a notification
@@ -128,52 +131,27 @@ extension AppDelegate : MessagingDelegate {
         NSLog("[RemoteNotification] didRefreshRegistrationToken: \(fcmToken)")
     }
     
+    private func presetNotificationAlert(message: String) {
+        let alert = UIAlertController(title: message, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.cancel, handler: nil));
+        
+        // show alert
+        let alertWindow = UIWindow(frame: UIScreen.main.bounds)
+        alertWindow.rootViewController = UIViewController()
+        alertWindow.windowLevel = UIWindowLevelAlert + 1;
+        alertWindow.makeKeyAndVisible()
+        alertWindow.rootViewController?.present(alert, animated: true, completion: nil)
+    }
+    
     // iOS9, called when presenting notification in foreground
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
         NSLog("[RemoteNotification] applicationState: \(applicationStateString) didReceiveRemoteNotification for iOS9: \(userInfo)")
         if UIApplication.shared.applicationState == .active {
-            let amount:String = userInfo["amount"] as? String ?? "";
-            let quoteID:String = userInfo["quoteID"] as? String ?? "";
-            let userID:String = userInfo["userID"] as? String ?? "";
-            let lat:String = userInfo["lat"] as? String ?? "";
-            let lng:String = userInfo["lng"] as? String ?? "";
-            print(lat)
-            print(lng)
-            let alert = UIAlertController(title: "Quote", message: "$\(amount)", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "Accept", style: UIAlertActionStyle.default, handler:
-                {
-                    (alertAction: UIAlertAction!) in
-                    let quoteRef = self.ref.child (FirebaseDatabaseRefs.quotes).child (quoteID);
-                    quoteRef.updateChildValues(
-                        [
-                            "accepted" : true
-                        ]
-                    )
-                    if let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ETA") as? LocalJoeEstimator {
-                       // controller.userID = userID
-                       // controller.lat1 = lat as NSString;
-                       // controller.lng1 = lng as NSString;
-                        if let window = self.window, let rootViewController = window.rootViewController {
-                            var currentController = rootViewController
-                            while let presentedController = currentController.presentedViewController {
-                                currentController = presentedController
-                            }
-                            currentController.present(controller, animated: true, completion: nil)
-                        }
-                    }
-            }
-                )
-            );
-            alert.addAction(UIAlertAction(title: "Decline", style: UIAlertActionStyle.cancel, handler: nil));
-            
-            // show alert
-            let alertWindow = UIWindow(frame: UIScreen.main.bounds)
-            alertWindow.rootViewController = UIViewController()
-            alertWindow.windowLevel = UIWindowLevelAlert + 1;
-            alertWindow.makeKeyAndVisible()
-            alertWindow.rootViewController?.present(alert, animated: true, completion: nil)
+            let message: String = userInfo["message"] as? String ?? "";
+            print("MESSAGE: \(message)")
+            presetNotificationAlert(message: message)
         } else {
-            //TODO: Handle background notification
+            // TODO: Handle background notification
         }
     }
 }

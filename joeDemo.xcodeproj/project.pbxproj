@@ -86,7 +86,6 @@
 		CECDAB881FAD955E009B0221 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECDAB871FAD955E009B0221 /* ViewController.swift */; };
 		CECDAB8D1FAD955E009B0221 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CECDAB8C1FAD955E009B0221 /* Assets.xcassets */; };
 		CEDB7EAE211FE2FE00EE5562 /* paper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDB7EAD211FE2FE00EE5562 /* paper.swift */; };
-		CEDB7EB4211FE3CE00EE5562 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CEDB7EB2211FE3CE00EE5562 /* Info.plist */; };
 		CEDB7EBE211FE42000EE5562 /* PaperOnboardingDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDB7EBB211FE41F00EE5562 /* PaperOnboardingDataSource.swift */; };
 		CEDB7EBF211FE42000EE5562 /* PaperOnboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDB7EBC211FE42000EE5562 /* PaperOnboarding.swift */; };
 		CEDB7EC0211FE42000EE5562 /* PaperOnboardingDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDB7EBD211FE42000EE5562 /* PaperOnboardingDelegate.swift */; };
@@ -124,6 +123,7 @@
 		B985B4642150AF6D0099B600 /* joeDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "joeDemo-Bridging-Header.h"; sourceTree = "<group>"; };
 		B9AFDF9F1FCAA3B200C07B26 /* MapMarkerInfoWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapMarkerInfoWindow.xib; sourceTree = "<group>"; };
 		B9AFDFA31FCAACEA00C07B26 /* NibView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibView.swift; sourceTree = "<group>"; };
+		B9B7EF6B215A000100358E87 /* info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = info.plist; sourceTree = "<group>"; };
 		B9B98E6F208466610021FDC3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B9D1F29C1FCBC4F0002C35C1 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		B9D1F29E1FCBC751002C35C1 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -190,7 +190,6 @@
 		CECDAB851FAD955E009B0221 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CECDAB871FAD955E009B0221 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		CECDAB8C1FAD955E009B0221 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		CECDAB911FAD955E009B0221 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CEDB7EAD211FE2FE00EE5562 /* paper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = paper.swift; sourceTree = "<group>"; };
 		CEDB7EB2211FE3CE00EE5562 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CEDB7EB3211FE3CE00EE5562 /* PaperOnboarding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaperOnboarding.h; sourceTree = "<group>"; };
@@ -291,9 +290,9 @@
 		B9AFDFAC1FCACC8F00C07B26 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				CECDAB851FAD955E009B0221 /* AppDelegate.swift */,
 				CE8FB229214DCF9300363D67 /* BottomSheetViewController.swift */,
 				CE8FB227214DCB5000363D67 /* MapViewController.swift */,
-				CECDAB851FAD955E009B0221 /* AppDelegate.swift */,
 				CE2E5AA4210E951C00173F3C /* NewLoginController.swift */,
 				CE2E5A8E210A939900173F3C /* ProfileViewController.swift */,
 				CE2E5A90210A93B400173F3C /* DetailViewController.swift */,
@@ -398,16 +397,16 @@
 		CECDAB791FAD955E009B0221 = {
 			isa = PBXGroup;
 			children = (
+				B9B7EF6B215A000100358E87 /* info.plist */,
 				CE2E5A8C21097FEE00173F3C /* coin_dollar.png */,
 				CE5ACB5F20392AD30037F105 /* Local-Joe-Logo.png */,
 				CE8FB23721558F6E00363D67 /* pin.png */,
 				B9F18E961FCAD4A100724A52 /* Default-568h@2x.png */,
 				CEA725F71FC9375D00B8C6CB /* localJoeFont.ttf */,
-				CECDAB841FAD955E009B0221 /* joeDemo */,
 				CEF4FA072058EBA8009FDF8F /* joeDemo.entitlements */,
 				B985B4642150AF6D0099B600 /* joeDemo-Bridging-Header.h */,
 				CEAA687A1FB42E3000ECAB0C /* GoogleService-Info.plist */,
-				CECDAB911FAD955E009B0221 /* Info.plist */,
+				CECDAB841FAD955E009B0221 /* joeDemo */,
 				CECDAB831FAD955E009B0221 /* Products */,
 				4AAA338856B97960EFBC114C /* Pods */,
 				D104D06EF62EF23B724650DE /* Frameworks */,
@@ -626,7 +625,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEDB7EDB211FE58300EE5562 /* Nunito-Regular.ttf in Resources */,
-				CEDB7EB4211FE3CE00EE5562 /* Info.plist in Resources */,
 				CE2E5A8D21097FEF00173F3C /* coin_dollar.png in Resources */,
 				B9B98E70208466610021FDC3 /* LaunchScreen.storyboard in Resources */,
 				CEA725F81FC9375E00B8C6CB /* localJoeFont.ttf in Resources */,
@@ -951,7 +949,7 @@
 				INFOPLIST_FILE = joeDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.namansharma.localJoeApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.naman.localJoe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "joeDemo/joeDemo-Bridging-Header.h";
@@ -975,7 +973,7 @@
 				INFOPLIST_FILE = joeDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.namansharma.localJoeApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.naman.localJoe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "joeDemo/joeDemo-Bridging-Header.h";
