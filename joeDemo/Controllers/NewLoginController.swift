@@ -254,6 +254,7 @@ class NewLoginController: UIViewController {
             
             // rotate and scale signup button
             let scaleSignup:CGFloat = self.mode == .signup ? 1:0.4
+            // USE Double.pi / 2
             let rotateAngleSignup:CGFloat = self.mode == .signup ? 0:CGFloat(-M_PI_2)
             
             var transformSignup = CGAffineTransform(scaleX: scaleSignup, y: scaleSignup)
