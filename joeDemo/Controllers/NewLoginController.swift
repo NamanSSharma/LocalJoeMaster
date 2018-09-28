@@ -174,7 +174,7 @@ class NewLoginController: UIViewController {
                 if newUser != nil
                 {   //Successful
                     print("SUCCESS")
-                    let values = ["name": userName!, "email": userEmail!, "joeType": "none", "numPhotos": "0",                                "senderId"   : senderUUID] //set new user values
+                    let values = ["name": userName!, "email": userEmail!, "joeType": "none", "numPhotos": "0", "senderId"   : senderUUID]//, "showTutorial":"yes"] //set new user values
                     let userID : String = (Auth.auth().currentUser?.uid)!
                     let usersRef = self.ref.child("users").child(userID);
                     usersRef.updateChildValues(values, withCompletionBlock: {(err,ref) in //put the values into database

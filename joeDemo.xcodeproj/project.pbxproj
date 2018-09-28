@@ -75,6 +75,9 @@
 		CE8FB2652156E7FE00363D67 /* UIImageView+Calculations.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8FB2552156E7FD00363D67 /* UIImageView+Calculations.swift */; };
 		CE8FB2662156E7FE00363D67 /* TransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8FB2562156E7FD00363D67 /* TransitionAnimator.swift */; };
 		CE8FB2682156EB1C00363D67 /* RatingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE8FB2672156EB1C00363D67 /* RatingViewController.xib */; };
+		CE8FB26A215B17C000363D67 /* Walkthrough.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE8FB269215B17BF00363D67 /* Walkthrough.storyboard */; };
+		CE8FB271215B188F00363D67 /* BWWalkthroughPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8FB26F215B188F00363D67 /* BWWalkthroughPageViewController.swift */; };
+		CE8FB272215B188F00363D67 /* BWWalkthroughViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8FB270215B188F00363D67 /* BWWalkthroughViewController.swift */; };
 		CE9C3F7221377114004C418E /* SCLExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9C3F7021377114004C418E /* SCLExtensions.swift */; };
 		CE9C3F7321377114004C418E /* SCLAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9C3F7121377114004C418E /* SCLAlertView.swift */; };
 		CEA514F11FC261C5000DF26C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA514F01FC261BB000DF26C /* CoreLocation.framework */; };
@@ -179,6 +182,10 @@
 		CE8FB2552156E7FD00363D67 /* UIImageView+Calculations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Calculations.swift"; sourceTree = "<group>"; };
 		CE8FB2562156E7FD00363D67 /* TransitionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionAnimator.swift; sourceTree = "<group>"; };
 		CE8FB2672156EB1C00363D67 /* RatingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RatingViewController.xib; sourceTree = "<group>"; };
+		CE8FB269215B17BF00363D67 /* Walkthrough.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Walkthrough.storyboard; sourceTree = "<group>"; };
+		CE8FB26E215B188E00363D67 /* BWWalkthrough.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BWWalkthrough.h; sourceTree = "<group>"; };
+		CE8FB26F215B188F00363D67 /* BWWalkthroughPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BWWalkthroughPageViewController.swift; sourceTree = "<group>"; };
+		CE8FB270215B188F00363D67 /* BWWalkthroughViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BWWalkthroughViewController.swift; sourceTree = "<group>"; };
 		CE9C3F7021377114004C418E /* SCLExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCLExtensions.swift; sourceTree = "<group>"; };
 		CE9C3F7121377114004C418E /* SCLAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCLAlertView.swift; sourceTree = "<group>"; };
 		CEA514F01FC261BB000DF26C /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -331,6 +338,7 @@
 				CE8FB223214DC9EE00363D67 /* Main.storyboard */,
 				B9AFDF9F1FCAA3B200C07B26 /* MapMarkerInfoWindow.xib */,
 				B9B98E6E208466610021FDC3 /* LaunchScreen.storyboard */,
+				CE8FB269215B17BF00363D67 /* Walkthrough.storyboard */,
 				CE8FB2422156E62400363D67 /* RatingViewController.swift */,
 				CE8FB2672156EB1C00363D67 /* RatingViewController.xib */,
 				CE8FB2402156E60600363D67 /* CosmosDistrib.swift */,
@@ -386,6 +394,16 @@
 			path = Classes;
 			sourceTree = "<group>";
 		};
+		CE8FB26D215B187F00363D67 /* BWWalkthrough */ = {
+			isa = PBXGroup;
+			children = (
+				CE8FB26E215B188E00363D67 /* BWWalkthrough.h */,
+				CE8FB26F215B188F00363D67 /* BWWalkthroughPageViewController.swift */,
+				CE8FB270215B188F00363D67 /* BWWalkthroughViewController.swift */,
+			);
+			path = BWWalkthrough;
+			sourceTree = "<group>";
+		};
 		CE9C3F6F213770E6004C418E /* SCLAlertView */ = {
 			isa = PBXGroup;
 			children = (
@@ -425,6 +443,7 @@
 		CECDAB841FAD955E009B0221 /* joeDemo */ = {
 			isa = PBXGroup;
 			children = (
+				CE8FB26D215B187F00363D67 /* BWWalkthrough */,
 				CE8FB23F2156E5DF00363D67 /* PopupDialog */,
 				CE9C3F6F213770E6004C418E /* SCLAlertView */,
 				CEDB7ED6211FE57B00EE5562 /* Fonts */,
@@ -642,6 +661,7 @@
 				B9F18E971FCAD4A100724A52 /* Default-568h@2x.png in Resources */,
 				CE8FB2682156EB1C00363D67 /* RatingViewController.xib in Resources */,
 				CE8FB23821558F6F00363D67 /* pin.png in Resources */,
+				CE8FB26A215B17C000363D67 /* Walkthrough.storyboard in Resources */,
 				CEDB7EDC211FE58300EE5562 /* Nunito-Light.ttf in Resources */,
 				CEDB7EDE211FE58300EE5562 /* OpenSans-Regular.ttf in Resources */,
 			);
@@ -745,6 +765,7 @@
 				CE2E5A91210A93B400173F3C /* DetailViewController.swift in Sources */,
 				CECDAB881FAD955E009B0221 /* ViewController.swift in Sources */,
 				CE8FB2642156E7FE00363D67 /* PresentationManager.swift in Sources */,
+				CE8FB272215B188F00363D67 /* BWWalkthroughViewController.swift in Sources */,
 				CE2E5AC3211BC34700173F3C /* MapJoe.swift in Sources */,
 				B95C2C3C20896C880028A99C /* FirebaseDatabaseRefs.swift in Sources */,
 				CE8FB2652156E7FE00363D67 /* UIImageView+Calculations.swift in Sources */,
@@ -798,6 +819,7 @@
 				CE8FB25C2156E7FE00363D67 /* TransitionAnimations.swift in Sources */,
 				CEDB7EBF211FE42000EE5562 /* PaperOnboarding.swift in Sources */,
 				CEDB7EC7211FE48E00EE5562 /* Configuring.swift in Sources */,
+				CE8FB271215B188F00363D67 /* BWWalkthroughPageViewController.swift in Sources */,
 				E14A157D2034E60300B8EFBE /* StripePaymentVC.swift in Sources */,
 				CE8FB23E2155B72400363D67 /* EditDescriptionController.swift in Sources */,
 				CE8FB2602156E7FE00363D67 /* UIView+Animations.swift in Sources */,
