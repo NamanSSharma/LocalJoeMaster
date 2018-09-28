@@ -96,9 +96,7 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
         NSLog("[UserNotificationCenter] applicationState: \(applicationStateString) willPresentNotification: \(userInfo)")
         // TODO: Handle foreground notification
         completionHandler([.alert])
-        let message: String = userInfo["message"] as? String ?? "";
-        print("MESSAGE: \(message)")
-        presetNotificationAlert(message: message)
+        presetNotificationAlert(name: userInfo["senderName"] as? String ?? "", message: userInfo["message"] as? String ?? "")
     }
     
     // iOS10+, called when received response (default open, dismiss or custom action) for a notification
@@ -131,8 +129,8 @@ extension AppDelegate : MessagingDelegate {
         NSLog("[RemoteNotification] didRefreshRegistrationToken: \(fcmToken)")
     }
     
-    private func presetNotificationAlert(message: String) {
-        let alert = UIAlertController(title: message, message: message, preferredStyle: UIAlertControllerStyle.alert)
+    private func presetNotificationAlert(name: String, message: String) {
+        let alert = UIAlertController(title: name, message: message, preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.cancel, handler: nil));
         
         // show alert
@@ -147,9 +145,7 @@ extension AppDelegate : MessagingDelegate {
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
         NSLog("[RemoteNotification] applicationState: \(applicationStateString) didReceiveRemoteNotification for iOS9: \(userInfo)")
         if UIApplication.shared.applicationState == .active {
-            let message: String = userInfo["message"] as? String ?? "";
-            print("MESSAGE: \(message)")
-            presetNotificationAlert(message: message)
+            presetNotificationAlert(name: userInfo["senderName"] as? String ?? "", message: userInfo["message"] as? String ?? "")
         } else {
             // TODO: Handle background notification
         }
