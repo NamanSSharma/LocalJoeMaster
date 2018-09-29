@@ -211,7 +211,7 @@ extension MapViewController: MKMapViewDelegate {
         guard let annotation = annotation as? MapJoe else {
             return nil
         }
-        let identifier = "marker"
+        let identifier: String = UUID().uuidString
         var view: MKMarkerAnnotationView
         
         if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
@@ -224,6 +224,7 @@ extension MapViewController: MKMapViewDelegate {
             view.calloutOffset = CGPoint(x: -10, y: -5)
             let image = UIImage(named: "chat.png");
             let btn = MarkerButton(type: .custom)
+            // btn.tag = Int.random(in: 0 ..< 6)
             btn.tag = 1
             btn.frame = CGRect.init(x: 5, y: 10, width: 70, height: 45)
             btn.setImage(image, for: .normal)
@@ -236,8 +237,7 @@ extension MapViewController: MKMapViewDelegate {
     }
     
     @objc func sendMessage(sender: MarkerButton!) {
-        let btnsendtag: UIButton = sender
-        if btnsendtag.tag == 1 {
+        if sender.tag == 1 {
             let alert = UIAlertController(title: "Send a message", message: "Enter message", preferredStyle: .alert)
             alert.addTextField {
                 (textField) in
@@ -253,7 +253,6 @@ extension MapViewController: MKMapViewDelegate {
                         
                             let messageId = UUID().uuidString
                         
-                        
                             let chatsRef = self.ref.child("chats");
                             let usersRef = self.ref.child("users").child (self.userID);
                             usersRef.observeSingleEvent (of: .value, with:
@@ -267,7 +266,6 @@ extension MapViewController: MKMapViewDelegate {
                                     let myName = value?["name"] as? String ?? ""
                                     let myId   = value?["senderId"] as? String ?? ""
                                     
-                                    
                                     joeRef.observeSingleEvent(of: .value, with:
                                         {
                                             (snapshot) in
@@ -276,8 +274,9 @@ extension MapViewController: MKMapViewDelegate {
                                             let joeName       = value?["name"]     as? String ?? ""
                                             let joeId         = value?["senderId"] as? String ?? ""
                                             
-                                            let chatId        = myId > joeId ? "\(myId)_\(joeId)" : "\(joeId)_\(myId)" // UUID().uuidString;
+                                            let chatId        = myId > joeId ? "\(myId)_\(joeId)" : "\(joeId)_\(myId)"
                                             
+                                            print("\(myId) => \(joeId)")
                                             if myId == joeId {
                                                 return
                                             }
@@ -285,15 +284,15 @@ extension MapViewController: MKMapViewDelegate {
                                             let userChatValues = [
                                                 "userid"   : joeId,
                                                 "username" : joeName,
-                                                "firstID" : self.userID,
+                                                "firstID"  : self.userID,
                                                 "secondID" : joeID
                                             ]
                                             
                                             let joeChatValues = [
                                                 "userid"   : myId,
                                                 "username" : myName,
-                                                "firstID" : self.userID,
-                                                "secondID": joeID
+                                                "firstID"  : self.userID,
+                                                "secondID" : joeID
                                             ]
                                             
                                             let chatValues = [
@@ -339,7 +338,15 @@ extension MapViewController: MKMapViewDelegate {
                                                     "text"        : text,
                                                     "date"        : String (Date().timeIntervalSince1970)
                                             ]
-                                            chatRef.child (messageId).updateChildValues (messageValues)
+                                            print("\(chatId) => \(messageId)")
+                                            chatRef.child (messageId).updateChildValues(messageValues as [AnyHashable : Any], withCompletionBlock: {
+                                                    (err, ref) in
+                                                    if err != nil {
+                                                        print(err as Any)
+                                                        return
+                                                    }
+                                                }
+                                            )
                                         }
                                     ) {
                                         (error) in
