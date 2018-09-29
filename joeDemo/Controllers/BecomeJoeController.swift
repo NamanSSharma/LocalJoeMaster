@@ -185,6 +185,8 @@ class BecomeJoeController : FormViewController, MFMailComposeViewControllerDeleg
                                    // "joeAddress" : joeAddress,
                                     "joePhone" : joePhone,
                                     "joeDescription": joeDescription,
+                                    "joeRating": "0.0",
+                                    "numberofRatings": "0.0",
                                    "online"     : "online",
                                    "status"     : "unapproved",
                                    "senderId"   : senderUUID,

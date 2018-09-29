@@ -194,6 +194,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         setupFCMToken ()
         // setupUsers ()
         map.delegate = self
+        let showTutorial = usersRef.child("showTutorial")
     }
     
     override func viewWillAppear(_ animated: Bool){
