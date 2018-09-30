@@ -64,13 +64,12 @@ class ChatGroupViewController : UIViewController, UITableViewDataSource, UITable
                     self.senderId    = value["senderId"] as! String
                     self.displayName = value["name"]     as! String
                 
-                    guard let chats:NSDictionary = value["chats"] as? NSDictionary else {
+                    guard let chats: NSDictionary = value["chats"] as? NSDictionary else {
                         return
                     }
                     self.chatArray.removeAll();
                     for chat in chats {
                         let chatObj = chat.value as! NSDictionary
-                        
                         if let deleted: Bool = chatObj["deleted"] as? Bool {
                             if deleted {
                                 continue
@@ -86,9 +85,9 @@ class ChatGroupViewController : UIViewController, UITableViewDataSource, UITable
                         let firstID: String = chatObj["firstID"] as! String
                         let secondID: String = chatObj["secondID"] as! String
                         
-                        if (self.userID == firstID){
+                        if (self.userID == firstID) {
                             self.displayID = secondID;
-                        }else {
+                        } else {
                             self.displayID = firstID
                         }
                         
@@ -96,9 +95,6 @@ class ChatGroupViewController : UIViewController, UITableViewDataSource, UITable
                         
                         self.chatArray.append (chatLk)
                     }
-                
-                    print (self.chatArray)
-                
                     self.resetCurrentChatArray()
                     self.table.reloadData ()
             }
@@ -108,7 +104,6 @@ class ChatGroupViewController : UIViewController, UITableViewDataSource, UITable
     private func setupSearchBar () {
         searchBar.delegate = self
     }
-    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return currentChatArray.count

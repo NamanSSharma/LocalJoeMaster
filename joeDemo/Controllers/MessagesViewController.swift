@@ -330,7 +330,7 @@ extension MessagesViewController {
                 let value = snapshot.value as! NSDictionary
                 let firstID: String = value["firstID"] as! String
                 let secondID: String = value["secondID"] as! String
-                if (self.userID == firstID){
+                if (self.userID == firstID) {
                     self.displayID = secondID;
                     let joeDescriptionRef = self.ref.child("users/").child(self.displayID)
                     joeDescriptionRef.observeSingleEvent(of: .value, with:
@@ -356,7 +356,8 @@ extension MessagesViewController {
                         }
                     )
                     
-                }else { self.displayID = firstID
+                } else {
+                    self.displayID = firstID
                     let joeDescriptionRef = self.ref.child(self.displayID)
                     joeDescriptionRef.observeSingleEvent(of: .value, with:
                         {
@@ -393,17 +394,17 @@ extension MessagesViewController {
             
                 // Use external call to get date perhaps, such as server
                 for (key, msg) in value {
-                    // print ("\(key) --> \(msg)")
-                    
-                    guard let msgValues = msg as? [String:String] else {
+                    print ("\(key) --> \(msg)")
+                    print(type(of: msg))
+                    guard let msgValues = msg as? [String: Any] else {
                         break
                     }
                     
-                    let message:JSQMessage = JSQMessage (senderId: msgValues["senderId"], displayName: msgValues["displayName"], text: msgValues["text"])
+                    let message:JSQMessage = JSQMessage (senderId: msgValues["senderId"] as? String, displayName: msgValues["displayName"] as? String, text: msgValues["text"] as? String)
                     
-                    self.messages.append (FirebaseJSQMessage (id: key as! String, date: msgValues["date"]!, msg: message))
+                    self.messages.append (FirebaseJSQMessage (id: key as! String, date: msgValues["date"]! as! String, msg: message))
                 }
-            
+
                 self.messages.sort (by:
                     {
                         (lhs, rhs) -> Bool in
@@ -450,16 +451,14 @@ extension MessagesViewController {
         
         self.messages.append (fbMessage)
         
-        print ("ID \(currentUser.id)")
-        print ("SID \(senderId)")
-        
         let chatRef = ref.child (FirebaseDatabaseRefs.chats).child (self.chatId).child ("messages")
         let messageValues =
             [
                 "senderId"    : senderId,
                 "displayName" : senderDisplayName,
                 "text"        : text,
-                "date"        : String (date.timeIntervalSince1970)
+                "date"        : String (date.timeIntervalSince1970),
+                "senderUserID" : self.userID
             ]
         chatRef.child (messageId).updateChildValues (messageValues)
         
