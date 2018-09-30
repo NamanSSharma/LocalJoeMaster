@@ -323,7 +323,7 @@ extension MapViewController: MKMapViewDelegate {
                                             )
                                             
                                             chatsRef.child (chatId).updateChildValues (chatValues, withCompletionBlock: {
-                                                (err,ref) in
+                                                (err, ref) in
                                                     if err != nil {
                                                         print(err as Any)
                                                         return
@@ -337,7 +337,8 @@ extension MapViewController: MKMapViewDelegate {
                                                     "senderId"    : myId,
                                                     "displayName" : myName,
                                                     "text"        : text,
-                                                    "date"        : String (Date().timeIntervalSince1970)
+                                                    "date"        : String (Date().timeIntervalSince1970),
+                                                    "senderUserID" : self.userID
                                             ]
                                             print("\(chatId) => \(messageId)")
                                             chatRef.child (messageId).updateChildValues(messageValues as [AnyHashable : Any], withCompletionBlock: {

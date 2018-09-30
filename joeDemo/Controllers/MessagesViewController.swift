@@ -451,16 +451,14 @@ extension MessagesViewController {
         
         self.messages.append (fbMessage)
         
-        print ("ID \(currentUser.id)")
-        print ("SID \(senderId)")
-        
         let chatRef = ref.child (FirebaseDatabaseRefs.chats).child (self.chatId).child ("messages")
         let messageValues =
             [
                 "senderId"    : senderId,
                 "displayName" : senderDisplayName,
                 "text"        : text,
-                "date"        : String (date.timeIntervalSince1970)
+                "date"        : String (date.timeIntervalSince1970),
+                "senderUserID" : self.userID
             ]
         chatRef.child (messageId).updateChildValues (messageValues)
         
