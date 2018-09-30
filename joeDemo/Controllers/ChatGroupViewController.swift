@@ -7,17 +7,13 @@
 //
 
 import Foundation
-
 import UIKit
-
 import FirebaseDatabase
 import FirebaseStorage
 import FirebaseAuth
 
 class ChatGroupViewController : UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
-    
     typealias ChatId = String
-    
     @IBOutlet weak var table : UITableView!
     @IBOutlet var searchBar  : UISearchBar!
     
