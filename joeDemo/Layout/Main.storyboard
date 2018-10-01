@@ -1000,7 +1000,6 @@
         <!--Detail View Controller-->
         <scene sceneID="kBI-wk-AXl">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="rlD-tL-spB" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="xRM-WK-SfL" customClass="DetailViewController" customModule="joeDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="G7W-bk-whY"/>
@@ -1105,6 +1104,7 @@
                         <outlet property="profilePic" destination="YBA-kF-qf5" id="58X-LB-E9e"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rlD-tL-spB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1450.4000000000001" y="611.82266009852219"/>
         </scene>

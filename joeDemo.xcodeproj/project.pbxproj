@@ -105,6 +105,7 @@
 		CEDB7EDC211FE58300EE5562 /* Nunito-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CEDB7ED8211FE58300EE5562 /* Nunito-Light.ttf */; };
 		CEDB7EDD211FE58300EE5562 /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CEDB7ED9211FE58300EE5562 /* Nunito-Bold.ttf */; };
 		CEDB7EDE211FE58300EE5562 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CEDB7EDA211FE58300EE5562 /* OpenSans-Regular.ttf */; };
+		CEE388DE2161B0EC00B9B62B /* arrow_down.png in Resources */ = {isa = PBXBuildFile; fileRef = CEE388DD2161B0EA00B9B62B /* arrow_down.png */; };
 		E14A157D2034E60300B8EFBE /* StripePaymentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14A157C2034E60300B8EFBE /* StripePaymentVC.swift */; };
 /* End PBXBuildFile section */
 
@@ -216,6 +217,7 @@
 		CEDB7ED8211FE58300EE5562 /* Nunito-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Light.ttf"; sourceTree = "<group>"; };
 		CEDB7ED9211FE58300EE5562 /* Nunito-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Bold.ttf"; sourceTree = "<group>"; };
 		CEDB7EDA211FE58300EE5562 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
+		CEE388DD2161B0EA00B9B62B /* arrow_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_down.png; sourceTree = "<group>"; };
 		CEF4FA072058EBA8009FDF8F /* joeDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = joeDemo.entitlements; sourceTree = "<group>"; };
 		E14A157C2034E60300B8EFBE /* StripePaymentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripePaymentVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -320,6 +322,7 @@
 				B9D1F29C1FCBC4F0002C35C1 /* ChatViewController.swift */,
 				CECDAB8C1FAD955E009B0221 /* Assets.xcassets */,
 				CE2E5AA6210E9A0800173F3C /* Images.xcassets */,
+				CEE388DD2161B0EA00B9B62B /* arrow_down.png */,
 				CE213FC31FAFFA8200E544C7 /* SWRevealViewController.h */,
 				CE213FC21FAFFA8200E544C7 /* SWRevealViewController.m */,
 				CECDAB871FAD955E009B0221 /* ViewController.swift */,
@@ -646,6 +649,7 @@
 				CEDB7EDB211FE58300EE5562 /* Nunito-Regular.ttf in Resources */,
 				CE2E5A8D21097FEF00173F3C /* coin_dollar.png in Resources */,
 				B9B98E70208466610021FDC3 /* LaunchScreen.storyboard in Resources */,
+				CEE388DE2161B0EC00B9B62B /* arrow_down.png in Resources */,
 				CEA725F81FC9375E00B8C6CB /* localJoeFont.ttf in Resources */,
 				B9AFDFA01FCAA3B200C07B26 /* MapMarkerInfoWindow.xib in Resources */,
 				CE8FB224214DC9EE00363D67 /* Main.storyboard in Resources */,

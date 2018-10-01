@@ -349,7 +349,7 @@ extension MessagesViewController {
                                         if (ratingDouble! > 2.5 && ratingDouble! <= 3.5) {self.joeDescription += "\n\n Rating: " + "\u{2606} \u{2606} \u{2606} stars"}
                                         if (ratingDouble! > 3.5 && ratingDouble! <= 4.5) {self.joeDescription += "\n\n Rating: " + "\u{2606} \u{2606} \u{2606} \u{2606}  stars"}
                                         if (ratingDouble! > 4.5 && ratingDouble! <= 5.0) {self.joeDescription += "\n\n Rating: " + "\u{2606} \u{2606} \u{2606} \u{2606} \u{2606}  stars"}
-                                        // self.joeDescription += "\n\n Rating: \(ratingDouble!.truncate(places: 2))/5 Stars" + "\u{2606}"
+                                    // self.joeDescription += "\n\n Rating: \(ratingDouble!.truncate(places: 2))/5 Stars" + "\u{2606}"
                                     }
                                 }
                             }
