@@ -339,7 +339,7 @@ extension MapViewController: MKMapViewDelegate {
                                                     "text"        : text,
                                                     "date"        : String (Date().timeIntervalSince1970),
                                                     "senderUserID" : self.userID
-                                            ]
+                                                ]
                                             print("\(chatId) => \(messageId)")
                                             chatRef.child (messageId).updateChildValues(messageValues as [AnyHashable : Any], withCompletionBlock: {
                                                     (err, ref) in
