@@ -26,6 +26,23 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet var secondNearbyDistance: UILabel!
     @IBOutlet var thirdNearbyDistance: UILabel!
     
+    @IBOutlet weak var bigView: UIView!
+    @IBOutlet weak var smallBView: UIView!
+    @IBOutlet weak var smallButtonView: UIView!
+    @IBOutlet weak var bigButton: UIButton!
+    @IBOutlet weak var smallButton: UIButton!
+    
+    @IBAction func bigButtonAction(_ sender: Any) {
+        bigView.isHidden = true
+        smallBView.isHidden = false
+        
+    }
+    @IBAction func smallButtonAction(_ sender: Any) {
+        bigView.isHidden = false
+        smallBView.isHidden = true
+    }
+    
+    
     let userID : String = (Auth.auth().currentUser?.uid)!
     
     var locationInitSetup:Bool! = false
